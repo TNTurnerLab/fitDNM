@@ -1,0 +1,389 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	5	calculate_trinucleotide_mutations
+	5	get_cadd_scores
+	5	get_region_mutation
+	5	get_sequence_plus_two
+	5	run_fitDNM
+	5	transform_cadd_scores
+	31
+
+[Thu Jan 21 04:41:04 2021]
+rule get_cadd_scores:
+    input: ENCODE_3.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: ENCODE_3.initial.CADD.txt
+    jobid: 3
+    wildcards: genomic_region=ENCODE_3
+
+[Thu Jan 21 04:41:05 2021]
+Finished job 3.
+1 of 31 steps (3%) done
+
+[Thu Jan 21 04:41:05 2021]
+rule transform_cadd_scores:
+    input: ENCODE_3.initial.CADD.txt
+    output: ENCODE_3.final.CADD.txt, ENCODE_3.fasta
+    jobid: 8
+    wildcards: genomic_region=ENCODE_3
+
+[Thu Jan 21 04:41:05 2021]
+Finished job 8.
+2 of 31 steps (6%) done
+
+[Thu Jan 21 04:41:05 2021]
+rule get_sequence_plus_two:
+    input: ENCODE_3.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: ENCODE_3_plus_two_init.fasta, ENCODE_3.plustwo.bed, ENCODE_3_plus_two.fasta
+    jobid: 18
+    wildcards: genomic_region=ENCODE_3
+
+[Thu Jan 21 04:41:05 2021]
+Finished job 18.
+3 of 31 steps (10%) done
+
+[Thu Jan 21 04:41:05 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, ENCODE_3_plus_two.fasta, ENCODE_3.tabix.bed
+    output: ENCODE_3.mu.lis
+    jobid: 23
+    wildcards: genomic_region=ENCODE_3
+
+[Thu Jan 21 04:41:05 2021]
+Finished job 23.
+4 of 31 steps (13%) done
+
+[Thu Jan 21 04:41:05 2021]
+rule get_cadd_scores:
+    input: ENCODE_5.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: ENCODE_5.initial.CADD.txt
+    jobid: 5
+    wildcards: genomic_region=ENCODE_5
+
+[Thu Jan 21 04:41:06 2021]
+Finished job 5.
+5 of 31 steps (16%) done
+
+[Thu Jan 21 04:41:06 2021]
+rule transform_cadd_scores:
+    input: ENCODE_5.initial.CADD.txt
+    output: ENCODE_5.final.CADD.txt, ENCODE_5.fasta
+    jobid: 10
+    wildcards: genomic_region=ENCODE_5
+
+[Thu Jan 21 04:41:06 2021]
+Finished job 10.
+6 of 31 steps (19%) done
+
+[Thu Jan 21 04:41:06 2021]
+rule get_sequence_plus_two:
+    input: ENCODE_5.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: ENCODE_5_plus_two_init.fasta, ENCODE_5.plustwo.bed, ENCODE_5_plus_two.fasta
+    jobid: 20
+    wildcards: genomic_region=ENCODE_5
+
+[Thu Jan 21 04:41:06 2021]
+Finished job 20.
+7 of 31 steps (23%) done
+
+[Thu Jan 21 04:41:06 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, ENCODE_5_plus_two.fasta, ENCODE_5.tabix.bed
+    output: ENCODE_5.mu.lis
+    jobid: 25
+    wildcards: genomic_region=ENCODE_5
+
+[Thu Jan 21 04:41:06 2021]
+Finished job 25.
+8 of 31 steps (26%) done
+
+[Thu Jan 21 04:41:07 2021]
+rule get_cadd_scores:
+    input: ENCODE_4.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: ENCODE_4.initial.CADD.txt
+    jobid: 4
+    wildcards: genomic_region=ENCODE_4
+
+[Thu Jan 21 04:41:07 2021]
+Finished job 4.
+9 of 31 steps (29%) done
+
+[Thu Jan 21 04:41:07 2021]
+rule transform_cadd_scores:
+    input: ENCODE_4.initial.CADD.txt
+    output: ENCODE_4.final.CADD.txt, ENCODE_4.fasta
+    jobid: 9
+    wildcards: genomic_region=ENCODE_4
+
+[Thu Jan 21 04:41:08 2021]
+Finished job 9.
+10 of 31 steps (32%) done
+
+[Thu Jan 21 04:41:08 2021]
+rule get_sequence_plus_two:
+    input: ENCODE_4.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: ENCODE_4_plus_two_init.fasta, ENCODE_4.plustwo.bed, ENCODE_4_plus_two.fasta
+    jobid: 19
+    wildcards: genomic_region=ENCODE_4
+
+[Thu Jan 21 04:41:08 2021]
+Finished job 19.
+11 of 31 steps (35%) done
+
+[Thu Jan 21 04:41:08 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, ENCODE_4_plus_two.fasta, ENCODE_4.tabix.bed
+    output: ENCODE_4.mu.lis
+    jobid: 24
+    wildcards: genomic_region=ENCODE_4
+
+[Thu Jan 21 04:41:08 2021]
+Finished job 24.
+12 of 31 steps (39%) done
+
+[Thu Jan 21 04:41:08 2021]
+rule get_cadd_scores:
+    input: ENCODE_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: ENCODE_1.initial.CADD.txt
+    jobid: 1
+    wildcards: genomic_region=ENCODE_1
+
+[Thu Jan 21 04:41:08 2021]
+Finished job 1.
+13 of 31 steps (42%) done
+
+[Thu Jan 21 04:41:08 2021]
+rule transform_cadd_scores:
+    input: ENCODE_1.initial.CADD.txt
+    output: ENCODE_1.final.CADD.txt, ENCODE_1.fasta
+    jobid: 6
+    wildcards: genomic_region=ENCODE_1
+
+[Thu Jan 21 04:41:09 2021]
+Finished job 6.
+14 of 31 steps (45%) done
+
+[Thu Jan 21 04:41:09 2021]
+rule get_cadd_scores:
+    input: ENCODE_2.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: ENCODE_2.initial.CADD.txt
+    jobid: 2
+    wildcards: genomic_region=ENCODE_2
+
+[Thu Jan 21 04:41:09 2021]
+Finished job 2.
+15 of 31 steps (48%) done
+
+[Thu Jan 21 04:41:09 2021]
+rule transform_cadd_scores:
+    input: ENCODE_2.initial.CADD.txt
+    output: ENCODE_2.final.CADD.txt, ENCODE_2.fasta
+    jobid: 7
+    wildcards: genomic_region=ENCODE_2
+
+[Thu Jan 21 04:41:10 2021]
+Finished job 7.
+16 of 31 steps (52%) done
+
+[Thu Jan 21 04:41:10 2021]
+rule get_sequence_plus_two:
+    input: ENCODE_2.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: ENCODE_2_plus_two_init.fasta, ENCODE_2.plustwo.bed, ENCODE_2_plus_two.fasta
+    jobid: 17
+    wildcards: genomic_region=ENCODE_2
+
+[Thu Jan 21 04:41:11 2021]
+Finished job 17.
+17 of 31 steps (55%) done
+
+[Thu Jan 21 04:41:11 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, ENCODE_2_plus_two.fasta, ENCODE_2.tabix.bed
+    output: ENCODE_2.mu.lis
+    jobid: 22
+    wildcards: genomic_region=ENCODE_2
+
+[Thu Jan 21 04:41:11 2021]
+Finished job 22.
+18 of 31 steps (58%) done
+
+[Thu Jan 21 04:41:11 2021]
+rule get_sequence_plus_two:
+    input: ENCODE_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: ENCODE_1_plus_two_init.fasta, ENCODE_1.plustwo.bed, ENCODE_1_plus_two.fasta
+    jobid: 16
+    wildcards: genomic_region=ENCODE_1
+
+[Thu Jan 21 04:41:11 2021]
+Finished job 16.
+19 of 31 steps (61%) done
+
+[Thu Jan 21 04:41:11 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, ENCODE_1_plus_two.fasta, ENCODE_1.tabix.bed
+    output: ENCODE_1.mu.lis
+    jobid: 21
+    wildcards: genomic_region=ENCODE_1
+
+[Thu Jan 21 04:41:11 2021]
+Finished job 21.
+20 of 31 steps (65%) done
+
+[Thu Jan 21 04:41:11 2021]
+rule get_region_mutation:
+    input: ENCODE_3.tabix.bed, /fitDNM/input_data/variant_calls/denovo_variants_four_way_caller.txt
+    output: ENCODE_3.lis
+    jobid: 13
+    wildcards: genomic_region=ENCODE_3
+
+[Thu Jan 21 04:41:12 2021]
+Finished job 13.
+21 of 31 steps (68%) done
+
+[Thu Jan 21 04:41:12 2021]
+rule run_fitDNM:
+    input: ENCODE_3.lis, ENCODE_3.mu.lis, ENCODE_3.final.CADD.txt
+    output: ENCODE_3.fitDNM_CADD.txt
+    jobid: 28
+    wildcards: genomic_region=ENCODE_3
+
+[Thu Jan 21 04:41:13 2021]
+Finished job 28.
+22 of 31 steps (71%) done
+
+[Thu Jan 21 04:41:13 2021]
+rule get_region_mutation:
+    input: ENCODE_5.tabix.bed, /fitDNM/input_data/variant_calls/denovo_variants_four_way_caller.txt
+    output: ENCODE_5.lis
+    jobid: 15
+    wildcards: genomic_region=ENCODE_5
+
+[Thu Jan 21 04:41:14 2021]
+Finished job 15.
+23 of 31 steps (74%) done
+
+[Thu Jan 21 04:41:14 2021]
+rule run_fitDNM:
+    input: ENCODE_5.lis, ENCODE_5.mu.lis, ENCODE_5.final.CADD.txt
+    output: ENCODE_5.fitDNM_CADD.txt
+    jobid: 30
+    wildcards: genomic_region=ENCODE_5
+
+[Thu Jan 21 04:41:14 2021]
+Finished job 30.
+24 of 31 steps (77%) done
+
+[Thu Jan 21 04:41:14 2021]
+rule get_region_mutation:
+    input: ENCODE_1.tabix.bed, /fitDNM/input_data/variant_calls/denovo_variants_four_way_caller.txt
+    output: ENCODE_1.lis
+    jobid: 11
+    wildcards: genomic_region=ENCODE_1
+
+[Thu Jan 21 04:41:15 2021]
+Finished job 11.
+25 of 31 steps (81%) done
+
+[Thu Jan 21 04:41:15 2021]
+rule run_fitDNM:
+    input: ENCODE_1.lis, ENCODE_1.mu.lis, ENCODE_1.final.CADD.txt
+    output: ENCODE_1.fitDNM_CADD.txt
+    jobid: 26
+    wildcards: genomic_region=ENCODE_1
+
+[Thu Jan 21 04:41:15 2021]
+Finished job 26.
+26 of 31 steps (84%) done
+
+[Thu Jan 21 04:41:15 2021]
+rule get_region_mutation:
+    input: ENCODE_2.tabix.bed, /fitDNM/input_data/variant_calls/denovo_variants_four_way_caller.txt
+    output: ENCODE_2.lis
+    jobid: 12
+    wildcards: genomic_region=ENCODE_2
+
+[Thu Jan 21 04:41:16 2021]
+Finished job 12.
+27 of 31 steps (87%) done
+
+[Thu Jan 21 04:41:16 2021]
+rule run_fitDNM:
+    input: ENCODE_2.lis, ENCODE_2.mu.lis, ENCODE_2.final.CADD.txt
+    output: ENCODE_2.fitDNM_CADD.txt
+    jobid: 27
+    wildcards: genomic_region=ENCODE_2
+
+[Thu Jan 21 04:41:17 2021]
+Finished job 27.
+28 of 31 steps (90%) done
+
+[Thu Jan 21 04:41:17 2021]
+rule get_region_mutation:
+    input: ENCODE_4.tabix.bed, /fitDNM/input_data/variant_calls/denovo_variants_four_way_caller.txt
+    output: ENCODE_4.lis
+    jobid: 14
+    wildcards: genomic_region=ENCODE_4
+
+[Thu Jan 21 04:41:17 2021]
+Finished job 14.
+29 of 31 steps (94%) done
+
+[Thu Jan 21 04:41:17 2021]
+rule run_fitDNM:
+    input: ENCODE_4.lis, ENCODE_4.mu.lis, ENCODE_4.final.CADD.txt
+    output: ENCODE_4.fitDNM_CADD.txt
+    jobid: 29
+    wildcards: genomic_region=ENCODE_4
+
+[Thu Jan 21 04:41:18 2021]
+Finished job 29.
+30 of 31 steps (97%) done
+
+[Thu Jan 21 04:41:18 2021]
+localrule all:
+    input: ENCODE_1.tabix.bed, ENCODE_2.tabix.bed, ENCODE_3.tabix.bed, ENCODE_4.tabix.bed, ENCODE_5.tabix.bed, ENCODE_1.initial.CADD.txt, ENCODE_2.initial.CADD.txt, ENCODE_3.initial.CADD.txt, ENCODE_4.initial.CADD.txt, ENCODE_5.initial.CADD.txt, ENCODE_1.final.CADD.txt, ENCODE_2.final.CADD.txt, ENCODE_3.final.CADD.txt, ENCODE_4.final.CADD.txt, ENCODE_5.final.CADD.txt, ENCODE_1.lis, ENCODE_2.lis, ENCODE_3.lis, ENCODE_4.lis, ENCODE_5.lis, ENCODE_1.plustwo.bed, ENCODE_2.plustwo.bed, ENCODE_3.plustwo.bed, ENCODE_4.plustwo.bed, ENCODE_5.plustwo.bed, ENCODE_1_plus_two.fasta, ENCODE_2_plus_two.fasta, ENCODE_3_plus_two.fasta, ENCODE_4_plus_two.fasta, ENCODE_5_plus_two.fasta, ENCODE_1_plus_two_init.fasta, ENCODE_2_plus_two_init.fasta, ENCODE_3_plus_two_init.fasta, ENCODE_4_plus_two_init.fasta, ENCODE_5_plus_two_init.fasta, ENCODE_1_plus_two.fasta, ENCODE_2_plus_two.fasta, ENCODE_3_plus_two.fasta, ENCODE_4_plus_two.fasta, ENCODE_5_plus_two.fasta, ENCODE_1.fasta, ENCODE_2.fasta, ENCODE_3.fasta, ENCODE_4.fasta, ENCODE_5.fasta, ENCODE_1.mu.lis, ENCODE_2.mu.lis, ENCODE_3.mu.lis, ENCODE_4.mu.lis, ENCODE_5.mu.lis, ENCODE_1.fitDNM_CADD.txt, ENCODE_2.fitDNM_CADD.txt, ENCODE_3.fitDNM_CADD.txt, ENCODE_4.fitDNM_CADD.txt, ENCODE_5.fitDNM_CADD.txt, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz, /fitDNM/input_data/variant_calls/denovo_variants_four_way_caller.txt, /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt
+    jobid: 0
+
+Removing temporary output file ENCODE_1.initial.CADD.txt.
+Removing temporary output file ENCODE_2.initial.CADD.txt.
+Removing temporary output file ENCODE_3.initial.CADD.txt.
+Removing temporary output file ENCODE_4.initial.CADD.txt.
+Removing temporary output file ENCODE_5.initial.CADD.txt.
+Removing temporary output file ENCODE_1.fasta.
+Removing temporary output file ENCODE_1.final.CADD.txt.
+Removing temporary output file ENCODE_2.final.CADD.txt.
+Removing temporary output file ENCODE_2.fasta.
+Removing temporary output file ENCODE_3.final.CADD.txt.
+Removing temporary output file ENCODE_3.fasta.
+Removing temporary output file ENCODE_4.final.CADD.txt.
+Removing temporary output file ENCODE_4.fasta.
+Removing temporary output file ENCODE_5.fasta.
+Removing temporary output file ENCODE_5.final.CADD.txt.
+Removing temporary output file ENCODE_1_plus_two_init.fasta.
+Removing temporary output file ENCODE_1.plustwo.bed.
+Removing temporary output file ENCODE_1_plus_two.fasta.
+Removing temporary output file ENCODE_2_plus_two.fasta.
+Removing temporary output file ENCODE_2_plus_two_init.fasta.
+Removing temporary output file ENCODE_2.plustwo.bed.
+Removing temporary output file ENCODE_3.plustwo.bed.
+Removing temporary output file ENCODE_3_plus_two.fasta.
+Removing temporary output file ENCODE_3_plus_two_init.fasta.
+Removing temporary output file ENCODE_4.plustwo.bed.
+Removing temporary output file ENCODE_4_plus_two.fasta.
+Removing temporary output file ENCODE_4_plus_two_init.fasta.
+Removing temporary output file ENCODE_5.plustwo.bed.
+Removing temporary output file ENCODE_5_plus_two_init.fasta.
+Removing temporary output file ENCODE_5_plus_two.fasta.
+Removing temporary output file ENCODE_1.mu.lis.
+Removing temporary output file ENCODE_2.mu.lis.
+Removing temporary output file ENCODE_3.mu.lis.
+Removing temporary output file ENCODE_4.mu.lis.
+Removing temporary output file ENCODE_5.mu.lis.
+[Thu Jan 21 04:41:18 2021]
+Finished job 0.
+31 of 31 steps (100%) done
+Complete log: /storage1/fs1/tychele/Active/projects/fitDNM/code/fitDNM_snakemake/.snakemake/log/2021-01-21T044104.232109.snakemake.log

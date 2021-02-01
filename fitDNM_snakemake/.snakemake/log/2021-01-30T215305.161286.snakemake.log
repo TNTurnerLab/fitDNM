@@ -1,0 +1,1906 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 64
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	29598	calculate_trinucleotide_mutations
+	1	clean
+	1	combine_mutations
+	1	delete_tabix
+	29598	filter_multinucleotide_variants
+	29598	get_cadd_scores
+	29598	get_region_mutation
+	29598	get_sequence_plus_two
+	29598	run_fitDNM
+	29598	transform_cadd_scores
+	207190
+
+[Sat Jan 30 22:10:35 2021]
+rule get_sequence_plus_two:
+    input: CDC42BPB_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: CDC42BPB_1_plus_two_init.fasta, CDC42BPB_1.plustwo.bed, CDC42BPB_1_plus_two.fasta
+    jobid: 139595
+    wildcards: genomic_region=CDC42BPB_1
+
+
+[Sat Jan 30 22:10:35 2021]
+rule get_sequence_plus_two:
+    input: MARK3_2.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: MARK3_2_plus_two_init.fasta, MARK3_2.plustwo.bed, MARK3_2_plus_two.fasta
+    jobid: 139603
+    wildcards: genomic_region=MARK3_2
+
+
+[Sat Jan 30 22:10:35 2021]
+rule get_cadd_scores:
+    input: TBCEL_4.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: TBCEL_4.initial.CADD.txt
+    jobid: 18086
+    wildcards: genomic_region=TBCEL_4
+
+
+[Sat Jan 30 22:10:35 2021]
+rule get_cadd_scores:
+    input: HSPA8_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: HSPA8_1.initial.CADD.txt
+    jobid: 18094
+    wildcards: genomic_region=HSPA8_1
+
+
+[Sat Jan 30 22:10:35 2021]
+rule get_sequence_plus_two:
+    input: PXMP2_2.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: PXMP2_2_plus_two_init.fasta, PXMP2_2.plustwo.bed, PXMP2_2_plus_two.fasta
+    jobid: 138200
+    wildcards: genomic_region=PXMP2_2
+
+
+[Sat Jan 30 22:10:35 2021]
+rule get_sequence_plus_two:
+    input: GOLGA3_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: GOLGA3_1_plus_two_init.fasta, GOLGA3_1.plustwo.bed, GOLGA3_1_plus_two.fasta
+    jobid: 138208
+    wildcards: genomic_region=GOLGA3_1
+
+
+[Sat Jan 30 22:10:36 2021]
+rule get_sequence_plus_two:
+    input: CHST15_3.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: CHST15_3_plus_two_init.fasta, CHST15_3.plustwo.bed, CHST15_3_plus_two.fasta
+    jobid: 134705
+    wildcards: genomic_region=CHST15_3
+
+
+[Sat Jan 30 22:10:36 2021]
+rule get_sequence_plus_two:
+    input: FAM53B_9.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: FAM53B_9_plus_two_init.fasta, FAM53B_9.plustwo.bed, FAM53B_9_plus_two.fasta
+    jobid: 134713
+    wildcards: genomic_region=FAM53B_9
+
+
+[Sat Jan 30 22:10:36 2021]
+rule get_sequence_plus_two:
+    input: C12orf42_3.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: C12orf42_3_plus_two_init.fasta, C12orf42_3.plustwo.bed, C12orf42_3_plus_two.fasta
+    jobid: 137855
+    wildcards: genomic_region=C12orf42_3
+
+
+[Sat Jan 30 22:10:36 2021]
+rule get_cadd_scores:
+    input: CERS3_3.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: CERS3_3.initial.CADD.txt
+    jobid: 22196
+    wildcards: genomic_region=CERS3_3
+
+
+[Sat Jan 30 22:10:36 2021]
+rule get_sequence_plus_two:
+    input: EXOC3L4_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: EXOC3L4_1_plus_two_init.fasta, EXOC3L4_1.plustwo.bed, EXOC3L4_1_plus_two.fasta
+    jobid: 139596
+    wildcards: genomic_region=EXOC3L4_1
+
+
+[Sat Jan 30 22:10:36 2021]
+rule get_sequence_plus_two:
+    input: MARK3_3.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: MARK3_3_plus_two_init.fasta, MARK3_3.plustwo.bed, MARK3_3_plus_two.fasta
+    jobid: 139604
+    wildcards: genomic_region=MARK3_3
+
+
+[Sat Jan 30 22:10:36 2021]
+rule get_cadd_scores:
+    input: TBCEL_3.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: TBCEL_3.initial.CADD.txt
+    jobid: 18087
+    wildcards: genomic_region=TBCEL_3
+
+
+[Sat Jan 30 22:10:36 2021]
+rule get_cadd_scores:
+    input: CLMP_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: CLMP_1.initial.CADD.txt
+    jobid: 18095
+    wildcards: genomic_region=CLMP_1
+
+
+[Sat Jan 30 22:10:36 2021]
+rule get_sequence_plus_two:
+    input: PXMP2_4.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: PXMP2_4_plus_two_init.fasta, PXMP2_4.plustwo.bed, PXMP2_4_plus_two.fasta
+    jobid: 138201
+    wildcards: genomic_region=PXMP2_4
+
+
+[Sat Jan 30 22:10:36 2021]
+rule get_sequence_plus_two:
+    input: GOLGA3_2.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: GOLGA3_2_plus_two_init.fasta, GOLGA3_2.plustwo.bed, GOLGA3_2_plus_two.fasta
+    jobid: 138209
+    wildcards: genomic_region=GOLGA3_2
+
+
+[Sat Jan 30 22:10:36 2021]
+rule get_sequence_plus_two:
+    input: CHST15_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: CHST15_1_plus_two_init.fasta, CHST15_1.plustwo.bed, CHST15_1_plus_two.fasta
+    jobid: 134706
+    wildcards: genomic_region=CHST15_1
+
+
+[Sat Jan 30 22:10:37 2021]
+rule get_sequence_plus_two:
+    input: FAM53B_7.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: FAM53B_7_plus_two_init.fasta, FAM53B_7.plustwo.bed, FAM53B_7_plus_two.fasta
+    jobid: 134714
+    wildcards: genomic_region=FAM53B_7
+
+
+[Sat Jan 30 22:10:37 2021]
+rule get_sequence_plus_two:
+    input: C12orf42_4.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: C12orf42_4_plus_two_init.fasta, C12orf42_4.plustwo.bed, C12orf42_4_plus_two.fasta
+    jobid: 137856
+    wildcards: genomic_region=C12orf42_4
+
+
+[Sat Jan 30 22:10:37 2021]
+rule get_cadd_scores:
+    input: LINS1_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: LINS1_1.initial.CADD.txt
+    jobid: 22197
+    wildcards: genomic_region=LINS1_1
+
+
+[Sat Jan 30 22:10:37 2021]
+rule get_sequence_plus_two:
+    input: EXOC3L4_3.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: EXOC3L4_3_plus_two_init.fasta, EXOC3L4_3.plustwo.bed, EXOC3L4_3_plus_two.fasta
+    jobid: 139597
+    wildcards: genomic_region=EXOC3L4_3
+
+
+[Sat Jan 30 22:10:37 2021]
+rule get_sequence_plus_two:
+    input: CKB_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: CKB_1_plus_two_init.fasta, CKB_1.plustwo.bed, CKB_1_plus_two.fasta
+    jobid: 139605
+    wildcards: genomic_region=CKB_1
+
+
+[Sat Jan 30 22:10:37 2021]
+rule get_cadd_scores:
+    input: SC5D_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: SC5D_1.initial.CADD.txt
+    jobid: 18088
+    wildcards: genomic_region=SC5D_1
+
+
+[Sat Jan 30 22:10:37 2021]
+rule get_cadd_scores:
+    input: GRAMD1B_2.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: GRAMD1B_2.initial.CADD.txt
+    jobid: 18096
+    wildcards: genomic_region=GRAMD1B_2
+
+
+[Sat Jan 30 22:10:37 2021]
+rule get_sequence_plus_two:
+    input: PXMP2_3.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: PXMP2_3_plus_two_init.fasta, PXMP2_3.plustwo.bed, PXMP2_3_plus_two.fasta
+    jobid: 138202
+    wildcards: genomic_region=PXMP2_3
+
+
+[Sat Jan 30 22:10:37 2021]
+rule get_sequence_plus_two:
+    input: GOLGA3_5.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: GOLGA3_5_plus_two_init.fasta, GOLGA3_5.plustwo.bed, GOLGA3_5_plus_two.fasta
+    jobid: 138210
+    wildcards: genomic_region=GOLGA3_5
+
+
+[Sat Jan 30 22:10:37 2021]
+rule get_sequence_plus_two:
+    input: OAT_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: OAT_1_plus_two_init.fasta, OAT_1.plustwo.bed, OAT_1_plus_two.fasta
+    jobid: 134707
+    wildcards: genomic_region=OAT_1
+
+
+[Sat Jan 30 22:10:37 2021]
+rule get_sequence_plus_two:
+    input: FAM53B_11.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: FAM53B_11_plus_two_init.fasta, FAM53B_11.plustwo.bed, FAM53B_11_plus_two.fasta
+    jobid: 134715
+    wildcards: genomic_region=FAM53B_11
+
+
+[Sat Jan 30 22:10:38 2021]
+rule get_sequence_plus_two:
+    input: EXOC3L4_2.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: EXOC3L4_2_plus_two_init.fasta, EXOC3L4_2.plustwo.bed, EXOC3L4_2_plus_two.fasta
+    jobid: 139598
+    wildcards: genomic_region=EXOC3L4_2
+
+
+[Sat Jan 30 22:10:38 2021]
+rule get_sequence_plus_two:
+    input: CKB_3.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: CKB_3_plus_two_init.fasta, CKB_3.plustwo.bed, CKB_3_plus_two.fasta
+    jobid: 139606
+    wildcards: genomic_region=CKB_3
+
+
+[Sat Jan 30 22:10:38 2021]
+rule get_cadd_scores:
+    input: SORL1_2.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: SORL1_2.initial.CADD.txt
+    jobid: 18089
+    wildcards: genomic_region=SORL1_2
+
+
+[Sat Jan 30 22:10:38 2021]
+rule get_cadd_scores:
+    input: GRAMD1B_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: GRAMD1B_1.initial.CADD.txt
+    jobid: 18097
+    wildcards: genomic_region=GRAMD1B_1
+
+
+[Sat Jan 30 22:10:38 2021]
+rule get_sequence_plus_two:
+    input: POLE_2.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: POLE_2_plus_two_init.fasta, POLE_2.plustwo.bed, POLE_2_plus_two.fasta
+    jobid: 138203
+    wildcards: genomic_region=POLE_2
+
+
+[Sat Jan 30 22:10:38 2021]
+rule get_sequence_plus_two:
+    input: CHFR_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: CHFR_1_plus_two_init.fasta, CHFR_1.plustwo.bed, CHFR_1_plus_two.fasta
+    jobid: 138211
+    wildcards: genomic_region=CHFR_1
+
+
+[Sat Jan 30 22:10:38 2021]
+rule get_sequence_plus_two:
+    input: OAT_2.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: OAT_2_plus_two_init.fasta, OAT_2.plustwo.bed, OAT_2_plus_two.fasta
+    jobid: 134708
+    wildcards: genomic_region=OAT_2
+
+
+[Sat Jan 30 22:10:38 2021]
+rule get_sequence_plus_two:
+    input: FAM53B_8.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: FAM53B_8_plus_two_init.fasta, FAM53B_8.plustwo.bed, FAM53B_8_plus_two.fasta
+    jobid: 134716
+    wildcards: genomic_region=FAM53B_8
+
+
+[Sat Jan 30 22:10:38 2021]
+rule get_sequence_plus_two:
+    input: TNFAIP2_2.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: TNFAIP2_2_plus_two_init.fasta, TNFAIP2_2.plustwo.bed, TNFAIP2_2_plus_two.fasta
+    jobid: 139599
+    wildcards: genomic_region=TNFAIP2_2
+
+
+[Sat Jan 30 22:10:38 2021]
+rule get_sequence_plus_two:
+    input: TRMT61A_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: TRMT61A_1_plus_two_init.fasta, TRMT61A_1.plustwo.bed, TRMT61A_1_plus_two.fasta
+    jobid: 139607
+    wildcards: genomic_region=TRMT61A_1
+
+
+[Sat Jan 30 22:10:39 2021]
+rule get_cadd_scores:
+    input: SORL1_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: SORL1_1.initial.CADD.txt
+    jobid: 18090
+    wildcards: genomic_region=SORL1_1
+
+
+[Sat Jan 30 22:10:39 2021]
+rule get_cadd_scores:
+    input: SCN3B_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: SCN3B_1.initial.CADD.txt
+    jobid: 18098
+    wildcards: genomic_region=SCN3B_1
+
+[Sat Jan 30 22:10:39 2021]
+Finished job 139606.
+1 of 207190 steps (0.00%) done
+
+[Sat Jan 30 22:10:39 2021]
+rule get_sequence_plus_two:
+    input: PGAM5_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: PGAM5_1_plus_two_init.fasta, PGAM5_1.plustwo.bed, PGAM5_1_plus_two.fasta
+    jobid: 138204
+    wildcards: genomic_region=PGAM5_1
+
+
+[Sat Jan 30 22:10:39 2021]
+rule get_sequence_plus_two:
+    input: ZNF605_3.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: ZNF605_3_plus_two_init.fasta, ZNF605_3.plustwo.bed, ZNF605_3_plus_two.fasta
+    jobid: 138212
+    wildcards: genomic_region=ZNF605_3
+
+[Sat Jan 30 22:10:39 2021]
+Finished job 139607.
+2 of 207190 steps (0.00%) done
+
+[Sat Jan 30 22:10:39 2021]
+rule get_sequence_plus_two:
+    input: LHPP_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: LHPP_1_plus_two_init.fasta, LHPP_1.plustwo.bed, LHPP_1_plus_two.fasta
+    jobid: 134709
+    wildcards: genomic_region=LHPP_1
+
+
+[Sat Jan 30 22:10:39 2021]
+rule get_sequence_plus_two:
+    input: FAM53B_10.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: FAM53B_10_plus_two_init.fasta, FAM53B_10.plustwo.bed, FAM53B_10_plus_two.fasta
+    jobid: 134717
+    wildcards: genomic_region=FAM53B_10
+
+[Sat Jan 30 22:10:39 2021]
+Finished job 139605.
+3 of 207190 steps (0.00%) done
+
+[Sat Jan 30 22:10:39 2021]
+rule get_sequence_plus_two:
+    input: TNFAIP2_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: TNFAIP2_1_plus_two_init.fasta, TNFAIP2_1.plustwo.bed, TNFAIP2_1_plus_two.fasta
+    jobid: 139600
+    wildcards: genomic_region=TNFAIP2_1
+
+[Sat Jan 30 22:10:39 2021]
+Finished job 18096.
+
+4 of 207190 steps (0.00%) done
+[Sat Jan 30 22:10:39 2021]
+rule get_sequence_plus_two:
+    input: BAG5_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: BAG5_1_plus_two_init.fasta, BAG5_1.plustwo.bed, BAG5_1_plus_two.fasta
+    jobid: 139608
+    wildcards: genomic_region=BAG5_1
+
+[Sat Jan 30 22:10:40 2021]
+Finished job 18098.
+
+5 of 207190 steps (0.00%) done
+[Sat Jan 30 22:10:40 2021]
+rule get_cadd_scores:
+    input: UBASH3B_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: UBASH3B_1.initial.CADD.txt
+    jobid: 18091
+    wildcards: genomic_region=UBASH3B_1
+
+
+[Sat Jan 30 22:10:40 2021]
+rule get_cadd_scores:
+    input: VWA5A_2.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: VWA5A_2.initial.CADD.txt
+    jobid: 18099
+    wildcards: genomic_region=VWA5A_2
+
+[Sat Jan 30 22:10:40 2021]
+Finished job 18097.
+
+6 of 207190 steps (0.00%) done
+[Sat Jan 30 22:10:40 2021]
+rule get_sequence_plus_two:
+    input: ANKLE2_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: ANKLE2_1_plus_two_init.fasta, ANKLE2_1.plustwo.bed, ANKLE2_1_plus_two.fasta
+    jobid: 138205
+    wildcards: genomic_region=ANKLE2_1
+
+[Sat Jan 30 22:10:40 2021]
+Finished job 18095.
+
+7 of 207190 steps (0.00%) done
+[Sat Jan 30 22:10:40 2021]
+rule get_sequence_plus_two:
+    input: ZNF605_2.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: ZNF605_2_plus_two_init.fasta, ZNF605_2.plustwo.bed, ZNF605_2_plus_two.fasta
+    jobid: 138213
+    wildcards: genomic_region=ZNF605_2
+
+
+[Sat Jan 30 22:10:40 2021]
+rule get_sequence_plus_two:
+    input: LHPP_2.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: LHPP_2_plus_two_init.fasta, LHPP_2.plustwo.bed, LHPP_2_plus_two.fasta
+    jobid: 134710
+    wildcards: genomic_region=LHPP_2
+
+[Sat Jan 30 22:10:40 2021]
+Finished job 139608.
+8 of 207190 steps (0.00%) done
+
+[Sat Jan 30 22:10:40 2021]
+rule get_sequence_plus_two:
+    input: FAM53B_6.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: FAM53B_6_plus_two_init.fasta, FAM53B_6.plustwo.bed, FAM53B_6_plus_two.fasta
+    jobid: 134718
+    wildcards: genomic_region=FAM53B_6
+
+[Sat Jan 30 22:10:40 2021]
+Finished job 18099.
+9 of 207190 steps (0.00%) done
+
+[Sat Jan 30 22:10:40 2021]
+rule get_sequence_plus_two:
+    input: EIF5_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: EIF5_1_plus_two_init.fasta, EIF5_1.plustwo.bed, EIF5_1_plus_two.fasta
+    jobid: 139601
+    wildcards: genomic_region=EIF5_1
+
+
+[Sat Jan 30 22:10:41 2021]
+rule get_sequence_plus_two:
+    input: CKB_2.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: CKB_2_plus_two_init.fasta, CKB_2.plustwo.bed, CKB_2_plus_two.fasta
+    jobid: 139609
+    wildcards: genomic_region=CKB_2
+
+[Sat Jan 30 22:10:41 2021]
+Finished job 138208.
+
+10 of 207190 steps (0.00%) done
+[Sat Jan 30 22:10:41 2021]
+rule get_cadd_scores:
+    input: CRTAM_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: CRTAM_1.initial.CADD.txt
+    jobid: 18092
+    wildcards: genomic_region=CRTAM_1
+
+
+[Sat Jan 30 22:10:41 2021]
+rule get_cadd_scores:
+    input: ZNF202_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: ZNF202_1.initial.CADD.txt
+    jobid: 18100
+    wildcards: genomic_region=ZNF202_1
+
+
+[Sat Jan 30 22:10:41 2021]
+rule get_sequence_plus_two:
+    input: GOLGA3_3.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: GOLGA3_3_plus_two_init.fasta, GOLGA3_3.plustwo.bed, GOLGA3_3_plus_two.fasta
+    jobid: 138206
+    wildcards: genomic_region=GOLGA3_3
+
+[Sat Jan 30 22:10:41 2021]
+Finished job 138209.
+11 of 207190 steps (0.01%) done
+
+[Sat Jan 30 22:10:41 2021]
+rule get_sequence_plus_two:
+    input: ZNF605_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: ZNF605_1_plus_two_init.fasta, ZNF605_1.plustwo.bed, ZNF605_1_plus_two.fasta
+    jobid: 138214
+    wildcards: genomic_region=ZNF605_1
+
+
+[Sat Jan 30 22:10:41 2021]
+rule get_sequence_plus_two:
+    input: FAM53B_4.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: FAM53B_4_plus_two_init.fasta, FAM53B_4.plustwo.bed, FAM53B_4_plus_two.fasta
+    jobid: 134711
+    wildcards: genomic_region=FAM53B_4
+
+[Sat Jan 30 22:10:41 2021]
+Finished job 138211.
+12 of 207190 steps (0.01%) done
+
+[Sat Jan 30 22:10:41 2021]
+rule get_sequence_plus_two:
+    input: FAM53B_2.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: FAM53B_2_plus_two_init.fasta, FAM53B_2.plustwo.bed, FAM53B_2_plus_two.fasta
+    jobid: 134719
+    wildcards: genomic_region=FAM53B_2
+
+[Sat Jan 30 22:10:41 2021]
+Finished job 138212.
+13 of 207190 steps (0.01%) done
+
+[Sat Jan 30 22:10:42 2021]
+rule get_sequence_plus_two:
+    input: MARK3_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: MARK3_1_plus_two_init.fasta, MARK3_1.plustwo.bed, MARK3_1_plus_two.fasta
+    jobid: 139602
+    wildcards: genomic_region=MARK3_1
+
+
+[Sat Jan 30 22:10:42 2021]
+rule get_cadd_scores:
+    input: HSPA8_2.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: HSPA8_2.initial.CADD.txt
+    jobid: 18093
+    wildcards: genomic_region=HSPA8_2
+
+
+[Sat Jan 30 22:10:42 2021]
+[Sat Jan 30 22:10:42 2021]
+Finished job 138213.
+rule get_sequence_plus_two:
+    input: GOLGA3_4.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: GOLGA3_4_plus_two_init.fasta, GOLGA3_4.plustwo.bed, GOLGA3_4_plus_two.fasta
+    jobid: 138207
+    wildcards: genomic_region=GOLGA3_4
+14 of 207190 steps (0.01%) done
+
+
+[Sat Jan 30 22:10:42 2021]
+rule get_sequence_plus_two:
+    input: FAM53B_5.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: FAM53B_5_plus_two_init.fasta, FAM53B_5.plustwo.bed, FAM53B_5_plus_two.fasta
+    jobid: 134712
+    wildcards: genomic_region=FAM53B_5
+
+[Sat Jan 30 22:10:42 2021]
+Finished job 134713.
+15 of 207190 steps (0.01%) done
+[Sat Jan 30 22:10:42 2021]
+Finished job 134715.
+16 of 207190 steps (0.01%) done
+[Sat Jan 30 22:10:42 2021]
+Finished job 134716.
+17 of 207190 steps (0.01%) done
+[Sat Jan 30 22:10:42 2021]
+Finished job 134717.
+18 of 207190 steps (0.01%) done
+[Sat Jan 30 22:10:42 2021]
+Finished job 134714.
+19 of 207190 steps (0.01%) done
+[Sat Jan 30 22:10:42 2021]
+Finished job 134718.
+20 of 207190 steps (0.01%) done
+[Sat Jan 30 22:10:43 2021]
+Finished job 139603.
+21 of 207190 steps (0.01%) done
+[Sat Jan 30 22:10:43 2021]
+Finished job 139600.
+22 of 207190 steps (0.01%) done
+[Sat Jan 30 22:10:43 2021]
+Finished job 139597.
+23 of 207190 steps (0.01%) done
+[Sat Jan 30 22:10:43 2021]
+Finished job 139604.
+24 of 207190 steps (0.01%) done
+[Sat Jan 30 22:10:43 2021]
+Finished job 139601.
+25 of 207190 steps (0.01%) done
+[Sat Jan 30 22:10:43 2021]
+Finished job 139596.
+26 of 207190 steps (0.01%) done
+[Sat Jan 30 22:10:43 2021]
+Finished job 139599.
+27 of 207190 steps (0.01%) done
+[Sat Jan 30 22:10:43 2021]
+Finished job 139598.
+28 of 207190 steps (0.01%) done
+[Sat Jan 30 22:10:43 2021]
+Finished job 139609.
+29 of 207190 steps (0.01%) done
+[Sat Jan 30 22:10:43 2021]
+Finished job 18100.
+30 of 207190 steps (0.01%) done
+[Sat Jan 30 22:10:43 2021]
+Finished job 138206.
+31 of 207190 steps (0.01%) done
+[Sat Jan 30 22:10:43 2021]
+Finished job 18088.
+32 of 207190 steps (0.02%) done
+[Sat Jan 30 22:10:44 2021]
+Finished job 18086.
+33 of 207190 steps (0.02%) done
+[Sat Jan 30 22:10:44 2021]
+Finished job 18090.
+34 of 207190 steps (0.02%) done
+[Sat Jan 30 22:10:44 2021]
+Finished job 18087.
+35 of 207190 steps (0.02%) done
+[Sat Jan 30 22:10:44 2021]
+Finished job 18089.
+36 of 207190 steps (0.02%) done
+[Sat Jan 30 22:10:44 2021]
+Finished job 138214.
+37 of 207190 steps (0.02%) done
+[Sat Jan 30 22:10:44 2021]
+Finished job 134711.
+38 of 207190 steps (0.02%) done
+[Sat Jan 30 22:10:44 2021]
+Finished job 134719.
+39 of 207190 steps (0.02%) done
+[Sat Jan 30 22:10:44 2021]
+Finished job 139602.
+40 of 207190 steps (0.02%) done
+[Sat Jan 30 22:10:44 2021]
+Finished job 138207.
+41 of 207190 steps (0.02%) done
+[Sat Jan 30 22:10:44 2021]
+Finished job 134712.
+42 of 207190 steps (0.02%) done
+[Sat Jan 30 22:10:51 2021]
+Finished job 138204.
+43 of 207190 steps (0.02%) done
+[Sat Jan 30 22:10:52 2021]
+Finished job 138203.
+44 of 207190 steps (0.02%) done
+[Sat Jan 30 22:10:52 2021]
+Finished job 138200.
+45 of 207190 steps (0.02%) done
+[Sat Jan 30 22:10:52 2021]
+Finished job 138201.
+46 of 207190 steps (0.02%) done
+[Sat Jan 30 22:10:52 2021]
+Finished job 138202.
+47 of 207190 steps (0.02%) done
+[Sat Jan 30 22:10:52 2021]
+Finished job 138205.
+48 of 207190 steps (0.02%) done
+[Sat Jan 30 22:10:52 2021]
+Finished job 137855.
+49 of 207190 steps (0.02%) done
+[Sat Jan 30 22:10:52 2021]
+Finished job 137856.
+50 of 207190 steps (0.02%) done
+[Sat Jan 30 22:10:52 2021]
+Finished job 134705.
+51 of 207190 steps (0.02%) done
+[Sat Jan 30 22:10:53 2021]
+Finished job 134709.
+52 of 207190 steps (0.03%) done
+[Sat Jan 30 22:10:53 2021]
+Finished job 134707.
+53 of 207190 steps (0.03%) done
+[Sat Jan 30 22:10:53 2021]
+Finished job 134708.
+54 of 207190 steps (0.03%) done
+[Sat Jan 30 22:10:53 2021]
+Finished job 134706.
+55 of 207190 steps (0.03%) done
+[Sat Jan 30 22:10:53 2021]
+Finished job 134710.
+56 of 207190 steps (0.03%) done
+[Sat Jan 30 22:10:53 2021]
+Finished job 18093.
+57 of 207190 steps (0.03%) done
+[Sat Jan 30 22:10:53 2021]
+Finished job 18091.
+58 of 207190 steps (0.03%) done
+[Sat Jan 30 22:10:53 2021]
+Finished job 18092.
+59 of 207190 steps (0.03%) done
+[Sat Jan 30 22:10:53 2021]
+Finished job 18094.
+60 of 207190 steps (0.03%) done
+[Sat Jan 30 22:10:53 2021]
+Finished job 22197.
+61 of 207190 steps (0.03%) done
+[Sat Jan 30 22:10:53 2021]
+Finished job 22196.
+62 of 207190 steps (0.03%) done
+
+[Sat Jan 30 22:10:53 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, FAM53B_9_plus_two.fasta, FAM53B_9.tabix.bed
+    output: FAM53B_9.mu.lis
+    jobid: 164311
+    wildcards: genomic_region=FAM53B_9
+
+[Sat Jan 30 22:10:53 2021]
+rule transform_cadd_scores:
+    input: SCN3B_1.initial.CADD.txt
+    output: SCN3B_1.final.CADD.txt, SCN3B_1.fasta
+    jobid: 47696
+    wildcards: genomic_region=SCN3B_1
+
+[Sat Jan 30 22:10:53 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, TNFAIP2_2_plus_two.fasta, TNFAIP2_2.tabix.bed
+    output: TNFAIP2_2.mu.lis
+    jobid: 169197
+    wildcards: genomic_region=TNFAIP2_2
+
+[Sat Jan 30 22:10:53 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, MARK3_2_plus_two.fasta, MARK3_2.tabix.bed
+    output: MARK3_2.mu.lis
+    jobid: 169201
+    wildcards: genomic_region=MARK3_2
+
+[Sat Jan 30 22:10:53 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, GOLGA3_1_plus_two.fasta, GOLGA3_1.tabix.bed
+    output: GOLGA3_1.mu.lis
+    jobid: 167806
+    wildcards: genomic_region=GOLGA3_1
+
+[Sat Jan 30 22:10:54 2021]
+rule transform_cadd_scores:
+    input: VWA5A_2.initial.CADD.txt
+    output: VWA5A_2.final.CADD.txt, VWA5A_2.fasta
+    jobid: 47697
+    wildcards: genomic_region=VWA5A_2
+
+[Sat Jan 30 22:10:54 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, FAM53B_10_plus_two.fasta, FAM53B_10.tabix.bed
+    output: FAM53B_10.mu.lis
+    jobid: 164315
+    wildcards: genomic_region=FAM53B_10
+
+[Sat Jan 30 22:10:54 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, TRMT61A_1_plus_two.fasta, TRMT61A_1.tabix.bed
+    output: TRMT61A_1.mu.lis
+    jobid: 169205
+    wildcards: genomic_region=TRMT61A_1
+
+[Sat Jan 30 22:10:54 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, EXOC3L4_1_plus_two.fasta, EXOC3L4_1.tabix.bed
+    output: EXOC3L4_1.mu.lis
+    jobid: 169194
+    wildcards: genomic_region=EXOC3L4_1
+
+[Sat Jan 30 22:10:54 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, ZNF605_3_plus_two.fasta, ZNF605_3.tabix.bed
+    output: ZNF605_3.mu.lis
+    jobid: 167810
+    wildcards: genomic_region=ZNF605_3
+
+[Sat Jan 30 22:10:54 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, FAM53B_7_plus_two.fasta, FAM53B_7.tabix.bed
+    output: FAM53B_7.mu.lis
+    jobid: 164312
+    wildcards: genomic_region=FAM53B_7
+
+[Sat Jan 30 22:10:54 2021]
+rule transform_cadd_scores:
+    input: ZNF202_1.initial.CADD.txt
+    output: ZNF202_1.final.CADD.txt, ZNF202_1.fasta
+    jobid: 47698
+    wildcards: genomic_region=ZNF202_1
+
+[Sat Jan 30 22:10:54 2021]
+rule get_sequence_plus_two:
+    input: C12orf42_2.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: C12orf42_2_plus_two_init.fasta, C12orf42_2.plustwo.bed, C12orf42_2_plus_two.fasta
+    jobid: 137857
+    wildcards: genomic_region=C12orf42_2
+
+
+[Sat Jan 30 22:10:54 2021]
+rule get_cadd_scores:
+    input: ASB7_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: ASB7_1.initial.CADD.txt
+    jobid: 22198
+    wildcards: genomic_region=ASB7_1
+
+
+[Sat Jan 30 22:10:54 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, TNFAIP2_1_plus_two.fasta, TNFAIP2_1.tabix.bed
+    output: TNFAIP2_1.mu.lis
+    jobid: 169198
+    wildcards: genomic_region=TNFAIP2_1
+
+[Sat Jan 30 22:10:54 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, MARK3_3_plus_two.fasta, MARK3_3.tabix.bed
+    output: MARK3_3.mu.lis
+    jobid: 169202
+    wildcards: genomic_region=MARK3_3
+
+[Sat Jan 30 22:10:54 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, GOLGA3_2_plus_two.fasta, GOLGA3_2.tabix.bed
+    output: GOLGA3_2.mu.lis
+    jobid: 167807
+    wildcards: genomic_region=GOLGA3_2
+
+[Sat Jan 30 22:10:55 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, FAM53B_6_plus_two.fasta, FAM53B_6.tabix.bed
+    output: FAM53B_6.mu.lis
+    jobid: 164316
+    wildcards: genomic_region=FAM53B_6
+
+[Sat Jan 30 22:10:55 2021]
+rule transform_cadd_scores:
+    input: TBCEL_4.initial.CADD.txt
+    output: TBCEL_4.final.CADD.txt, TBCEL_4.fasta
+    jobid: 47684
+    wildcards: genomic_region=TBCEL_4
+
+[Sat Jan 30 22:10:55 2021]
+Finished job 137857.
+63 of 207190 steps (0.03%) done
+
+[Sat Jan 30 22:10:55 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, BAG5_1_plus_two.fasta, BAG5_1.tabix.bed
+    output: BAG5_1.mu.lis
+    jobid: 169206
+    wildcards: genomic_region=BAG5_1
+
+[Sat Jan 30 22:10:55 2021]
+Finished job 22198.
+64 of 207190 steps (0.03%) done
+
+[Sat Jan 30 22:10:55 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, EXOC3L4_3_plus_two.fasta, EXOC3L4_3.tabix.bed
+    output: EXOC3L4_3.mu.lis
+    jobid: 169195
+    wildcards: genomic_region=EXOC3L4_3
+
+[Sat Jan 30 22:10:55 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, ZNF605_2_plus_two.fasta, ZNF605_2.tabix.bed
+    output: ZNF605_2.mu.lis
+    jobid: 167811
+    wildcards: genomic_region=ZNF605_2
+
+[Sat Jan 30 22:10:55 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, FAM53B_11_plus_two.fasta, FAM53B_11.tabix.bed
+    output: FAM53B_11.mu.lis
+    jobid: 164313
+    wildcards: genomic_region=FAM53B_11
+
+[Sat Jan 30 22:10:55 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, FAM53B_4_plus_two.fasta, FAM53B_4.tabix.bed
+    output: FAM53B_4.mu.lis
+    jobid: 164309
+    wildcards: genomic_region=FAM53B_4
+
+[Sat Jan 30 22:10:55 2021]
+rule transform_cadd_scores:
+    input: TBCEL_3.initial.CADD.txt
+    output: TBCEL_3.final.CADD.txt, TBCEL_3.fasta
+    jobid: 47685
+    wildcards: genomic_region=TBCEL_3
+
+
+[Sat Jan 30 22:10:56 2021]
+rule transform_cadd_scores:
+    input: CLMP_1.initial.CADD.txt
+    output: CLMP_1.final.CADD.txt, CLMP_1.fasta
+    jobid: 47693
+    wildcards: genomic_region=CLMP_1
+
+[Sat Jan 30 22:10:56 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, EIF5_1_plus_two.fasta, EIF5_1.tabix.bed
+    output: EIF5_1.mu.lis
+    jobid: 169199
+    wildcards: genomic_region=EIF5_1
+
+
+[Sat Jan 30 22:10:56 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, CKB_1_plus_two.fasta, CKB_1.tabix.bed
+    output: CKB_1.mu.lis
+    jobid: 169203
+    wildcards: genomic_region=CKB_1
+
+[Sat Jan 30 22:10:56 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, GOLGA3_3_plus_two.fasta, GOLGA3_3.tabix.bed
+    output: GOLGA3_3.mu.lis
+    jobid: 167804
+    wildcards: genomic_region=GOLGA3_3
+
+[Sat Jan 30 22:10:56 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, FAM53B_2_plus_two.fasta, FAM53B_2.tabix.bed
+    output: FAM53B_2.mu.lis
+    jobid: 164317
+    wildcards: genomic_region=FAM53B_2
+
+[Sat Jan 30 22:10:56 2021]
+rule transform_cadd_scores:
+    input: SC5D_1.initial.CADD.txt
+    output: SC5D_1.final.CADD.txt, SC5D_1.fasta
+    jobid: 47686
+    wildcards: genomic_region=SC5D_1
+
+
+[Sat Jan 30 22:10:56 2021]
+rule transform_cadd_scores:
+    input: GRAMD1B_2.initial.CADD.txt
+    output: GRAMD1B_2.final.CADD.txt, GRAMD1B_2.fasta
+    jobid: 47694
+    wildcards: genomic_region=GRAMD1B_2
+
+[Sat Jan 30 22:10:56 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, CKB_2_plus_two.fasta, CKB_2.tabix.bed
+    output: CKB_2.mu.lis
+    jobid: 169207
+    wildcards: genomic_region=CKB_2
+
+
+[Sat Jan 30 22:11:00 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, EXOC3L4_2_plus_two.fasta, EXOC3L4_2.tabix.bed
+    output: EXOC3L4_2.mu.lis
+    jobid: 169196
+    wildcards: genomic_region=EXOC3L4_2
+
+[Sat Jan 30 22:11:00 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, ZNF605_1_plus_two.fasta, ZNF605_1.tabix.bed
+    output: ZNF605_1.mu.lis
+    jobid: 167812
+    wildcards: genomic_region=ZNF605_1
+
+[Sat Jan 30 22:11:01 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, FAM53B_8_plus_two.fasta, FAM53B_8.tabix.bed
+    output: FAM53B_8.mu.lis
+    jobid: 164314
+    wildcards: genomic_region=FAM53B_8
+[Sat Jan 30 22:11:01 2021]
+
+Finished job 47697.
+65 of 207190 steps (0.03%) done
+
+[Sat Jan 30 22:11:01 2021]
+rule transform_cadd_scores:
+    input: SORL1_2.initial.CADD.txt
+    output: SORL1_2.final.CADD.txt, SORL1_2.fasta
+    jobid: 47687
+    wildcards: genomic_region=SORL1_2
+
+[Sat Jan 30 22:11:01 2021]
+rule transform_cadd_scores:
+    input: GRAMD1B_1.initial.CADD.txt
+    output: GRAMD1B_1.final.CADD.txt, GRAMD1B_1.fasta
+    jobid: 47695
+    wildcards: genomic_region=GRAMD1B_1
+
+[Sat Jan 30 22:11:01 2021]
+Finished job 47698.
+66 of 207190 steps (0.03%) done
+
+[Sat Jan 30 22:11:01 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, MARK3_1_plus_two.fasta, MARK3_1.tabix.bed
+    output: MARK3_1.mu.lis
+    jobid: 169200
+    wildcards: genomic_region=MARK3_1
+
+[Sat Jan 30 22:11:01 2021]
+Finished job 47696.
+67 of 207190 steps (0.03%) done
+
+[Sat Jan 30 22:11:01 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, CKB_3_plus_two.fasta, CKB_3.tabix.bed
+    output: CKB_3.mu.lis
+    jobid: 169204
+    wildcards: genomic_region=CKB_3
+
+[Sat Jan 30 22:11:01 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, CHFR_1_plus_two.fasta, CHFR_1.tabix.bed
+    output: CHFR_1.mu.lis
+    jobid: 167809
+    wildcards: genomic_region=CHFR_1
+
+[Sat Jan 30 22:11:01 2021]
+rule transform_cadd_scores:
+    input: SORL1_1.initial.CADD.txt
+    output: SORL1_1.final.CADD.txt, SORL1_1.fasta
+    jobid: 47688
+    wildcards: genomic_region=SORL1_1
+
+[Sat Jan 30 22:11:02 2021]
+Finished job 47684.
+68 of 207190 steps (0.03%) done
+[Sat Jan 30 22:11:02 2021]
+Finished job 47685.
+69 of 207190 steps (0.03%) done
+[Sat Jan 30 22:11:02 2021]
+Finished job 47693.
+70 of 207190 steps (0.03%) done
+[Sat Jan 30 22:11:02 2021]
+Finished job 139595.
+71 of 207190 steps (0.03%) done
+[Sat Jan 30 22:11:02 2021]
+Finished job 47686.
+72 of 207190 steps (0.03%) done
+[Sat Jan 30 22:11:03 2021]
+Finished job 47694.
+73 of 207190 steps (0.04%) done
+[Sat Jan 30 22:11:03 2021]
+Finished job 47687.
+74 of 207190 steps (0.04%) done
+[Sat Jan 30 22:11:03 2021]
+Finished job 47695.
+75 of 207190 steps (0.04%) done
+[Sat Jan 30 22:11:03 2021]
+Finished job 47688.
+76 of 207190 steps (0.04%) done
+[Sat Jan 30 22:11:10 2021]
+Finished job 138210.
+77 of 207190 steps (0.04%) done
+
+[Sat Jan 30 22:11:10 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, LHPP_1_plus_two.fasta, LHPP_1.tabix.bed
+    output: LHPP_1.mu.lis
+    jobid: 164307
+    wildcards: genomic_region=LHPP_1
+
+[Sat Jan 30 22:11:10 2021]
+rule transform_cadd_scores:
+    input: UBASH3B_1.initial.CADD.txt
+    output: UBASH3B_1.final.CADD.txt, UBASH3B_1.fasta
+    jobid: 47689
+    wildcards: genomic_region=UBASH3B_1
+
+[Sat Jan 30 22:11:10 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, PGAM5_1_plus_two.fasta, PGAM5_1.tabix.bed
+    output: PGAM5_1.mu.lis
+    jobid: 167802
+    wildcards: genomic_region=PGAM5_1
+
+[Sat Jan 30 22:11:10 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, CHST15_1_plus_two.fasta, CHST15_1.tabix.bed
+    output: CHST15_1.mu.lis
+    jobid: 164304
+    wildcards: genomic_region=CHST15_1
+
+[Sat Jan 30 22:11:10 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, PXMP2_4_plus_two.fasta, PXMP2_4.tabix.bed
+    output: PXMP2_4.mu.lis
+    jobid: 167799
+    wildcards: genomic_region=PXMP2_4
+
+[Sat Jan 30 22:11:10 2021]
+rule transform_cadd_scores:
+    input: CRTAM_1.initial.CADD.txt
+    output: CRTAM_1.final.CADD.txt, CRTAM_1.fasta
+    jobid: 47690
+    wildcards: genomic_region=CRTAM_1
+
+[Sat Jan 30 22:11:10 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, C12orf42_4_plus_two.fasta, C12orf42_4.tabix.bed
+    output: C12orf42_4.mu.lis
+    jobid: 167454
+    wildcards: genomic_region=C12orf42_4
+
+
+[Sat Jan 30 22:11:11 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, LHPP_2_plus_two.fasta, LHPP_2.tabix.bed
+    output: LHPP_2.mu.lis
+    jobid: 164308
+    wildcards: genomic_region=LHPP_2
+
+[Sat Jan 30 22:11:15 2021]
+rule transform_cadd_scores:
+    input: HSPA8_2.initial.CADD.txt
+    output: HSPA8_2.final.CADD.txt, HSPA8_2.fasta
+    jobid: 47691
+    wildcards: genomic_region=HSPA8_2
+
+[Sat Jan 30 22:11:15 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, ANKLE2_1_plus_two.fasta, ANKLE2_1.tabix.bed
+    output: ANKLE2_1.mu.lis
+    jobid: 167803
+    wildcards: genomic_region=ANKLE2_1
+
+[Sat Jan 30 22:11:15 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, OAT_1_plus_two.fasta, OAT_1.tabix.bed
+    output: OAT_1.mu.lis
+    jobid: 164305
+    wildcards: genomic_region=OAT_1
+
+[Sat Jan 30 22:11:15 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, PXMP2_3_plus_two.fasta, PXMP2_3.tabix.bed
+    output: PXMP2_3.mu.lis
+    jobid: 167800
+    wildcards: genomic_region=PXMP2_3
+
+[Sat Jan 30 22:11:15 2021]
+rule get_sequence_plus_two:
+    input: STAB2_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: STAB2_1_plus_two_init.fasta, STAB2_1.plustwo.bed, STAB2_1_plus_two.fasta
+    jobid: 137858
+    wildcards: genomic_region=STAB2_1
+[Sat Jan 30 22:11:15 2021]
+
+Finished job 47690.
+78 of 207190 steps (0.04%) done
+[Sat Jan 30 22:11:16 2021]
+Finished job 47689.
+79 of 207190 steps (0.04%) done
+
+[Sat Jan 30 22:11:16 2021]
+rule get_cadd_scores:
+    input: LINS1_2.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: LINS1_2.initial.CADD.txt
+    jobid: 22199
+    wildcards: genomic_region=LINS1_2
+
+[Sat Jan 30 22:11:16 2021]
+Finished job 47691.
+80 of 207190 steps (0.04%) done
+
+[Sat Jan 30 22:11:16 2021]
+rule transform_cadd_scores:
+    input: HSPA8_1.initial.CADD.txt
+    output: HSPA8_1.final.CADD.txt, HSPA8_1.fasta
+    jobid: 47692
+    wildcards: genomic_region=HSPA8_1
+
+
+[Sat Jan 30 22:11:16 2021]
+rule transform_cadd_scores:
+    input: CERS3_3.initial.CADD.txt
+    output: CERS3_3.final.CADD.txt, CERS3_3.fasta
+    jobid: 51794
+    wildcards: genomic_region=CERS3_3
+
+
+[Sat Jan 30 22:11:17 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, C12orf42_2_plus_two.fasta, C12orf42_2.tabix.bed
+    output: C12orf42_2.mu.lis
+    jobid: 167455
+    wildcards: genomic_region=C12orf42_2
+
+[Sat Jan 30 22:11:17 2021]
+rule get_sequence_plus_two:
+    input: NT5DC3_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: NT5DC3_1_plus_two_init.fasta, NT5DC3_1.plustwo.bed, NT5DC3_1_plus_two.fasta
+    jobid: 137859
+    wildcards: genomic_region=NT5DC3_1
+
+
+[Sat Jan 30 22:11:17 2021]
+rule get_cadd_scores:
+    input: ALDH1A3_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: ALDH1A3_1.initial.CADD.txt
+    jobid: 22200
+    wildcards: genomic_region=ALDH1A3_1
+
+
+[Sat Jan 30 22:11:17 2021]
+rule transform_cadd_scores:
+    input: LINS1_1.initial.CADD.txt
+    output: LINS1_1.final.CADD.txt, LINS1_1.fasta
+    jobid: 51795
+    wildcards: genomic_region=LINS1_1
+
+[Sat Jan 30 22:11:17 2021]
+Finished job 47692.
+81 of 207190 steps (0.04%) done
+[Sat Jan 30 22:11:18 2021]
+Finished job 51794.
+82 of 207190 steps (0.04%) done
+
+[Sat Jan 30 22:11:19 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, POLE_2_plus_two.fasta, POLE_2.tabix.bed
+    output: POLE_2.mu.lis
+    jobid: 167801
+    wildcards: genomic_region=POLE_2
+
+
+[Sat Jan 30 22:11:19 2021]
+rule get_sequence_plus_two:
+    input: HSP90B1_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: HSP90B1_1_plus_two_init.fasta, HSP90B1_1.plustwo.bed, HSP90B1_1_plus_two.fasta
+    jobid: 137860
+    wildcards: genomic_region=HSP90B1_1
+
+[Sat Jan 30 22:11:20 2021]
+Finished job 51795.
+83 of 207190 steps (0.04%) done
+
+[Sat Jan 30 22:11:20 2021]
+rule get_cadd_scores:
+    input: LRRK1_3.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: LRRK1_3.initial.CADD.txt
+    jobid: 22201
+    wildcards: genomic_region=LRRK1_3
+
+
+[Sat Jan 30 22:11:20 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, OAT_2_plus_two.fasta, OAT_2.tabix.bed
+    output: OAT_2.mu.lis
+    jobid: 164306
+    wildcards: genomic_region=OAT_2
+
+[Sat Jan 30 22:11:21 2021]
+rule transform_cadd_scores:
+    input: ASB7_1.initial.CADD.txt
+    output: ASB7_1.final.CADD.txt, ASB7_1.fasta
+    jobid: 51796
+    wildcards: genomic_region=ASB7_1
+
+[Sat Jan 30 22:11:22 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, FAM53B_5_plus_two.fasta, FAM53B_5.tabix.bed
+    output: FAM53B_5.mu.lis
+    jobid: 164310
+    wildcards: genomic_region=FAM53B_5
+
+
+[Sat Jan 30 22:11:22 2021]
+rule get_sequence_plus_two:
+    input: C12orf73_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: C12orf73_1_plus_two_init.fasta, C12orf73_1.plustwo.bed, C12orf73_1_plus_two.fasta
+    jobid: 137861
+    wildcards: genomic_region=C12orf73_1
+
+[Sat Jan 30 22:11:22 2021]
+Finished job 137859.
+84 of 207190 steps (0.04%) done
+[Sat Jan 30 22:11:22 2021]
+Finished job 22199.
+85 of 207190 steps (0.04%) done
+
+[Sat Jan 30 22:11:22 2021]
+rule get_cadd_scores:
+    input: LRRK1_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: LRRK1_1.initial.CADD.txt
+    jobid: 22202
+    wildcards: genomic_region=LRRK1_1
+
+[Sat Jan 30 22:11:22 2021]
+Finished job 22200.
+86 of 207190 steps (0.04%) done
+[Sat Jan 30 22:11:22 2021]
+Finished job 22201.
+87 of 207190 steps (0.04%) done
+
+[Sat Jan 30 22:11:23 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, GOLGA3_4_plus_two.fasta, GOLGA3_4.tabix.bed
+    output: GOLGA3_4.mu.lis
+    jobid: 167805
+    wildcards: genomic_region=GOLGA3_4
+
+[Sat Jan 30 22:11:23 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, PXMP2_2_plus_two.fasta, PXMP2_2.tabix.bed
+    output: PXMP2_2.mu.lis
+    jobid: 167798
+    wildcards: genomic_region=PXMP2_2
+
+[Sat Jan 30 22:11:23 2021]
+Finished job 137860.
+88 of 207190 steps (0.04%) done
+
+[Sat Jan 30 22:11:23 2021]
+rule get_sequence_plus_two:
+    input: C12orf73_2.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: C12orf73_2_plus_two_init.fasta, C12orf73_2.plustwo.bed, C12orf73_2_plus_two.fasta
+    jobid: 137862
+    wildcards: genomic_region=C12orf73_2
+
+[Sat Jan 30 22:11:23 2021]
+Finished job 51796.
+89 of 207190 steps (0.04%) done
+[Sat Jan 30 22:11:24 2021]
+Finished job 22202.
+90 of 207190 steps (0.04%) done
+[Sat Jan 30 22:11:27 2021]
+Finished job 137861.
+91 of 207190 steps (0.04%) done
+
+[Sat Jan 30 22:11:27 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, CHST15_3_plus_two.fasta, CHST15_3.tabix.bed
+    output: CHST15_3.mu.lis
+    jobid: 164303
+    wildcards: genomic_region=CHST15_3
+
+[Sat Jan 30 22:11:27 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, C12orf42_3_plus_two.fasta, C12orf42_3.tabix.bed
+    output: C12orf42_3.mu.lis
+    jobid: 167453
+    wildcards: genomic_region=C12orf42_3
+
+[Sat Jan 30 22:11:27 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, CDC42BPB_1_plus_two.fasta, CDC42BPB_1.tabix.bed
+    output: CDC42BPB_1.mu.lis
+    jobid: 169193
+    wildcards: genomic_region=CDC42BPB_1
+
+[Sat Jan 30 22:11:32 2021]
+Finished job 137862.
+92 of 207190 steps (0.04%) done
+
+[Sat Jan 30 22:11:33 2021]
+rule get_sequence_plus_two:
+    input: TDG_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: TDG_1_plus_two_init.fasta, TDG_1.plustwo.bed, TDG_1_plus_two.fasta
+    jobid: 137863
+    wildcards: genomic_region=TDG_1
+
+
+[Sat Jan 30 22:11:33 2021]
+rule get_cadd_scores:
+    input: CHSY1_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: CHSY1_1.initial.CADD.txt
+    jobid: 22204
+    wildcards: genomic_region=CHSY1_1
+
+
+[Sat Jan 30 22:11:33 2021]
+rule get_sequence_plus_two:
+    input: GLT8D2_2.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: GLT8D2_2_plus_two_init.fasta, GLT8D2_2.plustwo.bed, GLT8D2_2_plus_two.fasta
+    jobid: 137865
+    wildcards: genomic_region=GLT8D2_2
+
+[Sat Jan 30 22:11:34 2021]
+Finished job 137863.
+93 of 207190 steps (0.04%) done
+
+[Sat Jan 30 22:11:34 2021]
+rule get_cadd_scores:
+    input: SNRPA1_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: SNRPA1_1.initial.CADD.txt
+    jobid: 22206
+    wildcards: genomic_region=SNRPA1_1
+
+[Sat Jan 30 22:11:34 2021]
+
+Finished job 137865.
+[Sat Jan 30 22:11:34 2021]
+94 of 207190 steps (0.05%) done
+rule transform_cadd_scores:
+    input: LINS1_2.initial.CADD.txt
+    output: LINS1_2.final.CADD.txt, LINS1_2.fasta
+    jobid: 51797
+    wildcards: genomic_region=LINS1_2
+
+
+[Sat Jan 30 22:11:34 2021]
+rule transform_cadd_scores:
+    input: LRRK1_3.initial.CADD.txt
+    output: LRRK1_3.final.CADD.txt, LRRK1_3.fasta
+    jobid: 51799
+    wildcards: genomic_region=LRRK1_3
+
+
+[Sat Jan 30 22:11:35 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, NT5DC3_1_plus_two.fasta, NT5DC3_1.tabix.bed
+    output: NT5DC3_1.mu.lis
+    jobid: 167457
+    wildcards: genomic_region=NT5DC3_1
+
+[Sat Jan 30 22:11:35 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, HSP90B1_1_plus_two.fasta, HSP90B1_1.tabix.bed
+    output: HSP90B1_1.mu.lis
+    jobid: 167458
+    wildcards: genomic_region=HSP90B1_1
+
+[Sat Jan 30 22:11:35 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, C12orf73_1_plus_two.fasta, C12orf73_1.tabix.bed
+    output: C12orf73_1.mu.lis
+    jobid: 167459
+    wildcards: genomic_region=C12orf73_1
+
+[Sat Jan 30 22:11:35 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, GOLGA3_5_plus_two.fasta, GOLGA3_5.tabix.bed
+    output: GOLGA3_5.mu.lis
+    jobid: 167808
+    wildcards: genomic_region=GOLGA3_5
+
+[Sat Jan 30 22:11:35 2021]
+[Sat Jan 30 22:11:35 2021]
+rule get_sequence_plus_two:
+    input: C12orf73_3.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: C12orf73_3_plus_two_init.fasta, C12orf73_3.plustwo.bed, C12orf73_3_plus_two.fasta
+    jobid: 137864
+    wildcards: genomic_region=C12orf73_3
+Finished job 51797.
+
+95 of 207190 steps (0.05%) done
+[Sat Jan 30 22:11:35 2021]
+Finished job 51799.
+96 of 207190 steps (0.05%) done
+[Sat Jan 30 22:11:35 2021]
+Finished job 22206.
+97 of 207190 steps (0.05%) done
+
+[Sat Jan 30 22:11:36 2021]
+rule get_cadd_scores:
+    input: LRRK1_4.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: LRRK1_4.initial.CADD.txt
+    jobid: 22203
+    wildcards: genomic_region=LRRK1_4
+
+
+[Sat Jan 30 22:11:36 2021]
+rule get_cadd_scores:
+    input: VIMP_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: VIMP_1.initial.CADD.txt
+    jobid: 22205
+    wildcards: genomic_region=VIMP_1
+
+
+[Sat Jan 30 22:11:37 2021]
+rule transform_cadd_scores:
+    input: ALDH1A3_1.initial.CADD.txt
+    output: ALDH1A3_1.final.CADD.txt, ALDH1A3_1.fasta
+    jobid: 51798
+    wildcards: genomic_region=ALDH1A3_1
+
+[Sat Jan 30 22:11:37 2021]
+rule transform_cadd_scores:
+    input: LRRK1_1.initial.CADD.txt
+    output: LRRK1_1.final.CADD.txt, LRRK1_1.fasta
+    jobid: 51800
+    wildcards: genomic_region=LRRK1_1
+
+[Sat Jan 30 22:11:38 2021]
+Finished job 137864.
+98 of 207190 steps (0.05%) done
+[Sat Jan 30 22:11:38 2021]
+Finished job 22203.
+99 of 207190 steps (0.05%) done
+[Sat Jan 30 22:11:39 2021]
+Finished job 22205.
+100 of 207190 steps (0.05%) done
+[Sat Jan 30 22:11:39 2021]
+Finished job 137858.
+101 of 207190 steps (0.05%) done
+[Sat Jan 30 22:11:39 2021]
+Finished job 51798.
+102 of 207190 steps (0.05%) done
+[Sat Jan 30 22:11:40 2021]
+Finished job 51800.
+103 of 207190 steps (0.05%) done
+
+[Sat Jan 30 22:11:44 2021]
+rule transform_cadd_scores:
+    input: LRRK1_4.initial.CADD.txt
+    output: LRRK1_4.final.CADD.txt, LRRK1_4.fasta
+    jobid: 51801
+    wildcards: genomic_region=LRRK1_4
+
+[Sat Jan 30 22:11:44 2021]
+rule get_sequence_plus_two:
+    input: HCFC2_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: HCFC2_1_plus_two_init.fasta, HCFC2_1.plustwo.bed, HCFC2_1_plus_two.fasta
+    jobid: 137867
+    wildcards: genomic_region=HCFC2_1
+
+
+[Sat Jan 30 22:11:45 2021]
+rule get_cadd_scores:
+    input: TM2D3_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: TM2D3_1.initial.CADD.txt
+    jobid: 22208
+    wildcards: genomic_region=TM2D3_1
+
+[Sat Jan 30 22:11:45 2021]
+Finished job 51801.
+104 of 207190 steps (0.05%) done
+
+[Sat Jan 30 22:11:45 2021]
+rule transform_cadd_scores:
+    input: VIMP_1.initial.CADD.txt
+    output: VIMP_1.final.CADD.txt, VIMP_1.fasta
+    jobid: 51803
+    wildcards: genomic_region=VIMP_1
+
+[Sat Jan 30 22:11:45 2021]
+Finished job 137867.
+105 of 207190 steps (0.05%) done
+
+[Sat Jan 30 22:11:45 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, C12orf73_2_plus_two.fasta, C12orf73_2.tabix.bed
+    output: C12orf73_2.mu.lis
+    jobid: 167460
+    wildcards: genomic_region=C12orf73_2
+
+[Sat Jan 30 22:11:45 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, TDG_1_plus_two.fasta, TDG_1.tabix.bed
+    output: TDG_1.mu.lis
+    jobid: 167461
+    wildcards: genomic_region=TDG_1
+
+[Sat Jan 30 22:11:45 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, C12orf73_3_plus_two.fasta, C12orf73_3.tabix.bed
+    output: C12orf73_3.mu.lis
+    jobid: 167462
+    wildcards: genomic_region=C12orf73_3
+
+[Sat Jan 30 22:11:46 2021]
+Finished job 22208.
+106 of 207190 steps (0.05%) done
+
+[Sat Jan 30 22:11:46 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, GLT8D2_2_plus_two.fasta, GLT8D2_2.tabix.bed
+    output: GLT8D2_2.mu.lis
+    jobid: 167463
+    wildcards: genomic_region=GLT8D2_2
+
+[Sat Jan 30 22:11:46 2021]
+rule get_cadd_scores:
+    input: PCSK6_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: PCSK6_1.initial.CADD.txt
+    jobid: 22207
+    wildcards: genomic_region=PCSK6_1
+
+[Sat Jan 30 22:11:47 2021]
+Finished job 51803.
+107 of 207190 steps (0.05%) done
+
+[Sat Jan 30 22:11:47 2021]
+rule get_sequence_plus_two:
+    input: GLT8D2_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: GLT8D2_1_plus_two_init.fasta, GLT8D2_1.plustwo.bed, GLT8D2_1_plus_two.fasta
+    jobid: 137866
+    wildcards: genomic_region=GLT8D2_1
+
+[Sat Jan 30 22:11:47 2021]
+Finished job 22207.
+108 of 207190 steps (0.05%) done
+
+[Sat Jan 30 22:11:49 2021]
+rule transform_cadd_scores:
+    input: SNRPA1_1.initial.CADD.txt
+    output: SNRPA1_1.final.CADD.txt, SNRPA1_1.fasta
+    jobid: 51804
+    wildcards: genomic_region=SNRPA1_1
+
+[Sat Jan 30 22:11:49 2021]
+Finished job 137866.
+109 of 207190 steps (0.05%) done
+
+[Sat Jan 30 22:11:50 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, STAB2_1_plus_two.fasta, STAB2_1.tabix.bed
+    output: STAB2_1.mu.lis
+    jobid: 167456
+    wildcards: genomic_region=STAB2_1
+
+[Sat Jan 30 22:11:53 2021]
+Finished job 51804.
+110 of 207190 steps (0.05%) done
+
+[Sat Jan 30 22:11:54 2021]
+rule transform_cadd_scores:
+    input: PCSK6_1.initial.CADD.txt
+    output: PCSK6_1.final.CADD.txt, PCSK6_1.fasta
+    jobid: 51805
+    wildcards: genomic_region=PCSK6_1
+
+
+[Sat Jan 30 22:11:54 2021]
+rule transform_cadd_scores:
+    input: TM2D3_1.initial.CADD.txt
+    output: TM2D3_1.final.CADD.txt, TM2D3_1.fasta
+    jobid: 51806
+    wildcards: genomic_region=TM2D3_1
+
+
+[Sat Jan 30 22:11:55 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, GLT8D2_1_plus_two.fasta, GLT8D2_1.tabix.bed
+    output: GLT8D2_1.mu.lis
+    jobid: 167464
+    wildcards: genomic_region=GLT8D2_1
+
+[Sat Jan 30 22:11:56 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, HCFC2_1_plus_two.fasta, HCFC2_1.tabix.bed
+    output: HCFC2_1.mu.lis
+    jobid: 167465
+    wildcards: genomic_region=HCFC2_1
+
+[Sat Jan 30 22:11:56 2021]
+rule get_cadd_scores:
+    input: TARSL2_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: TARSL2_1.initial.CADD.txt
+    jobid: 22209
+    wildcards: genomic_region=TARSL2_1
+
+[Sat Jan 30 22:11:57 2021]
+Finished job 51805.
+111 of 207190 steps (0.05%) done
+
+[Sat Jan 30 22:11:57 2021]
+rule get_sequence_plus_two:
+    input: NFYB_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: NFYB_1_plus_two_init.fasta, NFYB_1.plustwo.bed, NFYB_1_plus_two.fasta
+    jobid: 137868
+    wildcards: genomic_region=NFYB_1
+
+[Sat Jan 30 22:11:57 2021]
+Finished job 51806.
+112 of 207190 steps (0.05%) done
+[Sat Jan 30 22:11:59 2021]
+Finished job 22204.
+113 of 207190 steps (0.05%) done
+[Sat Jan 30 22:11:59 2021]
+Finished job 22209.
+114 of 207190 steps (0.06%) done
+[Sat Jan 30 22:11:59 2021]
+Finished job 137868.
+115 of 207190 steps (0.06%) done
+
+[Sat Jan 30 22:12:00 2021]
+rule get_cadd_scores:
+    input: ARL6IP4_2.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: ARL6IP4_2.initial.CADD.txt
+    jobid: 19737
+    wildcards: genomic_region=ARL6IP4_2
+
+
+[Sat Jan 30 22:12:00 2021]
+rule get_sequence_plus_two:
+    input: TXNRD1_2.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: TXNRD1_2_plus_two_init.fasta, TXNRD1_2.plustwo.bed, TXNRD1_2_plus_two.fasta
+    jobid: 137869
+    wildcards: genomic_region=TXNRD1_2
+
+
+[Sat Jan 30 22:12:01 2021]
+rule get_cadd_scores:
+    input: ARL6IP4_3.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: ARL6IP4_3.initial.CADD.txt
+    jobid: 19736
+    wildcards: genomic_region=ARL6IP4_3
+
+[Sat Jan 30 22:12:01 2021]
+Finished job 137869.
+116 of 207190 steps (0.06%) done
+
+[Sat Jan 30 22:12:03 2021]
+rule transform_cadd_scores:
+    input: CHSY1_1.initial.CADD.txt
+    output: CHSY1_1.final.CADD.txt, CHSY1_1.fasta
+    jobid: 51802
+    wildcards: genomic_region=CHSY1_1
+
+[Sat Jan 30 22:12:03 2021]
+rule get_cadd_scores:
+    input: ARL6IP4_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: ARL6IP4_1.initial.CADD.txt
+    jobid: 19738
+    wildcards: genomic_region=ARL6IP4_1
+
+
+[Sat Jan 30 22:12:04 2021]
+rule transform_cadd_scores:
+    input: TARSL2_1.initial.CADD.txt
+    output: TARSL2_1.final.CADD.txt, TARSL2_1.fasta
+    jobid: 51807
+    wildcards: genomic_region=TARSL2_1
+
+
+[Sat Jan 30 22:12:04 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, NFYB_1_plus_two.fasta, NFYB_1.tabix.bed
+    output: NFYB_1.mu.lis
+    jobid: 167466
+    wildcards: genomic_region=NFYB_1
+
+[Sat Jan 30 22:12:04 2021]
+Finished job 51802.
+117 of 207190 steps (0.06%) done
+[Sat Jan 30 22:12:05 2021]
+Finished job 51807.
+118 of 207190 steps (0.06%) done
+
+[Sat Jan 30 22:12:05 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, TXNRD1_2_plus_two.fasta, TXNRD1_2.tabix.bed
+    output: TXNRD1_2.mu.lis
+    jobid: 167467
+    wildcards: genomic_region=TXNRD1_2
+
+
+[Sat Jan 30 22:12:07 2021]
+rule get_cadd_scores:
+    input: ABCB9_2.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: ABCB9_2.initial.CADD.txt
+    jobid: 19739
+    wildcards: genomic_region=ABCB9_2
+
+[Sat Jan 30 22:13:10 2021]
+Finished job 19738.
+119 of 207190 steps (0.06%) done
+[Sat Jan 30 22:13:10 2021]
+Finished job 19737.
+120 of 207190 steps (0.06%) done
+[Sat Jan 30 22:13:10 2021]
+Finished job 19736.
+121 of 207190 steps (0.06%) done
+[Sat Jan 30 22:13:10 2021]
+Finished job 19739.
+122 of 207190 steps (0.06%) done
+
+[Sat Jan 30 22:13:18 2021]
+rule transform_cadd_scores:
+    input: ABCB9_2.initial.CADD.txt
+    output: ABCB9_2.final.CADD.txt, ABCB9_2.fasta
+    jobid: 49337
+    wildcards: genomic_region=ABCB9_2
+
+[Sat Jan 30 22:13:18 2021]
+rule transform_cadd_scores:
+    input: ARL6IP4_3.initial.CADD.txt
+    output: ARL6IP4_3.final.CADD.txt, ARL6IP4_3.fasta
+    jobid: 49334
+    wildcards: genomic_region=ARL6IP4_3
+
+
+[Sat Jan 30 22:13:18 2021]
+rule transform_cadd_scores:
+    input: ARL6IP4_1.initial.CADD.txt
+    output: ARL6IP4_1.final.CADD.txt, ARL6IP4_1.fasta
+    jobid: 49336
+    wildcards: genomic_region=ARL6IP4_1
+
+
+[Sat Jan 30 22:13:18 2021]
+rule transform_cadd_scores:
+    input: ARL6IP4_2.initial.CADD.txt
+    output: ARL6IP4_2.final.CADD.txt, ARL6IP4_2.fasta
+    jobid: 49335
+    wildcards: genomic_region=ARL6IP4_2
+
+[Sat Jan 30 22:13:19 2021]
+Finished job 49337.
+123 of 207190 steps (0.06%) done
+[Sat Jan 30 22:13:19 2021]
+Finished job 49334.
+124 of 207190 steps (0.06%) done
+[Sat Jan 30 22:13:19 2021]
+Finished job 49336.
+125 of 207190 steps (0.06%) done
+[Sat Jan 30 22:13:19 2021]
+Finished job 49335.
+126 of 207190 steps (0.06%) done
+
+[Sat Jan 30 22:13:20 2021]
+rule get_cadd_scores:
+    input: PITPNM2_3.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: PITPNM2_3.initial.CADD.txt
+    jobid: 19742
+    wildcards: genomic_region=PITPNM2_3
+
+
+[Sat Jan 30 22:13:20 2021]
+rule get_cadd_scores:
+    input: MPHOSPH9_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: MPHOSPH9_1.initial.CADD.txt
+    jobid: 19743
+    wildcards: genomic_region=MPHOSPH9_1
+
+
+[Sat Jan 30 22:13:21 2021]
+rule get_cadd_scores:
+    input: PITPNM2_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: PITPNM2_1.initial.CADD.txt
+    jobid: 19740
+    wildcards: genomic_region=PITPNM2_1
+
+
+[Sat Jan 30 22:13:21 2021]
+rule get_cadd_scores:
+    input: PITPNM2_2.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: PITPNM2_2.initial.CADD.txt
+    jobid: 19741
+    wildcards: genomic_region=PITPNM2_2
+
+Terminating processes on user request, this might take some time.
+[Sat Jan 30 22:13:43 2021]
+[Sat Jan 30 22:13:43 2021]
+Error in rule get_cadd_scores:
+Error in rule get_cadd_scores:
+    jobid: 19741
+    jobid: 19742
+    output: PITPNM2_2.initial.CADD.txt
+    output: PITPNM2_3.initial.CADD.txt
+    shell:
+        
+    tabix /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz -R PITPNM2_2.tabix.bed  > PITPNM2_2.initial.CADD.txt
+    
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    shell:
+        
+    tabix /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz -R PITPNM2_3.tabix.bed  > PITPNM2_3.initial.CADD.txt
+    
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+
+Removing output files of failed job get_cadd_scores since they might be corrupted:
+PITPNM2_2.initial.CADD.txt
+Removing output files of failed job get_cadd_scores since they might be corrupted:
+PITPNM2_3.initial.CADD.txt
+[Sat Jan 30 22:14:25 2021]
+[Sat Jan 30 22:14:25 2021]
+Error in rule get_cadd_scores:
+Error in rule get_cadd_scores:
+    jobid: 19740
+    jobid: 19743
+    output: PITPNM2_1.initial.CADD.txt
+    output: MPHOSPH9_1.initial.CADD.txt
+    shell:
+        
+    tabix /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz -R PITPNM2_1.tabix.bed  > PITPNM2_1.initial.CADD.txt
+    
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+    shell:
+        
+    tabix /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz -R MPHOSPH9_1.tabix.bed  > MPHOSPH9_1.initial.CADD.txt
+    
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+
+Removing output files of failed job get_cadd_scores since they might be corrupted:
+PITPNM2_1.initial.CADD.txt
+Removing output files of failed job get_cadd_scores since they might be corrupted:
+MPHOSPH9_1.initial.CADD.txt
+Cancelling snakemake on user request.

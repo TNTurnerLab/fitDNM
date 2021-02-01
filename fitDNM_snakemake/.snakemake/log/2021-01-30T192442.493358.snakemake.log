@@ -1,0 +1,105 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	2	calculate_trinucleotide_mutations
+	1	clean
+	1	combine_mutations
+	2	filter_multinucleotide_variants
+	2	get_cadd_scores
+	2	get_region_mutation
+	2	get_sequence_plus_two
+	2	run_fitDNM
+	2	transform_cadd_scores
+	17
+
+[Sat Jan 30 19:24:56 2021]
+rule get_sequence_plus_two:
+    input: compare_2.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: compare_2_plus_two_init.fasta, compare_2.plustwo.bed, compare_2_plus_two.fasta
+    jobid: 10
+    wildcards: genomic_region=compare_2
+
+[Sat Jan 30 19:25:11 2021]
+Finished job 10.
+1 of 17 steps (6%) done
+
+[Sat Jan 30 19:25:11 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, compare_2_plus_two.fasta, compare_2.tabix.bed
+    output: compare_2.mu.lis
+    jobid: 12
+    wildcards: genomic_region=compare_2
+
+[Sat Jan 30 19:25:11 2021]
+Finished job 12.
+2 of 17 steps (12%) done
+
+[Sat Jan 30 19:25:11 2021]
+rule get_cadd_scores:
+    input: compare_2.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: compare_2.initial.CADD.txt
+    jobid: 2
+    wildcards: genomic_region=compare_2
+
+[Sat Jan 30 19:25:11 2021]
+Finished job 2.
+3 of 17 steps (18%) done
+
+[Sat Jan 30 19:25:11 2021]
+rule transform_cadd_scores:
+    input: compare_2.initial.CADD.txt
+    output: compare_2.final.CADD.txt, compare_2.fasta
+    jobid: 4
+    wildcards: genomic_region=compare_2
+
+[Sat Jan 30 19:25:12 2021]
+Finished job 4.
+4 of 17 steps (24%) done
+
+[Sat Jan 30 19:25:12 2021]
+rule get_cadd_scores:
+    input: compare_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: compare_1.initial.CADD.txt
+    jobid: 1
+    wildcards: genomic_region=compare_1
+
+[Sat Jan 30 19:25:26 2021]
+Finished job 1.
+5 of 17 steps (29%) done
+
+[Sat Jan 30 19:25:26 2021]
+rule transform_cadd_scores:
+    input: compare_1.initial.CADD.txt
+    output: compare_1.final.CADD.txt, compare_1.fasta
+    jobid: 3
+    wildcards: genomic_region=compare_1
+
+[Sat Jan 30 19:25:27 2021]
+Finished job 3.
+6 of 17 steps (35%) done
+
+[Sat Jan 30 19:25:27 2021]
+rule get_sequence_plus_two:
+    input: compare_1.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: compare_1_plus_two_init.fasta, compare_1.plustwo.bed, compare_1_plus_two.fasta
+    jobid: 9
+    wildcards: genomic_region=compare_1
+
+[Sat Jan 30 19:25:27 2021]
+Finished job 9.
+7 of 17 steps (41%) done
+
+[Sat Jan 30 19:25:27 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, compare_1_plus_two.fasta, compare_1.tabix.bed
+    output: compare_1.mu.lis
+    jobid: 11
+    wildcards: genomic_region=compare_1
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /storage1/fs1/tychele/Active/projects/fitDNM/code/fitDNM_snakemake/.snakemake/log/2021-01-30T192442.493358.snakemake.log

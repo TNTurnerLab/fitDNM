@@ -1,0 +1,319 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	3	calculate_trinucleotide_mutations
+	1	clean
+	1	combine_mutations
+	1	delete_tabix
+	3	filter_multinucleotide_variants
+	3	get_cadd_scores
+	3	get_region_mutation
+	3	get_sequence_plus_two
+	3	run_fitDNM
+	3	transform_cadd_scores
+	25
+
+[Sun Jan 31 00:40:36 2021]
+rule get_sequence_plus_two:
+    input: hs737.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: hs737_plus_two_init.fasta, hs737.plustwo.bed, hs737_plus_two.fasta
+    jobid: 15
+    wildcards: genomic_region=hs737
+
+[Sun Jan 31 00:40:36 2021]
+Finished job 15.
+1 of 25 steps (4%) done
+
+[Sun Jan 31 00:40:36 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, hs737_plus_two.fasta, hs737.tabix.bed
+    output: hs737.mu.lis
+    jobid: 18
+    wildcards: genomic_region=hs737
+
+[Sun Jan 31 00:40:43 2021]
+Finished job 18.
+2 of 25 steps (8%) done
+
+[Sun Jan 31 00:40:43 2021]
+rule get_cadd_scores:
+    input: hs737.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: hs737.initial.CADD.txt
+    jobid: 3
+    wildcards: genomic_region=hs737
+
+[Sun Jan 31 00:40:43 2021]
+Finished job 3.
+3 of 25 steps (12%) done
+
+[Sun Jan 31 00:40:43 2021]
+rule transform_cadd_scores:
+    input: hs737.initial.CADD.txt
+    output: hs737.final.CADD.txt, hs737.fasta
+    jobid: 6
+    wildcards: genomic_region=hs737
+
+[Sun Jan 31 00:40:44 2021]
+Finished job 6.
+4 of 25 steps (16%) done
+
+[Sun Jan 31 00:40:44 2021]
+rule get_cadd_scores:
+    input: hs131.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: hs131.initial.CADD.txt
+    jobid: 2
+    wildcards: genomic_region=hs131
+
+[Sun Jan 31 00:40:44 2021]
+Finished job 2.
+5 of 25 steps (20%) done
+
+[Sun Jan 31 00:40:44 2021]
+rule transform_cadd_scores:
+    input: hs131.initial.CADD.txt
+    output: hs131.final.CADD.txt, hs131.fasta
+    jobid: 5
+    wildcards: genomic_region=hs131
+
+[Sun Jan 31 00:40:44 2021]
+Finished job 5.
+6 of 25 steps (24%) done
+
+[Sun Jan 31 00:40:44 2021]
+rule get_sequence_plus_two:
+    input: hs131.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: hs131_plus_two_init.fasta, hs131.plustwo.bed, hs131_plus_two.fasta
+    jobid: 14
+    wildcards: genomic_region=hs131
+
+[Sun Jan 31 00:40:45 2021]
+Finished job 14.
+7 of 25 steps (28%) done
+
+[Sun Jan 31 00:40:45 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, hs131_plus_two.fasta, hs131.tabix.bed
+    output: hs131.mu.lis
+    jobid: 17
+    wildcards: genomic_region=hs131
+
+[Sun Jan 31 00:40:51 2021]
+Finished job 17.
+8 of 25 steps (32%) done
+
+[Sun Jan 31 00:40:51 2021]
+rule get_sequence_plus_two:
+    input: hs119.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: hs119_plus_two_init.fasta, hs119.plustwo.bed, hs119_plus_two.fasta
+    jobid: 13
+    wildcards: genomic_region=hs119
+
+[Sun Jan 31 00:40:52 2021]
+Finished job 13.
+9 of 25 steps (36%) done
+
+[Sun Jan 31 00:40:52 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, hs119_plus_two.fasta, hs119.tabix.bed
+    output: hs119.mu.lis
+    jobid: 16
+    wildcards: genomic_region=hs119
+
+[Sun Jan 31 00:40:59 2021]
+Finished job 16.
+10 of 25 steps (40%) done
+
+[Sun Jan 31 00:40:59 2021]
+rule get_cadd_scores:
+    input: hs119.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: hs119.initial.CADD.txt
+    jobid: 1
+    wildcards: genomic_region=hs119
+
+[Sun Jan 31 00:40:59 2021]
+Finished job 1.
+11 of 25 steps (44%) done
+
+[Sun Jan 31 00:40:59 2021]
+rule transform_cadd_scores:
+    input: hs119.initial.CADD.txt
+    output: hs119.final.CADD.txt, hs119.fasta
+    jobid: 4
+    wildcards: genomic_region=hs119
+
+[Sun Jan 31 00:40:59 2021]
+Finished job 4.
+12 of 25 steps (48%) done
+
+[Sun Jan 31 00:40:59 2021]
+rule get_region_mutation:
+    input: hs737.tabix.bed, /fitDNM/input_data/variant_calls/denovo_variants_four_way_caller.txt
+    output: hs737.lis
+    jobid: 9
+    wildcards: genomic_region=hs737
+
+[Sun Jan 31 00:41:07 2021]
+Finished job 9.
+13 of 25 steps (52%) done
+
+[Sun Jan 31 00:41:07 2021]
+rule filter_multinucleotide_variants:
+    input: hs737.lis
+    output: hs737.snv.lis, hs737.mnv.lis
+    jobid: 12
+    wildcards: genomic_region=hs737
+
+[Sun Jan 31 00:41:14 2021]
+Finished job 12.
+14 of 25 steps (56%) done
+
+[Sun Jan 31 00:41:14 2021]
+rule run_fitDNM:
+    input: hs737.snv.lis, hs737.mu.lis, hs737.final.CADD.txt
+    output: hs737.fitDNM_CADD.txt
+    jobid: 21
+    wildcards: genomic_region=hs737
+
+[Sun Jan 31 00:41:14 2021]
+Finished job 21.
+15 of 25 steps (60%) done
+
+[Sun Jan 31 00:41:14 2021]
+rule get_region_mutation:
+    input: hs131.tabix.bed, /fitDNM/input_data/variant_calls/denovo_variants_four_way_caller.txt
+    output: hs131.lis
+    jobid: 8
+    wildcards: genomic_region=hs131
+
+[Sun Jan 31 00:41:21 2021]
+Finished job 8.
+16 of 25 steps (64%) done
+
+[Sun Jan 31 00:41:21 2021]
+rule filter_multinucleotide_variants:
+    input: hs131.lis
+    output: hs131.snv.lis, hs131.mnv.lis
+    jobid: 11
+    wildcards: genomic_region=hs131
+
+[Sun Jan 31 00:41:28 2021]
+Finished job 11.
+17 of 25 steps (68%) done
+
+[Sun Jan 31 00:41:28 2021]
+rule run_fitDNM:
+    input: hs131.snv.lis, hs131.mu.lis, hs131.final.CADD.txt
+    output: hs131.fitDNM_CADD.txt
+    jobid: 20
+    wildcards: genomic_region=hs131
+
+[Sun Jan 31 00:41:29 2021]
+Finished job 20.
+18 of 25 steps (72%) done
+
+[Sun Jan 31 00:41:29 2021]
+rule get_region_mutation:
+    input: hs119.tabix.bed, /fitDNM/input_data/variant_calls/denovo_variants_four_way_caller.txt
+    output: hs119.lis
+    jobid: 7
+    wildcards: genomic_region=hs119
+
+[Sun Jan 31 00:41:36 2021]
+Finished job 7.
+19 of 25 steps (76%) done
+
+[Sun Jan 31 00:41:36 2021]
+rule combine_mutations:
+    input: hs119.lis, hs131.lis, hs737.lis
+    output: human_vista_positive_elements_hg38.muts.report
+    jobid: 23
+
+[Sun Jan 31 00:41:36 2021]
+Finished job 23.
+20 of 25 steps (80%) done
+
+[Sun Jan 31 00:41:36 2021]
+rule filter_multinucleotide_variants:
+    input: hs119.lis
+    output: hs119.snv.lis, hs119.mnv.lis
+    jobid: 10
+    wildcards: genomic_region=hs119
+
+[Sun Jan 31 00:41:43 2021]
+Finished job 10.
+21 of 25 steps (84%) done
+
+[Sun Jan 31 00:41:43 2021]
+rule run_fitDNM:
+    input: hs119.snv.lis, hs119.mu.lis, hs119.final.CADD.txt
+    output: hs119.fitDNM_CADD.txt
+    jobid: 19
+    wildcards: genomic_region=hs119
+
+[Sun Jan 31 00:41:44 2021]
+Finished job 19.
+22 of 25 steps (88%) done
+
+[Sun Jan 31 00:41:44 2021]
+rule clean:
+    input: hs119.fitDNM_CADD.txt, hs131.fitDNM_CADD.txt, hs737.fitDNM_CADD.txt
+    output: human_vista_positive_elements_hg38.fitDNM.report
+    jobid: 22
+
+[Sun Jan 31 00:41:44 2021]
+Finished job 22.
+23 of 25 steps (92%) done
+
+[Sun Jan 31 00:41:44 2021]
+rule delete_tabix:
+    input: human_vista_positive_elements_hg38.muts.report, human_vista_positive_elements_hg38.fitDNM.report, hs119.tabix.bed, hs131.tabix.bed, hs737.tabix.bed
+    output: done.txt
+    jobid: 24
+
+[Sun Jan 31 00:41:44 2021]
+Finished job 24.
+24 of 25 steps (96%) done
+
+[Sun Jan 31 00:41:44 2021]
+localrule all:
+    input: hs119.initial.CADD.txt, hs131.initial.CADD.txt, hs737.initial.CADD.txt, hs119.final.CADD.txt, hs131.final.CADD.txt, hs737.final.CADD.txt, hs119.lis, hs131.lis, hs737.lis, hs119.snv.lis, hs131.snv.lis, hs737.snv.lis, hs119.mnv.lis, hs131.mnv.lis, hs737.mnv.lis, hs119.plustwo.bed, hs131.plustwo.bed, hs737.plustwo.bed, hs119_plus_two.fasta, hs131_plus_two.fasta, hs737_plus_two.fasta, hs119_plus_two_init.fasta, hs131_plus_two_init.fasta, hs737_plus_two_init.fasta, hs119_plus_two.fasta, hs131_plus_two.fasta, hs737_plus_two.fasta, hs119.fasta, hs131.fasta, hs737.fasta, hs119.mu.lis, hs131.mu.lis, hs737.mu.lis, hs119.fitDNM_CADD.txt, hs131.fitDNM_CADD.txt, hs737.fitDNM_CADD.txt, human_vista_positive_elements_hg38.fitDNM.report, human_vista_positive_elements_hg38.muts.report, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz, /fitDNM/input_data/variant_calls/denovo_variants_four_way_caller.txt, /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, done.txt
+    jobid: 0
+
+Removing temporary output file hs119.initial.CADD.txt.
+Removing temporary output file hs131.initial.CADD.txt.
+Removing temporary output file hs737.initial.CADD.txt.
+Removing temporary output file hs119.fasta.
+Removing temporary output file hs119.final.CADD.txt.
+Removing temporary output file hs131.final.CADD.txt.
+Removing temporary output file hs131.fasta.
+Removing temporary output file hs737.fasta.
+Removing temporary output file hs737.final.CADD.txt.
+Removing temporary output file hs119.lis.
+Removing temporary output file hs131.lis.
+Removing temporary output file hs737.lis.
+Removing temporary output file hs119.mnv.lis.
+Removing temporary output file hs119.snv.lis.
+Removing temporary output file hs131.snv.lis.
+Removing temporary output file hs131.mnv.lis.
+Removing temporary output file hs737.snv.lis.
+Removing temporary output file hs737.mnv.lis.
+Removing temporary output file hs119_plus_two.fasta.
+Removing temporary output file hs119.plustwo.bed.
+Removing temporary output file hs119_plus_two_init.fasta.
+Removing temporary output file hs131.plustwo.bed.
+Removing temporary output file hs131_plus_two.fasta.
+Removing temporary output file hs131_plus_two_init.fasta.
+Removing temporary output file hs737.plustwo.bed.
+Removing temporary output file hs737_plus_two.fasta.
+Removing temporary output file hs737_plus_two_init.fasta.
+Removing temporary output file hs119.mu.lis.
+Removing temporary output file hs131.mu.lis.
+Removing temporary output file hs737.mu.lis.
+[Sun Jan 31 00:41:44 2021]
+Finished job 0.
+25 of 25 steps (100%) done
+Complete log: /storage1/fs1/tychele/Active/projects/fitDNM/code/fitDNM_snakemake/.snakemake/log/2021-01-31T004029.621553.snakemake.log

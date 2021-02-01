@@ -1,0 +1,2 @@
+SyntaxError in line 100 of /storage1/fs1/tychele/Active/projects/fitDNM/code/fitDNM_snakemake/fitDNM_genome_wide.smk:
+No rule keywords allowed after run/shell/script/wrapper/cwl in rule touch. (fitDNM_genome_wide.smk, line 100)

@@ -1,0 +1,146 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	1	calculate_trinucleotide_mutations
+	1	clean
+	1	combine_mutations
+	1	delete_tabix
+	1	filter_multinucleotide_variants
+	1	get_cadd_scores
+	1	get_region_mutation
+	1	get_sequence_plus_two
+	1	run_fitDNM
+	1	transform_cadd_scores
+	11
+
+[Sun Jan 31 00:23:50 2021]
+rule get_cadd_scores:
+    input: null.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: null.initial.CADD.txt
+    jobid: 1
+    wildcards: genomic_region=null
+
+[Sun Jan 31 00:23:52 2021]
+Finished job 1.
+1 of 11 steps (9%) done
+
+[Sun Jan 31 00:23:52 2021]
+rule transform_cadd_scores:
+    input: null.initial.CADD.txt
+    output: null.final.CADD.txt, null.fasta
+    jobid: 2
+    wildcards: genomic_region=null
+
+[Sun Jan 31 00:23:53 2021]
+Finished job 2.
+2 of 11 steps (18%) done
+
+[Sun Jan 31 00:23:53 2021]
+rule get_sequence_plus_two:
+    input: null.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: null_plus_two_init.fasta, null.plustwo.bed, null_plus_two.fasta
+    jobid: 5
+    wildcards: genomic_region=null
+
+[Sun Jan 31 00:23:53 2021]
+Finished job 5.
+3 of 11 steps (27%) done
+
+[Sun Jan 31 00:23:53 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, null_plus_two.fasta, null.tabix.bed
+    output: null.mu.lis
+    jobid: 6
+    wildcards: genomic_region=null
+
+[Sun Jan 31 00:23:53 2021]
+Finished job 6.
+4 of 11 steps (36%) done
+
+[Sun Jan 31 00:23:53 2021]
+rule get_region_mutation:
+    input: null.tabix.bed, /fitDNM/input_data/variant_calls/denovo_variants_four_way_caller.txt
+    output: null.lis
+    jobid: 3
+    wildcards: genomic_region=null
+
+[Sun Jan 31 00:23:54 2021]
+Finished job 3.
+5 of 11 steps (45%) done
+
+[Sun Jan 31 00:23:54 2021]
+rule combine_mutations:
+    input: null.lis
+    output: test_regions.muts.report
+    jobid: 9
+
+[Sun Jan 31 00:23:54 2021]
+Finished job 9.
+6 of 11 steps (55%) done
+
+[Sun Jan 31 00:23:54 2021]
+rule filter_multinucleotide_variants:
+    input: null.lis
+    output: null.snv.lis, null.mnv.lis
+    jobid: 4
+    wildcards: genomic_region=null
+
+[Sun Jan 31 00:23:55 2021]
+Finished job 4.
+7 of 11 steps (64%) done
+
+[Sun Jan 31 00:23:55 2021]
+rule run_fitDNM:
+    input: null.snv.lis, null.mu.lis, null.final.CADD.txt
+    output: null.fitDNM_CADD.txt
+    jobid: 7
+    wildcards: genomic_region=null
+
+[Sun Jan 31 00:23:55 2021]
+Finished job 7.
+8 of 11 steps (73%) done
+
+[Sun Jan 31 00:23:55 2021]
+rule clean:
+    input: null.fitDNM_CADD.txt
+    output: test_regions.fitDNM.report
+    jobid: 8
+
+[Sun Jan 31 00:23:55 2021]
+Finished job 8.
+9 of 11 steps (82%) done
+
+[Sun Jan 31 00:23:55 2021]
+rule delete_tabix:
+    input: test_regions.muts.report, test_regions.fitDNM.report, null.tabix.bed
+    output: done.txt
+    jobid: 10
+
+[Sun Jan 31 00:23:55 2021]
+Finished job 10.
+10 of 11 steps (91%) done
+
+[Sun Jan 31 00:23:55 2021]
+localrule all:
+    input: null.initial.CADD.txt, null.final.CADD.txt, null.lis, null.snv.lis, null.mnv.lis, null.plustwo.bed, null_plus_two.fasta, null_plus_two_init.fasta, null_plus_two.fasta, null.fasta, null.mu.lis, null.fitDNM_CADD.txt, test_regions.fitDNM.report, test_regions.muts.report, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz, /fitDNM/input_data/variant_calls/denovo_variants_four_way_caller.txt, /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, done.txt
+    jobid: 0
+
+Removing temporary output file null.initial.CADD.txt.
+Removing temporary output file null.final.CADD.txt.
+Removing temporary output file null.fasta.
+Removing temporary output file null.lis.
+Removing temporary output file null.snv.lis.
+Removing temporary output file null.mnv.lis.
+Removing temporary output file null_plus_two_init.fasta.
+Removing temporary output file null.plustwo.bed.
+Removing temporary output file null_plus_two.fasta.
+Removing temporary output file null.mu.lis.
+Removing temporary output file null.fitDNM_CADD.txt.
+[Sun Jan 31 00:23:55 2021]
+Finished job 0.
+11 of 11 steps (100%) done
+Complete log: /storage1/fs1/tychele/Active/projects/fitDNM/code/fitDNM_snakemake/.snakemake/log/2021-01-31T002349.828876.snakemake.log

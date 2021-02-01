@@ -1,0 +1,2 @@
+SyntaxError in line 109 of /storage1/fs1/tychele/Active/projects/fitDNM/code/fitDNM_snakemake/fitDNM_genome_wide.smk:
+Expecting rule keyword, comment or docstrings inside a rule definition. (fitDNM_genome_wide.smk, line 109)

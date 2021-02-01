@@ -1,0 +1,5 @@
+Building DAG of jobs...
+MissingInputException in line 89 of /storage1/fs1/tychele/Active/projects/fitDNM/code/fitDNM_snakemake/fitDNM_genome_wide.smk:
+Missing input files for rule get_cadd_scores:
+compare_2
+compare_1

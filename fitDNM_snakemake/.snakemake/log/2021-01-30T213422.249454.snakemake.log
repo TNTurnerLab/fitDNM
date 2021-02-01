@@ -1,0 +1,3 @@
+KeyboardInterrupt in line 40 of /storage1/fs1/tychele/Active/projects/fitDNM/code/fitDNM_snakemake/fitDNM_genome_wide.smk.
+  File "/storage1/fs1/tychele/Active/projects/fitDNM/code/fitDNM_snakemake/fitDNM_genome_wide.smk", line 40, in <module>
+  File "/opt/conda/envs/snakemake/lib/python3.9/_bootlocale.py", line 33, in getpreferredencoding

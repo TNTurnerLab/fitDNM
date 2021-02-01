@@ -1,0 +1,3 @@
+KeyboardInterrupt in line 50 of /storage1/fs1/tychele/Active/projects/fitDNM/code/fitDNM_snakemake/fitDNM_genome_wide.smk.
+  File "/storage1/fs1/tychele/Active/projects/fitDNM/code/fitDNM_snakemake/fitDNM_genome_wide.smk", line 50, in <module>
+  File "/opt/conda/envs/snakemake/lib/python3.9/codecs.py", line 319, in decode

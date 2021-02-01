@@ -1,0 +1,3 @@
+TypeError in line 67 of /storage1/fs1/tychele/Active/projects/fitDNM/code/fitDNM_snakemake/fitDNM_genome_wide.smk:
+can only concatenate str (not "int") to str
+  File "/storage1/fs1/tychele/Active/projects/fitDNM/code/fitDNM_snakemake/fitDNM_genome_wide.smk", line 67, in <module>

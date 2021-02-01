@@ -1,0 +1,96 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	1	calculate_trinucleotide_mutations
+	1	get_cadd_scores
+	1	get_region_mutation
+	1	get_sequence_plus_two
+	1	run_fitDNM
+	1	transform_cadd_scores
+	7
+
+[Thu Jan 21 00:06:04 2021]
+rule get_sequence_plus_two:
+    input: hs737.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: hs737_plus_two_init.fasta, hs737.plustwo.bed, hs737_plus_two.fasta
+    jobid: 4
+    wildcards: genomic_region=hs737
+
+[Thu Jan 21 00:06:04 2021]
+Finished job 4.
+1 of 7 steps (14%) done
+
+[Thu Jan 21 00:06:04 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, hs737_plus_two.fasta, hs737.tabix.bed
+    output: hs737.mu.lis
+    jobid: 5
+    wildcards: genomic_region=hs737
+
+[Thu Jan 21 00:06:04 2021]
+Finished job 5.
+2 of 7 steps (29%) done
+
+[Thu Jan 21 00:06:04 2021]
+rule get_cadd_scores:
+    input: hs737.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: hs737.initial.CADD.txt
+    jobid: 1
+    wildcards: genomic_region=hs737
+
+[Thu Jan 21 00:06:05 2021]
+Finished job 1.
+3 of 7 steps (43%) done
+
+[Thu Jan 21 00:06:05 2021]
+rule transform_cadd_scores:
+    input: hs737.initial.CADD.txt
+    output: hs737.final.CADD.txt, hs737.fasta
+    jobid: 2
+    wildcards: genomic_region=hs737
+
+[Thu Jan 21 00:06:05 2021]
+Finished job 2.
+4 of 7 steps (57%) done
+
+[Thu Jan 21 00:06:05 2021]
+rule get_region_mutation:
+    input: hs737.tabix.bed, /fitDNM/input_data/variant_calls/denovo_variants_four_way_caller.txt
+    output: hs737.lis
+    jobid: 3
+    wildcards: genomic_region=hs737
+
+[Thu Jan 21 00:06:06 2021]
+Finished job 3.
+5 of 7 steps (71%) done
+
+[Thu Jan 21 00:06:06 2021]
+rule run_fitDNM:
+    input: hs737.lis, hs737.mu.lis, hs737.final.CADD.txt
+    output: hs737.fitDNM_CADD.txt
+    jobid: 6
+    wildcards: genomic_region=hs737
+
+[Thu Jan 21 00:06:07 2021]
+Finished job 6.
+6 of 7 steps (86%) done
+
+[Thu Jan 21 00:06:07 2021]
+localrule all:
+    input: hs737.tabix.bed, hs737.initial.CADD.txt, hs737.final.CADD.txt, hs737.lis, hs737.plustwo.bed, hs737_plus_two.fasta, hs737_plus_two_init.fasta, hs737_plus_two.fasta, hs737.fasta, hs737.mu.lis, hs737.fitDNM_CADD.txt, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz, /fitDNM/input_data/variant_calls/denovo_variants_four_way_caller.txt, /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt
+    jobid: 0
+
+Removing temporary output file hs737.initial.CADD.txt.
+Removing temporary output file hs737.fasta.
+Removing temporary output file hs737.lis.
+Removing temporary output file hs737_plus_two.fasta.
+Removing temporary output file hs737.plustwo.bed.
+Removing temporary output file hs737_plus_two_init.fasta.
+[Thu Jan 21 00:06:07 2021]
+Finished job 0.
+7 of 7 steps (100%) done
+Complete log: /storage1/fs1/tychele/Active/projects/fitDNM/code/fitDNM_snakemake/.snakemake/log/2021-01-21T000604.372220.snakemake.log

@@ -1,0 +1,3 @@
+WildcardError in line 230 of /storage1/fs1/tychele/Active/projects/fitDNM/code/fitDNM_snakemake/fitDNM_genome_wide.smk:
+No values given for wildcard 'genomic_region'.
+  File "/storage1/fs1/tychele/Active/projects/fitDNM/code/fitDNM_snakemake/fitDNM_genome_wide.smk", line 230, in <module>

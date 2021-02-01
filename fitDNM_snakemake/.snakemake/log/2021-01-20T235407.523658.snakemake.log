@@ -1,0 +1,90 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	1	calculate_trinucleotide_mutations
+	1	get_cadd_scores
+	1	get_region_mutation
+	1	get_sequence_plus_two
+	1	run_fitDNM
+	1	transform_cadd_scores
+	7
+
+[Wed Jan 20 23:54:07 2021]
+rule get_sequence_plus_two:
+    input: hs737.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: hs737_plus_two.fasta, hs737.plustwo.bed
+    jobid: 4
+    wildcards: genomic_region=hs737
+
+[Wed Jan 20 23:54:07 2021]
+Finished job 4.
+1 of 7 steps (14%) done
+
+[Wed Jan 20 23:54:07 2021]
+rule get_cadd_scores:
+    input: hs737.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: hs737.initial.CADD.txt
+    jobid: 1
+    wildcards: genomic_region=hs737
+
+[Wed Jan 20 23:54:08 2021]
+Finished job 1.
+2 of 7 steps (29%) done
+
+[Wed Jan 20 23:54:08 2021]
+rule transform_cadd_scores:
+    input: hs737.initial.CADD.txt
+    output: hs737.final.CADD.txt, hs737.fasta
+    jobid: 2
+    wildcards: genomic_region=hs737
+
+[Wed Jan 20 23:54:08 2021]
+Finished job 2.
+3 of 7 steps (43%) done
+
+[Wed Jan 20 23:54:08 2021]
+rule get_region_mutation:
+    input: hs737.tabix.bed, /fitDNM/input_data/variant_calls/denovo_variants_four_way_caller.txt
+    output: hs737.lis
+    jobid: 3
+    wildcards: genomic_region=hs737
+
+[Wed Jan 20 23:54:10 2021]
+Finished job 3.
+4 of 7 steps (57%) done
+
+[Wed Jan 20 23:54:10 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, hs737_plus_two.fasta, hs737.tabix.bed
+    output: hs737.mu.lis
+    jobid: 5
+    wildcards: genomic_region=hs737
+
+[Wed Jan 20 23:54:11 2021]
+Finished job 5.
+5 of 7 steps (71%) done
+
+[Wed Jan 20 23:54:11 2021]
+rule run_fitDNM:
+    input: hs737.lis, hs737.mu.lis, hs737.final.CADD.txt
+    output: hs737.fitDNM_CADD.txt
+    jobid: 6
+    wildcards: genomic_region=hs737
+
+[Wed Jan 20 23:54:11 2021]
+Error in rule run_fitDNM:
+    jobid: 6
+    output: hs737.fitDNM_CADD.txt
+    shell:
+        
+    Rscript /fitDNM/code/fitDNM_R_code/fitDNM.CADD.R 2671 0 hs737.lis hs737.mu.lis hs737.final.CADD.txt hs737.fitDNM_CADD.txt /fitDNM/code/fitDNM_R_code/double_saddle_point_approx_8_7_2014.R
+    
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /storage1/fs1/tychele/Active/projects/fitDNM/code/fitDNM_snakemake/.snakemake/log/2021-01-20T235407.523658.snakemake.log

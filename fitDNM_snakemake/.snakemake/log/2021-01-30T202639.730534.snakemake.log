@@ -1,0 +1,135 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	1	calculate_trinucleotide_mutations
+	1	clean
+	1	combine_mutations
+	1	filter_multinucleotide_variants
+	1	get_cadd_scores
+	1	get_region_mutation
+	1	get_sequence_plus_two
+	1	run_fitDNM
+	1	transform_cadd_scores
+	10
+
+[Sat Jan 30 20:26:40 2021]
+rule get_sequence_plus_two:
+    input: hs755.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: hs755_plus_two_init.fasta, hs755.plustwo.bed, hs755_plus_two.fasta
+    jobid: 5
+    wildcards: genomic_region=hs755
+
+[Sat Jan 30 20:26:40 2021]
+Finished job 5.
+1 of 10 steps (10%) done
+
+[Sat Jan 30 20:26:40 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, hs755_plus_two.fasta, hs755.tabix.bed
+    output: hs755.mu.lis
+    jobid: 6
+    wildcards: genomic_region=hs755
+
+[Sat Jan 30 20:26:40 2021]
+Finished job 6.
+2 of 10 steps (20%) done
+
+[Sat Jan 30 20:26:40 2021]
+rule get_cadd_scores:
+    input: hs755.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: hs755.initial.CADD.txt
+    jobid: 1
+    wildcards: genomic_region=hs755
+
+[Sat Jan 30 20:26:40 2021]
+Finished job 1.
+3 of 10 steps (30%) done
+
+[Sat Jan 30 20:26:40 2021]
+rule transform_cadd_scores:
+    input: hs755.initial.CADD.txt
+    output: hs755.final.CADD.txt, hs755.fasta
+    jobid: 2
+    wildcards: genomic_region=hs755
+
+[Sat Jan 30 20:26:41 2021]
+Finished job 2.
+4 of 10 steps (40%) done
+
+[Sat Jan 30 20:26:41 2021]
+rule get_region_mutation:
+    input: hs755.tabix.bed, /fitDNM/input_data/variant_calls/denovo_variants_four_way_caller.txt
+    output: hs755.lis
+    jobid: 3
+    wildcards: genomic_region=hs755
+
+[Sat Jan 30 20:26:42 2021]
+Finished job 3.
+5 of 10 steps (50%) done
+
+[Sat Jan 30 20:26:42 2021]
+rule combine_mutations:
+    input: hs755.lis, hs755.tabix.bed
+    output: human_vista_positive_elements_hg38.muts.report
+    jobid: 9
+
+[Sat Jan 30 20:26:42 2021]
+Finished job 9.
+6 of 10 steps (60%) done
+
+[Sat Jan 30 20:26:42 2021]
+rule filter_multinucleotide_variants:
+    input: hs755.lis
+    output: hs755.snv.lis, hs755.mnv.lis
+    jobid: 4
+    wildcards: genomic_region=hs755
+
+[Sat Jan 30 20:26:42 2021]
+Finished job 4.
+7 of 10 steps (70%) done
+
+[Sat Jan 30 20:26:42 2021]
+rule run_fitDNM:
+    input: hs755.snv.lis, hs755.mu.lis, hs755.final.CADD.txt
+    output: hs755.fitDNM_CADD.txt
+    jobid: 7
+    wildcards: genomic_region=hs755
+
+[Sat Jan 30 20:26:52 2021]
+Finished job 7.
+8 of 10 steps (80%) done
+
+[Sat Jan 30 20:26:52 2021]
+rule clean:
+    input: hs755.fitDNM_CADD.txt
+    output: human_vista_positive_elements_hg38.fitDNM.report
+    jobid: 8
+
+[Sat Jan 30 20:26:53 2021]
+Finished job 8.
+9 of 10 steps (90%) done
+
+[Sat Jan 30 20:26:53 2021]
+localrule all:
+    input: hs755.tabix.bed, hs755.initial.CADD.txt, hs755.final.CADD.txt, hs755.lis, hs755.snv.lis, hs755.mnv.lis, hs755.plustwo.bed, hs755_plus_two.fasta, hs755_plus_two_init.fasta, hs755_plus_two.fasta, hs755.fasta, hs755.mu.lis, hs755.fitDNM_CADD.txt, human_vista_positive_elements_hg38.fitDNM.report, human_vista_positive_elements_hg38.muts.report, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz, /fitDNM/input_data/variant_calls/denovo_variants_four_way_caller.txt, /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt
+    jobid: 0
+
+Removing temporary output file hs755.initial.CADD.txt.
+Removing temporary output file hs755.fasta.
+Removing temporary output file hs755.final.CADD.txt.
+Removing temporary output file hs755.lis.
+Removing temporary output file hs755.snv.lis.
+Removing temporary output file hs755.mnv.lis.
+Removing temporary output file hs755_plus_two_init.fasta.
+Removing temporary output file hs755_plus_two.fasta.
+Removing temporary output file hs755.plustwo.bed.
+Removing temporary output file hs755.mu.lis.
+Removing temporary output file hs755.fitDNM_CADD.txt.
+[Sat Jan 30 20:26:53 2021]
+Finished job 0.
+10 of 10 steps (100%) done
+Complete log: /storage1/fs1/tychele/Active/projects/fitDNM/code/fitDNM_snakemake/.snakemake/log/2021-01-30T202639.730534.snakemake.log

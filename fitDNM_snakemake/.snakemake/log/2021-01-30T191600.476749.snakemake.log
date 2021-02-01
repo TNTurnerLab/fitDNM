@@ -1,0 +1,3 @@
+NameError in line 45 of /storage1/fs1/tychele/Active/projects/fitDNM/code/fitDNM_snakemake/fitDNM_genome_wide.smk:
+name 'region_annotations' is not defined
+  File "/storage1/fs1/tychele/Active/projects/fitDNM/code/fitDNM_snakemake/fitDNM_genome_wide.smk", line 45, in <module>

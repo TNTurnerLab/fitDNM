@@ -1,0 +1,32 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	1	clean
+	1	combine_mutations
+	1	delete_tabix
+	4
+
+[Sun Jan 31 00:21:00 2021]
+rule clean:
+    output: test_regions.fitDNM.report
+    jobid: 1
+
+Terminating processes on user request, this might take some time.
+[Sun Jan 31 00:21:03 2021]
+Error in rule clean:
+    jobid: 1
+    output: test_regions.fitDNM.report
+    shell:
+        
+    echo "geneID nsample.adj nsnv nsnv.analysis ndenovo score pvalue.fitDNM pvalue.Poisson" > test_regions.fitDNM.report
+    cat  | awk 'NF > 1 FNR==2 {print $1,$2,$3,$4,$5,$6,$7,$8}' >> test_regions.fitDNM.report
+    
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job clean since they might be corrupted:
+test_regions.fitDNM.report
+Complete log: /storage1/fs1/tychele/Active/projects/fitDNM/code/fitDNM_snakemake/.snakemake/log/2021-01-31T002100.347339.snakemake.log

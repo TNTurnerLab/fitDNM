@@ -1,0 +1,41 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	2	calculate_trinucleotide_mutations
+	1	clean
+	1	combine_mutations
+	2	filter_multinucleotide_variants
+	2	get_cadd_scores
+	2	get_region_mutation
+	2	get_sequence_plus_two
+	2	run_fitDNM
+	2	transform_cadd_scores
+	17
+
+[Sat Jan 30 19:22:02 2021]
+rule get_cadd_scores:
+    input: compare_2.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: compare_2.initial.CADD.txt, compare_2.tabix.bed
+    jobid: 2
+    wildcards: genomic_region=compare_2
+
+[Sat Jan 30 19:22:02 2021]
+Error in rule get_cadd_scores:
+    jobid: 2
+    output: compare_2.initial.CADD.txt, compare_2.tabix.bed
+    shell:
+        
+    tabix /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz -R compare_2.tabix.bed  > compare_2.initial.CADD.txt
+    ls -a compare_2.tabix.bed
+    
+        (one of the commands exited with non-zero exit code; note that snakemake uses bash strict mode!)
+
+Removing output files of failed job get_cadd_scores since they might be corrupted:
+compare_2.initial.CADD.txt
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /storage1/fs1/tychele/Active/projects/fitDNM/code/fitDNM_snakemake/.snakemake/log/2021-01-30T192200.094533.snakemake.log

@@ -1,0 +1,29 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	1	calculate_trinucleotide_mutations
+	1	get_cadd_scores
+	1	get_region_mutation
+	1	get_sequence_plus_two
+	1	run_fitDNM
+	1	transform_cadd_scores
+	7
+
+[Thu Jan 21 00:05:28 2021]
+rule get_sequence_plus_two:
+    input: hs737.tabix.bed, /fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: hs737_plus_two_init.fasta, hs737.plustwo.bed, hs737_plus_two.fasta
+    jobid: 4
+    wildcards: genomic_region=hs737
+
+RuleException in line 61 of /storage1/fs1/tychele/Active/projects/fitDNM/code/fitDNM_snakemake/fitDNM_genome_wide.smk:
+'OutputFiles' object has no attribute 'mutation_sequence'
+  File "/opt/conda/envs/snakemake/lib/python3.9/site-packages/snakemake/executors/__init__.py", line 136, in run_jobs
+  File "/opt/conda/envs/snakemake/lib/python3.9/site-packages/snakemake/executors/__init__.py", line 441, in run
+  File "/opt/conda/envs/snakemake/lib/python3.9/site-packages/snakemake/executors/__init__.py", line 230, in _run
+  File "/opt/conda/envs/snakemake/lib/python3.9/site-packages/snakemake/executors/__init__.py", line 156, in _run
+  File "/opt/conda/envs/snakemake/lib/python3.9/site-packages/snakemake/executors/__init__.py", line 162, in printjob

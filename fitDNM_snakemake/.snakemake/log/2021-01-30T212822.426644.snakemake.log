@@ -1,0 +1,4 @@
+Building DAG of jobs...
+WildcardError in line 238 of /storage1/fs1/tychele/Active/projects/fitDNM/code/fitDNM_snakemake/fitDNM_genome_wide.smk:
+Wildcards in input files cannot be determined from output files:
+'genomic_region'
