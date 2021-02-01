@@ -1,6 +1,12 @@
 # fitDNM
 ### Evin Padhi
-### 1/15/21
+### 1/30/21
+### Washington University in St. Louis
+### School of Medicine, Department of Genetics
+### Laboratory of Dr. Tychele Turner
+### Snakefile for running fitDNM and all preprocessing steps
+### Contact: evin.padhi@wustl.edu
+
 
 ### Purpose:
 - To take in any genomic coordiantes, extract de novo variants from the callset and get scores every nucleotide and subsequently run through fitDNM that has been adapted to work in noncoding regions
