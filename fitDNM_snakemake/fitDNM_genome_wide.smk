@@ -146,6 +146,9 @@ rule get_region_mutation:
                         number_only = line_p[1].split('r')[1] #gets just the number of the chromosome rather than chr#
                         out.write(number_only + '\t' + line_p[2] + '\t' + line_p[3] + '\t' + line_p[4] + '\t'  + str(params.annotation) + '\n')
 
+        #for line in bed_file_of_interest:
+        #    output = shell("tabix ")
+
 
 # creates two files from the mutation list,
 # a file that holds SNVs andn a file that holds MNVs

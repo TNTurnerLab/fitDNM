@@ -1,7 +1,7 @@
 {
-  "regions_of_interest": "/fitDNM/target_regions/EPD_promoters_batch_1.bed",
+  "regions_of_interest": "/fitDNM/input_data/target_regions/EPD_promoters_with_DNMs.bed",
   "mutation_calls": "/fitDNM/input_data/variant_calls/denovo_variants_four_way_caller.txt",
-  "cadd_score_file": "/fitDNM/CADD_scores/whole_genome_SNVs.tsv.gz",
+  "cadd_score_file": "/fitDNM/input_data/CADD_scores/whole_genome_SNVs.tsv.gz",
   "trinucleotide_mut_rate": "/fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt",
   "fitDNM_R_path": "/fitDNM/code/fitDNM_R_code/",
   "saddle_point_path": "/fitDNM/code/fitDNM_R_code/double_saddle_point_approx_8_7_2014.R",

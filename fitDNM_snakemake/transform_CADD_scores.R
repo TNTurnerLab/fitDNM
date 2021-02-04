@@ -1,3 +1,11 @@
+# Evin Padhi
+# 1/30/21
+# Washington University in St. Louis
+# School of Medicine, Department of Genetics
+# Laboratory of Dr. Tychele Turner
+# Snakefile for running fitDNM and all preprocessing steps
+# Contact: evin.padhi@wustl.edu
+
 library(tidyr)
 
 
