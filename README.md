@@ -14,12 +14,12 @@
 
 ### How to run:
 1. Download CADD scores and check md5sums
-2. Build dockerfile and push
+2. Build dockerfile and push to dockerhub 
 3. Modify .json  `fitDNM_genome_wide.json` to point to the described input files and change parameters
-4. Run fitDNM snakemake 
+4. Run fitDNM snakemake
 
 ### LSF submisison example
-`bsub  -R 'rusage[mem=50GB]' -n 1 -a 'docker(docker/dockerfile)' /opt/conda/envs/snakemake/bin/snakemake -s /path/to/fitDNM/fitDNM_snakemake/fitDNM_genome_wide.smk --cores 1 `
+`bsub  -R 'rusage[mem=10GB]' -n 1 -a 'docker(docker/dockerfile)' /opt/conda/envs/snakemake/bin/snakemake -s /path/to/fitDNM/fitDNM_snakemake/fitDNM_genome_wide.smk --cores 1 `
 
 
 # Input files:
@@ -50,6 +50,5 @@
 
 ### To do list:
 - [] Update rule get_region_mutation to use tabix instead of python script to improve speed
-  - [] zip and index the mutation file  
-- [] Add in filter to seperate proband and sibling mutations
+  - [x] zip and index the mutation file  
 - [] fix mutation report file, right now it adds a header for every mutation file created

@@ -40,45 +40,10 @@ for region in open(REGIONS_OF_INTEREST):
     with open(out_file_name,"w") as out:
         out.write(chrom_only + '\t' + region_processed[1] + '\t' +region_processed[2])
 
-# region_counter = 0
-# for region in open(REGIONS_OF_INTEREST):
-#     region_processed = region.strip().split()
-#     region_name = region_processed[3]
-#     chrom_only = region_processed[0].split('r')[1]
-#     out_file_name = str(region_name) + ".tabix.bed"
-#     mutation_counter = 0
-#
-#     for mutation in open(MUTATION_CALLS):
-#         mutation_p = mutation.strip().split()
-#         if region_processed[0] == mutation_p[1]:
-#             if int(mutation_p[2]) in range(int(region_processed[1]),int(region_processed[2])):
-#                 mutation_counter += 1
-#                 region_counter += 1
-#                 break
-#     if mutation_counter >= 1:
-#         region_annotations.append(region_name)
-#         with open(out_file_name,"w") as out:
-#             out.write(chrom_only + '\t' + region_processed[1] + '\t' +region_processed[2])
-#
-# if region_counter == 0:
-#     region_annotations.append("null")
-#     with open("null.tabix.bed","w") as out:
-#         out.write("5" + '\t' + str(1000000) + '\t' + str(1000100))
+
 
 rule all:
   input:
-    #expand("{genomic_region}.initial.CADD.txt",genomic_region=region_annotations),
-    #expand("{genomic_region}.final.CADD.txt",genomic_region=region_annotations),
-    #expand("{genomic_region}.lis",genomic_region=region_annotations),
-    #expand("{genomic_region}.snv.lis",genomic_region=region_annotations),
-    #expand("{genomic_region}.mnv.lis",genomic_region=region_annotations),
-    #expand("{genomic_region}.plustwo.bed",genomic_region=region_annotations),
-    #expand("{genomic_region}_plus_two.fasta",genomic_region=region_annotations),
-    #expand("{genomic_region}_plus_two_init.fasta",genomic_region=region_annotations),
-    #expand("{genomic_region}_plus_two.fasta",genomic_region=region_annotations),
-    #expand("{genomic_region}.fasta",genomic_region=region_annotations),
-    #expand("{genomic_region}.mu.lis",genomic_region=region_annotations),
-    #expand("{genomic_region}.fitDNM_CADD.txt",genomic_region=region_annotations),
     OUTPUT_FILE_FITDNM,
     OUTPUT_FILE_MUTS,
     CADD_SCORE_FILE,
@@ -135,19 +100,27 @@ rule get_region_mutation:
     run:
         import sys
 
-        region = [[entry for entry in region.strip().split('\t')] for region in open(input[0])] #gets coordinates from bed file, returns list of lists, change that later
-        chromosome_entry = 'chr' + region[0][0] # creates entry that contains chr# to look for matches in DNM file
-        with open(output[0], "w") as out: #opens a file for the region and screens the mutation call file for mutations and writes them to the file
-            out.write('chr' + '\t' + 'position' + '\t' + 'Ref' + '\t' + 'Alt' + '\t' +  'annotation' + '\n') #adds header to file
-            for line in open(input[1]): # initializes loop to go through mutation file
-                line_p = line.strip().split('\t') # processes entries
-                if line_p[1] == chromosome_entry: # looks for mutations that are on the same chromosome
-                    if int(line_p[2]) in range(int(region[0][1]),int(region[0][2])): #checks to see if the mutation is within the coordinates of the region
-                        number_only = line_p[1].split('r')[1] #gets just the number of the chromosome rather than chr#
-                        out.write(number_only + '\t' + line_p[2] + '\t' + line_p[3] + '\t' + line_p[4] + '\t'  + str(params.annotation) + '\n')
+        #gets coordinates from bed file, returns list of lists
+        region = [[entry for entry in region.strip().split('\t')] for region in open(input[0])]
 
-        #for line in bed_file_of_interest:
-        #    output = shell("tabix ")
+        # creates entry that contains chr# to look for matches in DNM file
+        chromosome_entry = 'chr' + region[0][0]
+
+        # opens output file and writes header
+        # then loops through bed file and scans each
+        # entry for mutations
+        with open(output[0], "w") as out:
+            out.write('chr' + '\t' + 'position' + '\t' + 'Ref' + '\t' + 'Alt' + '\t' +  'annotation' + '\n') #adds header to file
+            for line in open(input[1]):
+                line_p = line.strip().split('\t')
+
+                # searches for mutations by first looking for entries
+                # that match chromosomes then checkes in position is in range
+                # and writes mutation to file if there is a match
+                if line_p[1] == chromosome_entry: #
+                    if int(line_p[2]) in range(int(region[0][1]),int(region[0][2])):
+                        number_only = line_p[1].split('r')[1]
+                        out.write(number_only + '\t' + line_p[2] + '\t' + line_p[3] + '\t' + line_p[4] + '\t'  + str(params.annotation) + '\n')
 
 
 # creates two files from the mutation list,
@@ -209,30 +182,47 @@ rule calculate_trinucleotide_mutations:
         # to change are the values
         # order of values is: A T C G
         mutation_rates = {}
-        counter = 0 #initializes counter to skip header
-        #opens mutation rate file and loops through it
+
+        #initializes counter to skip header
+        counter = 0
+
+        # opens mutation rate file and loops through it
+        # and uses a counter to skip the header
         for trinucleotide_entry in open(input[0]):
-            counter += 1 #adds to counter
-            if counter > 1: #makes sure that we are skipping the header
+            counter += 1
+            if counter > 1:
+
+                # gets mutation trinucleotide and all corresponding mutation rates
                 processed_entry = trinucleotide_entry.strip().split()
                 mutation_rates[processed_entry[0]] = [processed_entry[1],processed_entry[2],processed_entry[3],processed_entry[4]]
 
-        coordinates = [[entry for entry in region.strip().split('\t')] for region in open(input[2])] #gets coordinates from bed file, returns list of lists, change that later
 
-        #opens output mutation file and writes header
+        #gets coordinates from bed file, returns list of lists, change that later
+        coordinates = [[entry for entry in region.strip().split('\t')] for region in open(input[2])]
+
+        # opens output mutation file and writes header
+        # and initializes position counter
         with open(output[0],"w") as out:
             out.write("Annotation" + "\t" + "chr" + "\t" + "Pos" + "\t" + "Ref" + "\t" + "A" + "\t" + "T" + "\t" + "C" + "\t" + "G" + '\n')
-
             position_counter = 1
-            # loops through file to get fasta
+
+            # loops through file to get fasta and
+            # then loops through sequence, adding to
+            # the sequence counter for nucleotide
             for line in open(input[1]):
-                for x in range(len(line)): # loops through sequence
+                for x in range(len(line)):
                         position_counter += 1
+
+                        # calculates current position and extracts the tri nucleotide
+                        # and checks to make sure it is a trinucleotide
                         current_position = int(coordinates[0][1]) + position_counter
-                        trinucleotide = line[x:x+3] #gets trinucleotide
-                        if len(trinucleotide) < 3: #causes loop to break once the sequence is out of trinucleotides
+                        trinucleotide = line[x:x+3]
+                        if len(trinucleotide) < 3:
                             break
-                        else: # if length requirement is satified, writes mutation rates to file
+
+                        # if the sequence is a trinucleotide writes to file
+                        # with all the calculated rates
+                        else:
                             if trinucleotide in mutation_rates:
                                 out.write( str(params.annotation) + '\t'+ str(coordinates[0][0]) + '\t'+ str(current_position) + '\t'+ line[x+1] +  '\t' + mutation_rates[trinucleotide][0] + '\t' + mutation_rates[trinucleotide][1] + '\t' + mutation_rates[trinucleotide][2] + '\t' + mutation_rates[trinucleotide][3] + '\n')
 
@@ -255,8 +245,6 @@ rule clean:
     echo "geneID nsample.adj nsnv nsnv.analysis ndenovo score pvalue.fitDNM pvalue.Poisson" > {output}
     cat {input} | awk 'NR % 2 == 0 {{print $1,$2,$3,$4,$5,$6,$7,$8}}' >> {output}
     """
-#    echo "geneID nsample.adj nsnv nsnv.analysis ndenovo score pvalue.fitDNM pvalue.Poisson" > {output}
-# cat {input} | awk 'NF > 1 FNR==2 {{print $1,$2,$3,$4,$5,$6,$7,$8}}' >> {output}
 
 # Combines all mutations into one file
 rule combine_mutations:
@@ -266,6 +254,8 @@ rule combine_mutations:
     echo "chr position Ref Alt annotation" > {output}
     cat {input} | awk ' NR>1 {{print $1,$2,$3,$4,$5}}' >> {output}
     """
+
+#echo "chr position Ref Alt annotation" > {output}
 
 rule delete_tabix:
     input:output1=OUTPUT_FILE_MUTS,output2=OUTPUT_FILE_FITDNM,tabix=expand("{genomic_region}.tabix.bed",genomic_region=region_annotations)
