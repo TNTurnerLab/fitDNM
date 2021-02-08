@@ -14,7 +14,7 @@
 
 ### How to run:
 1. Download CADD scores and check md5sums
-2. Build dockerfile and push to dockerhub 
+2. Build dockerfile and push to dockerhub
 3. Modify .json  `fitDNM_genome_wide.json` to point to the described input files and change parameters
 4. Run fitDNM snakemake
 
@@ -27,6 +27,10 @@
   - `whole_genome_SNVs.tsv.gz  faaa80ef3948cf44e56a3629a90cdaaa`  
   - `whole_genome_SNVs.tsv.gz.tbi  4843cab24dd4992bb0cc5f1a7ebc807a`
 - `mutation_rate_by_trinucleotide_matrix.txt ca2faad78f1055c266b5a8451bebf1cb`
+- Bedfile that using standard format of `chr +'\t' + start + '\t' + annotation + '\n'`
+  - each entry must have a unique annotation
+- mutation file, to integrate automatically into workflow the mutation file must be ordered in the following
+  any entry, chromosome, position, reference, alternate
 
 ### File created in pipeline:
 - Input file: Bedfile containing the regions you want to investigate
