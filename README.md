@@ -23,14 +23,18 @@
 
 
 # Input files:
-- CADD files (v1.6) and md5sums:
+- CADD files and md5sums https://cadd.gs.washington.edu/download :
   - `whole_genome_SNVs.tsv.gz  faaa80ef3948cf44e56a3629a90cdaaa`  
   - `whole_genome_SNVs.tsv.gz.tbi  4843cab24dd4992bb0cc5f1a7ebc807a`
+  - We only support CADD score release v1.6
 - `mutation_rate_by_trinucleotide_matrix.txt ca2faad78f1055c266b5a8451bebf1cb`
+
 - Bedfile that using standard format of `chr +'\t' + start + '\t' + annotation + '\n'`
   - each entry must have a unique annotation
 - mutation file, to integrate automatically into workflow the mutation file must be ordered in the following
   any entry, chromosome, position, reference, alternate
+
+
 
 ### File created in pipeline:
 - Input file: Bedfile containing the regions you want to investigate
