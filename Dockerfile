@@ -18,10 +18,12 @@ RUN R -e "install.packages('doParallel',dependencies=TRUE, repos='http://cran.rs
     && R -e "install.packages('tidyr',dependencies=TRUE, repos='http://cran.rstudio.com/')"
 
 
+RUN apt-get update && apt-get install -y --no-install-recommends build-essential wget unzip bzip2  libnss-sss && rm -rf /var/lib/apt/lists* \
+    && conda install -c bioconda bedtools=2.27.0
+
+
 ENV HTSLIB_INSTALL_DIR=/opt/htslib
 WORKDIR /tmp
-
-
 RUN wget https://github.com/samtools/htslib/releases/download/1.3.2/htslib-1.3.2.tar.bz2 && \
     tar --bzip2 -xvf htslib-1.3.2.tar.bz2
 

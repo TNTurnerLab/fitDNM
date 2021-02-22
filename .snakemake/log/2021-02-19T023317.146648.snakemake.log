@@ -1,0 +1,322 @@
+Building DAG of jobs...
+Using shell: /bin/bash
+Provided cores: 1 (use --cores to define parallelism)
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	3	calculate_trinucleotide_mutations
+	1	clean
+	1	combine_mutations
+	1	delete_tabix
+	3	filter_multinucleotide_variants
+	3	get_cadd_scores
+	3	get_region_mutation
+	3	get_sequence_plus_two
+	3	run_fitDNM
+	3	transform_cadd_scores
+	25
+
+[Fri Feb 19 02:33:17 2021]
+rule get_cadd_scores:
+    input: epimap1.tabix.bed, /fitDNM/input_data/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: epimap1.initial.CADD.txt
+    jobid: 8
+    wildcards: genomic_region=epimap1
+
+[Fri Feb 19 02:33:18 2021]
+Finished job 8.
+1 of 25 steps (4%) done
+
+[Fri Feb 19 02:33:18 2021]
+rule transform_cadd_scores:
+    input: epimap1.initial.CADD.txt
+    output: epimap1.final.CADD.txt, epimap1.fasta
+    jobid: 7
+    wildcards: genomic_region=epimap1
+
+Removing temporary output file epimap1.initial.CADD.txt.
+Removing temporary output file epimap1.fasta.
+[Fri Feb 19 02:33:19 2021]
+Finished job 7.
+2 of 25 steps (8%) done
+
+[Fri Feb 19 02:33:19 2021]
+rule get_sequence_plus_two:
+    input: epimap1.tabix.bed, /fitDNM/input_data/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: epimap1_plus_two_init.fasta, epimap1.plustwo.bed, epimap1_plus_two.fasta
+    jobid: 6
+    wildcards: genomic_region=epimap1
+
+Removing temporary output file epimap1_plus_two_init.fasta.
+Removing temporary output file epimap1.plustwo.bed.
+[Fri Feb 19 02:33:19 2021]
+Finished job 6.
+3 of 25 steps (12%) done
+
+[Fri Feb 19 02:33:19 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, epimap1_plus_two.fasta, epimap1.tabix.bed
+    output: epimap1.mu.lis
+    jobid: 5
+    wildcards: genomic_region=epimap1
+
+Removing temporary output file epimap1_plus_two.fasta.
+[Fri Feb 19 02:33:19 2021]
+Finished job 5.
+4 of 25 steps (16%) done
+
+[Fri Feb 19 02:33:19 2021]
+rule get_sequence_plus_two:
+    input: epimap_3.tabix.bed, /fitDNM/input_data/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: epimap_3_plus_two_init.fasta, epimap_3.plustwo.bed, epimap_3_plus_two.fasta
+    jobid: 20
+    wildcards: genomic_region=epimap_3
+
+Removing temporary output file epimap_3_plus_two_init.fasta.
+Removing temporary output file epimap_3.plustwo.bed.
+[Fri Feb 19 02:33:20 2021]
+Finished job 20.
+5 of 25 steps (20%) done
+
+[Fri Feb 19 02:33:20 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, epimap_3_plus_two.fasta, epimap_3.tabix.bed
+    output: epimap_3.mu.lis
+    jobid: 19
+    wildcards: genomic_region=epimap_3
+
+Removing temporary output file epimap_3_plus_two.fasta.
+[Fri Feb 19 02:33:20 2021]
+Finished job 19.
+6 of 25 steps (24%) done
+
+[Fri Feb 19 02:33:20 2021]
+rule get_cadd_scores:
+    input: epimap_3.tabix.bed, /fitDNM/input_data/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: epimap_3.initial.CADD.txt
+    jobid: 22
+    wildcards: genomic_region=epimap_3
+
+[Fri Feb 19 02:33:21 2021]
+Finished job 22.
+7 of 25 steps (28%) done
+
+[Fri Feb 19 02:33:21 2021]
+rule transform_cadd_scores:
+    input: epimap_3.initial.CADD.txt
+    output: epimap_3.final.CADD.txt, epimap_3.fasta
+    jobid: 21
+    wildcards: genomic_region=epimap_3
+
+Removing temporary output file epimap_3.initial.CADD.txt.
+Removing temporary output file epimap_3.fasta.
+[Fri Feb 19 02:33:21 2021]
+Finished job 21.
+8 of 25 steps (32%) done
+
+[Fri Feb 19 02:33:21 2021]
+rule get_sequence_plus_two:
+    input: epimap2.tabix.bed, /fitDNM/input_data/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: epimap2_plus_two_init.fasta, epimap2.plustwo.bed, epimap2_plus_two.fasta
+    jobid: 13
+    wildcards: genomic_region=epimap2
+
+Removing temporary output file epimap2_plus_two_init.fasta.
+Removing temporary output file epimap2.plustwo.bed.
+[Fri Feb 19 02:33:25 2021]
+Finished job 13.
+9 of 25 steps (36%) done
+
+[Fri Feb 19 02:33:25 2021]
+rule calculate_trinucleotide_mutations:
+    input: /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, epimap2_plus_two.fasta, epimap2.tabix.bed
+    output: epimap2.mu.lis
+    jobid: 12
+    wildcards: genomic_region=epimap2
+
+Removing temporary output file epimap2_plus_two.fasta.
+[Fri Feb 19 02:33:25 2021]
+Finished job 12.
+10 of 25 steps (40%) done
+
+[Fri Feb 19 02:33:25 2021]
+rule get_cadd_scores:
+    input: epimap2.tabix.bed, /fitDNM/input_data/CADD_scores/whole_genome_SNVs.tsv.gz
+    output: epimap2.initial.CADD.txt
+    jobid: 15
+    wildcards: genomic_region=epimap2
+
+[Fri Feb 19 02:33:25 2021]
+Finished job 15.
+11 of 25 steps (44%) done
+
+[Fri Feb 19 02:33:25 2021]
+rule transform_cadd_scores:
+    input: epimap2.initial.CADD.txt
+    output: epimap2.final.CADD.txt, epimap2.fasta
+    jobid: 14
+    wildcards: genomic_region=epimap2
+
+Removing temporary output file epimap2.initial.CADD.txt.
+Removing temporary output file epimap2.fasta.
+[Fri Feb 19 02:33:25 2021]
+Finished job 14.
+12 of 25 steps (48%) done
+
+[Fri Feb 19 02:33:25 2021]
+rule get_region_mutation:
+    input: epimap1.tabix.bed, /fitDNM/input_data/variant_calls/dups_removed_denovo_variants_four_way_caller.txt
+    output: epimap1.lis
+    jobid: 4
+    wildcards: genomic_region=epimap1
+
+[Fri Feb 19 02:33:28 2021]
+Finished job 4.
+13 of 25 steps (52%) done
+
+[Fri Feb 19 02:33:28 2021]
+rule filter_multinucleotide_variants:
+    input: epimap1.lis
+    output: epimap1.snv.lis, epimap1.mnv.lis
+    jobid: 3
+    wildcards: genomic_region=epimap1
+
+Removing temporary output file epimap1.mnv.lis.
+[Fri Feb 19 02:33:28 2021]
+Finished job 3.
+14 of 25 steps (56%) done
+
+[Fri Feb 19 02:33:28 2021]
+rule run_fitDNM:
+    input: epimap1.snv.lis, epimap1.mu.lis, epimap1.final.CADD.txt
+    output: epimap1.fitDNM_CADD.txt
+    jobid: 2
+    wildcards: genomic_region=epimap1
+
+Removing temporary output file epimap1.snv.lis.
+Removing temporary output file epimap1.mu.lis.
+Removing temporary output file epimap1.final.CADD.txt.
+[Fri Feb 19 02:33:28 2021]
+Finished job 2.
+15 of 25 steps (60%) done
+
+[Fri Feb 19 02:33:28 2021]
+rule get_region_mutation:
+    input: epimap_3.tabix.bed, /fitDNM/input_data/variant_calls/dups_removed_denovo_variants_four_way_caller.txt
+    output: epimap_3.lis
+    jobid: 18
+    wildcards: genomic_region=epimap_3
+
+[Fri Feb 19 02:33:29 2021]
+Finished job 18.
+16 of 25 steps (64%) done
+
+[Fri Feb 19 02:33:29 2021]
+rule filter_multinucleotide_variants:
+    input: epimap_3.lis
+    output: epimap_3.snv.lis, epimap_3.mnv.lis
+    jobid: 17
+    wildcards: genomic_region=epimap_3
+
+Removing temporary output file epimap_3.mnv.lis.
+[Fri Feb 19 02:33:29 2021]
+Finished job 17.
+17 of 25 steps (68%) done
+
+[Fri Feb 19 02:33:29 2021]
+rule run_fitDNM:
+    input: epimap_3.snv.lis, epimap_3.mu.lis, epimap_3.final.CADD.txt
+    output: epimap_3.fitDNM_CADD.txt
+    jobid: 16
+    wildcards: genomic_region=epimap_3
+
+Removing temporary output file epimap_3.snv.lis.
+Removing temporary output file epimap_3.mu.lis.
+Removing temporary output file epimap_3.final.CADD.txt.
+[Fri Feb 19 02:33:30 2021]
+Finished job 16.
+18 of 25 steps (72%) done
+
+[Fri Feb 19 02:33:30 2021]
+rule get_region_mutation:
+    input: epimap2.tabix.bed, /fitDNM/input_data/variant_calls/dups_removed_denovo_variants_four_way_caller.txt
+    output: epimap2.lis
+    jobid: 11
+    wildcards: genomic_region=epimap2
+
+[Fri Feb 19 02:33:30 2021]
+Finished job 11.
+19 of 25 steps (76%) done
+
+[Fri Feb 19 02:33:30 2021]
+rule combine_mutations:
+    input: epimap1.lis, epimap2.lis, epimap_3.lis
+    output: test_regions.muts.report
+    jobid: 23
+
+Removing temporary output file epimap1.lis.
+Removing temporary output file epimap_3.lis.
+[Fri Feb 19 02:33:31 2021]
+Finished job 23.
+20 of 25 steps (80%) done
+
+[Fri Feb 19 02:33:31 2021]
+rule filter_multinucleotide_variants:
+    input: epimap2.lis
+    output: epimap2.snv.lis, epimap2.mnv.lis
+    jobid: 10
+    wildcards: genomic_region=epimap2
+
+Removing temporary output file epimap2.lis.
+Removing temporary output file epimap2.mnv.lis.
+[Fri Feb 19 02:33:31 2021]
+Finished job 10.
+21 of 25 steps (84%) done
+
+[Fri Feb 19 02:33:31 2021]
+rule run_fitDNM:
+    input: epimap2.snv.lis, epimap2.mu.lis, epimap2.final.CADD.txt
+    output: epimap2.fitDNM_CADD.txt
+    jobid: 9
+    wildcards: genomic_region=epimap2
+
+Removing temporary output file epimap2.snv.lis.
+Removing temporary output file epimap2.mu.lis.
+Removing temporary output file epimap2.final.CADD.txt.
+[Fri Feb 19 02:33:31 2021]
+Finished job 9.
+22 of 25 steps (88%) done
+
+[Fri Feb 19 02:33:31 2021]
+rule clean:
+    input: epimap1.fitDNM_CADD.txt, epimap2.fitDNM_CADD.txt, epimap_3.fitDNM_CADD.txt
+    output: test_regions.fitDNM.report
+    jobid: 1
+
+Removing temporary output file epimap1.fitDNM_CADD.txt.
+Removing temporary output file epimap2.fitDNM_CADD.txt.
+Removing temporary output file epimap_3.fitDNM_CADD.txt.
+[Fri Feb 19 02:33:31 2021]
+Finished job 1.
+23 of 25 steps (92%) done
+
+[Fri Feb 19 02:33:31 2021]
+rule delete_tabix:
+    input: test_regions.muts.report, test_regions.fitDNM.report, epimap1.tabix.bed, epimap2.tabix.bed, epimap_3.tabix.bed
+    output: done.txt
+    jobid: 24
+
+[Fri Feb 19 02:33:31 2021]
+Finished job 24.
+24 of 25 steps (96%) done
+
+[Fri Feb 19 02:33:31 2021]
+localrule all:
+    input: test_regions.fitDNM.report, test_regions.muts.report, /fitDNM/input_data/CADD_scores/whole_genome_SNVs.tsv.gz, /fitDNM/input_data/variant_calls/dups_removed_denovo_variants_four_way_caller.txt, /fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt, done.txt
+    jobid: 0
+
+[Fri Feb 19 02:33:31 2021]
+Finished job 0.
+25 of 25 steps (100%) done
+Complete log: /storage1/fs1/tychele/Active/projects/fitDNM/code/.snakemake/log/2021-02-19T023317.146648.snakemake.log
