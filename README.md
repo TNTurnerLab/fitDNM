@@ -20,8 +20,7 @@
 1. Download CADD scores and check md5sums
 2. Build dockerfile and push to dockerhub
 3. Modify .json  `fitDNM_genome_wide.json` to point to the described input files and change parameters
-4. Run fitDNM snakemake
-Once finished running, two files should be generated, `.fitDNM.report` and `.muts.report`. Where `.fitDNM.report` contains the results of fitDNM for all elements in the bedfile which should consist of 8 columns for elements that have SNVs and `.muts.report` that summarizes the mutations in each element.
+4. Run fitDNM snakemake. Once finished running, two files should be generated, `.fitDNM.report` and `.muts.report`. Where `.fitDNM.report` contains the results of fitDNM for all elements in the bedfile which should consist of 8 columns for elements that have SNVs and `.muts.report` that summarizes the mutations in each element.
 
 ### LSF submission example
 `bsub  -R 'rusage[mem=10GB]' -n 1 -a 'docker(docker/dockerfile)' /opt/conda/envs/snakemake/bin/snakemake -s /path/to/fitDNM/fitDNM_snakemake/fitDNM_genome_wide.smk --cores 1 `
