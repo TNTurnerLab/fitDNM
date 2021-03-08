@@ -90,6 +90,7 @@ rule get_region_mutation:
             ID,variant_position,ref,alt = line_entry[3],line_entry[4],line_entry[5],line_entry[6]
             out_prefix = str(ID)
 
+            #gets the number of the chromosome 
             number_only = line_entry[0].split('r')[1]
 
 
@@ -158,7 +159,7 @@ rule calculate_trinucleotide_mutations:
                 mutation_rates[processed_entry[0]] = [processed_entry[1],processed_entry[2],processed_entry[3],processed_entry[4]]
 
 
-        #gets coordinates from bed file, returns list of lists, change that later
+        #gets coordinates from bed file
         coordinates = [[entry for entry in region.strip().split('\t')] for region in open(input[2])]
 
         # opens output mutation file and writes header
