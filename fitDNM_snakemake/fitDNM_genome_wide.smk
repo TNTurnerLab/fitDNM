@@ -53,11 +53,10 @@ rule all:
     TRINUCLEOTIDE_MUT_RATE,
     REGIONS_OF_INTEREST,
     "intersected_%s" % BED_FILE_NAME
-    #"done.txt"
 
 
 
-# Becasue the trinucleotide mutation rate calculates the mutation rate of the middle nucleotide in
+# Because the trinucleotide mutation rate calculates the mutation rate of the middle nucleotide in
 # a trinucleotide we have to get a sequence that is plus one to each end because otherwise you lose
 # the end bases in the final analysis. The best way to do this is to just grab the sequence from the CADD score
 # file again.
@@ -94,7 +93,7 @@ rule get_region_mutation:
             number_only = line_entry[0].split('r')[1]
 
 
-            # checks for numer of variants and if more than one variant
+            # checks for number of variants and if more than one variant
             # creates lists hold the information of each variant
             if len(variant_position.split(',')) > 1 :
                 variant_coordinates = variant_position.split(',')
@@ -137,11 +136,10 @@ rule get_region_mutation:
 rule calculate_trinucleotide_mutations:
     input: mut_rate=TRINUCLEOTIDE_MUT_RATE,sequence="{genomic_region}_plus_two.fasta",coordinates="{genomic_region}.tabix.bed",wait_file="{genomic_region}.lis",wait2_file="{genomic_region}.snv.lis",wait3_file="{genomic_region}.mnv.lis"
     params: annotation="{genomic_region}"
-    #log:"{genomic_region}_trinuc.log"
     output:temp("{genomic_region}.mu.lis")
     run:
-        # initialize dictionary to hold the mutation rates for different trinucleotides
-        # where each trinucleotide is a key and the mutation of rate of the middle nucletotide
+        # Initializes dictionary to hold the mutation rates for different trinucleotides
+        # where each trinucleotide is a key and the mutation of rate of the middle nucleotide
         # to change are the values
         # order of values is: A T C G
         mutation_rates = {}
@@ -198,7 +196,6 @@ rule run_fitDNM:
     params: number_of_males=MALES,number_of_females=FEMALES, R_code_path="%s" % FITDNM_PATH, saddle_point_path=SADDLE_POINT_PATH, annotation="{genomic_region}"
     shell:"""
     Rscript {params.R_code_path}fitDNM.CADD.R {params.number_of_males} {params.number_of_females} {input.mutation_list} {input.all_muts} {input.CADD_file} {output.init} {params.saddle_point_path} {params.annotation}
-    rm {input.tabix}
     """
 
 # Adds all fitDNM output into one file
@@ -216,14 +213,6 @@ rule combine_mutations:
     output: OUTPUT_FILE_MUTS
     shell:"""
     echo "chr position Ref Alt annotation" > {output}
-    cat {input.mut_files} | awk ' NR>1 {{print $1,$2,$3,$4,$5}}' >> {output}
+    cat {input.mut_files} | awk ' NR%2==1 {{print $1,$2,$3,$4,$5}}' >> {output}
+    rm -rf *.tabix.bed
     """
-
-#
-# rule delete_tabix:
-#     input:output1=OUTPUT_FILE_MUTS,output2=OUTPUT_FILE_FITDNM,tabix=expand("{genomic_region}.tabix.bed",genomic_region=region_annotations)
-#     output: "done.txt"
-#     shell:"""
-#     rm -rf {input.tabix}
-#     touch {output}
-#     """
