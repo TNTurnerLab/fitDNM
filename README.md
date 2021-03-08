@@ -29,20 +29,17 @@ Once finished running, two files should be generated, `.fitDNM.report` and `.mut
 
 ### Local run example:
 - Assuming that your data and fitDNM snakemake are in separate paths and that you have built the dockerfile and pushed it to dockerhub, you could run the following. Just be sure to update the paths in `fitDNM_genome_wide.json` and the path to the configfile in `fitDNM_genome_wide.smk` to reflect what you are mounting in the docker run command.
-`docker run \
--v "/path/to/fitDNM/fitDNM_snakemake:/fitDNM_snakemake" \
--v "/path/to/data:/data" \
-user/fitDNM_snakemake:latest /opt/conda/envs/snakemake/bin/snakemake -s /fitDNM_snakemake/fitDNM_snakemake/fitDNM_genome_wide.smk --cores 1`
+`docker run -v "/path/to/fitDNM/fitDNM_snakemake:/fitDNM_snakemake" -v "/path/to/data:/data" user/fitDNM_snakemake:latest /opt/conda/envs/snakemake/bin/snakemake -s /fitDNM_snakemake/fitDNM_snakemake/fitDNM_genome_wide.smk --cores 1`
 
 
 # Input files:
 - CADD files and md5sums https://cadd.gs.washington.edu/download :
   - `whole_genome_SNVs.tsv.gz  faaa80ef3948cf44e56a3629a90cdaaa`  
   - `whole_genome_SNVs.tsv.gz.tbi  4843cab24dd4992bb0cc5f1a7ebc807a`
-     Note: we only support CADD score release v1.6 for hg38
+     Note: we only support CADD score release v1.6 for hg38, description: All possible SNVs of GRCh38/hg38
 - `mutation_rate_by_trinucleotide_matrix.txt ca2faad78f1055c266b5a8451bebf1cb`
 - Bed file that using standard format of `chr +'\t' + start + '\t' + annotation + '\n'` of the regions of interest
-  - _each entry must have a unique annotation_
+  - *each entry must have a unique annotation*
 - Mutation file, to integrate automatically into workflow the mutation file must be ordered in the following
   `holder_column + " " + chromosome + " " +  position + " " + reference + " " + alternate + '\n'`
 
@@ -65,7 +62,7 @@ user/fitDNM_snakemake:latest /opt/conda/envs/snakemake/bin/snakemake -s /fitDNM_
 
 
 ### Known issues:
-- tabix continually runs on a small amount of files on runs that have a large amount of elements scanned 
+- tabix continually runs on a small amount of files on runs that have a large amount of elements scanned
 
 ### To do list:
 - [x] Update rule get_region_mutation to use tabix instead of python script to improve speed (3/8/21: implemented bedtools instead)
