@@ -63,4 +63,4 @@
 
 
 ### Known issues:
-- tabix continually runs on a small amount of files on runs that have a large amount of elements scanned (fixed 3/18/21)
+- tabix continually runs on a small amount of files on runs that have a large amount of elements scanned (fixed 3/8/21)

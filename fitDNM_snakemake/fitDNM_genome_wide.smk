@@ -69,7 +69,8 @@ rule get_sequence_plus_two_and_cadd_scores:
     cat {input.region} |  awk -v s=0 '{{print $1, int($2)-1,int($3)+1}}' | tabix {input.scores} -R - | awk '!array[$2]++'  | awk '{{print $3}}' | tr -d "\n\r" > {output.sequence_plus_two_final}
     """
 
-
+# Uses bedtools to number of variatns and variant position and status for each
+# entry in the bedfile 
 rule intersect:
     input:regions=REGIONS_OF_INTEREST ,DNMs=MUTATION_CALLS
     output:intersected=temp("intersected_%s" % BED_FILE_NAME)
@@ -77,7 +78,9 @@ rule intersect:
     cat {input.DNMs} | awk '{{print $2,int($3),int($3)+1,$4,$5}}' OFS='\t' | /opt/conda/bin/bedtools  intersect -a {input.regions} -b - -wa -wb | /opt/conda/bin/bedtools groupby -i - -g 1-4 -c 6,8,9 -o collapse,collapse,collapse > {output.intersected}
     """
 
-
+# Loops through intersected file and creates a file for each three files for each
+# entry in the bed file, 1. a list of all mutations, 2. a list of all SNVs, and
+# 3. a list of all MNVs
 rule get_region_mutation:
     input:"intersected_%s" % BED_FILE_NAME
     output:temp(expand("{genomic_region}.lis",genomic_region=region_annotations)),temp(expand("{genomic_region}.snv.lis",genomic_region=region_annotations)),temp(expand("{genomic_region}.mnv.lis",genomic_region=region_annotations))
@@ -90,12 +93,12 @@ rule get_region_mutation:
             ID,variant_position,ref,alt = line_entry[3],line_entry[4],line_entry[5],line_entry[6]
             out_prefix = str(ID)
 
-            #gets the number of the chromosome 
+            #gets the number of the chromosome
             number_only = line_entry[0].split('r')[1]
 
 
             # checks for number of variants and if more than one variant
-            # creates lists hold the information of each variant
+            # creates lists to hold the information of each variant
             if len(variant_position.split(',')) > 1 :
                 variant_coordinates = variant_position.split(',')
                 ref_alleles = ref.split(',')
@@ -140,8 +143,8 @@ rule calculate_trinucleotide_mutations:
     output:temp("{genomic_region}.mu.lis")
     run:
         # Initializes dictionary to hold the mutation rates for different trinucleotides
-        # where each trinucleotide is a key and the mutation of rate of the middle nucleotide
-        # to change are the values
+        # where each trinucleotide is a key and the mutation rate of the middle nucleotide
+        # are the values
         # order of values is: A T C G
         mutation_rates = {}
 
@@ -149,17 +152,17 @@ rule calculate_trinucleotide_mutations:
         counter = 0
 
         # opens mutation rate file and loops through it
-        # and uses a counter to skip the header
+        # and uses the counter to skip the header
         for trinucleotide_entry in open(input[0]):
             counter += 1
             if counter > 1:
 
-                # gets mutation trinucleotide and all corresponding mutation rates
+                # gets trinucleotide and all corresponding mutation rates
                 processed_entry = trinucleotide_entry.strip().split()
                 mutation_rates[processed_entry[0]] = [processed_entry[1],processed_entry[2],processed_entry[3],processed_entry[4]]
 
 
-        #gets coordinates from bed file
+        # gets coordinates from bed file
         coordinates = [[entry for entry in region.strip().split('\t')] for region in open(input[2])]
 
         # opens output mutation file and writes header
@@ -170,12 +173,12 @@ rule calculate_trinucleotide_mutations:
 
             # loops through file to get fasta and
             # then loops through sequence, adding to
-            # the sequence counter for nucleotide
+            # the sequence counter for each nucleotide
             for line in open(input[1]):
                 for x in range(len(line)):
                         position_counter += 1
 
-                        # calculates current position and extracts the tri nucleotide
+                        # calculates current position and extracts the trinucleotide
                         # and checks to make sure it is a trinucleotide
                         current_position = int(coordinates[0][1]) + position_counter
                         trinucleotide = line[x:x+3]
@@ -208,12 +211,12 @@ rule clean:
     cat {input} | awk '{{print $1,$2,$3,$4,$5,$6,$7,$8}}' >> {output}
     """
 
-# Combines all mutations into one file
+# Combines all mutation files into one file
 rule combine_mutations:
     input: mut_files=expand("{genomic_region}.lis",genomic_region=region_annotations),wait_files=OUTPUT_FILE_FITDNM
     output: OUTPUT_FILE_MUTS
     shell:"""
     echo "chr position Ref Alt annotation" > {output}
-    cat {input.mut_files} | awk ' NR%2==1 {{print $1,$2,$3,$4,$5}}' >> {output}
+    cat {input.mut_files} | awk '{{print $1,$2,$3,$4,$5}}' >> {output}
     rm -rf *.tabix.bed
     """
