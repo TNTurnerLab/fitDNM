@@ -140,10 +140,10 @@ if (nrow(DNM) > 0){
 
 		colnames(stat.list) = c("geneID","nsample.adj","nsnv","nsnv.analysis","ndenovo","score","pvalue.fitDNM","pvalue.Poisson")
 
-	    write.table(stat.list,file=resultFile,quote=F,row.names=F,col.names=T)
+	    write.table(stat.list,file=resultFile,quote=F,row.names=F,col.names=F)
 }else{
 	out_file <- data.frame(c(paste("No SNVs in",annotation,sep =" ")))
 	print(annotation)
 	colnames(out_file) <- c("header")
-	write.table(out_file,file=resultFile,quote=F,row.names=F,col.names=T)
+	write.table(out_file,file=resultFile,quote=F,row.names=F,col.names=F)
 }

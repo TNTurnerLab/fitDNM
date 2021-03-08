@@ -39,5 +39,4 @@ write(sequence, file=sequence_file_name)
 #write(sequence, file=snakemake@output[[2]])
 
 #write.table(rearranged_CADD_file,file=snakemake@output[[1]], sep='\t',col.names=TRUE,quote=FALSE,row.names = FALSE)
-
 write.table(rearranged_CADD_file,file=scores_file_name, sep='\t',col.names=TRUE,quote=FALSE,row.names = FALSE)

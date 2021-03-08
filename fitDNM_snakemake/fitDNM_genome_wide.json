@@ -1,10 +1,11 @@
 {
-  "regions_of_interest": "/fitDNM/input_data/target_regions/proband_only_epimap_enhacners_fitDNM_format.bed",
   "mutation_calls": "/fitDNM/input_data/variant_calls/dups_removed_denovo_variants_four_way_caller.txt",
   "cadd_score_file": "/fitDNM/input_data/CADD_scores/whole_genome_SNVs.tsv.gz",
   "trinucleotide_mut_rate": "/fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt",
   "fitDNM_R_path": "/fitDNM/code/fitDNM_R_code/",
   "saddle_point_path": "/fitDNM/code/fitDNM_R_code/double_saddle_point_approx_8_7_2014.R",
-  "sample_size": "2666",
-  "transform_cadd_scores_script_path":"/fitDNM/code/fitDNM_snakemake"
+  "males": "2666",
+  "females": "0",
+  "transform_cadd_scores_script_path":"/fitDNM/code/fitDNM_snakemake",
+  "regions_of_interest":
 }
