@@ -31,7 +31,7 @@
   `holder_column + " " + chromosome + " " +  position + " " + reference + " " + alternate + '\n'`
 - Ensure that after downloading all files that all md5sums match those provided above
 
-While the link to the CADD files are provided above, the rest of the files are provided by the user.
+While the link to the CADD files are provided above and the `mutation_rate_by_trinucleotide_matrix.txt` file is provided here, the bedfile and variant files are provided by the user 
 
 
 ### wget commands to download CADD scores:
@@ -89,4 +89,4 @@ For those not familiar with docker please see https://docs.docker.com/get-starte
 
 
 ### Known issues:
-- tabix continually runs on a small amount of files on runs that have a large amount of elements scanned (fixed 3/8/21)
+- tabix continually runs on a small amount of files on runs that have a large amount of elements scanned (fixed 3/8/
