@@ -37,6 +37,9 @@
 | whole_genome_SNVs.tsv.gz|  https://cadd.gs.washington.edu/download | faaa80ef3948cf44e56a3629a90cdaaa` | `cadd_score_file`| 
 |whole_genome_SNVs.tsv.gz.tbi| https://cadd.gs.washington.edu/download |  4843cab24dd4992bb0cc5f1a7ebc807a | NA |
 | mutation_rate_by_trinucleotide_matrix.txt | Here | ca2faad78f1055c266b5a8451bebf1cb | trinucleotide_mut_rate | 
+| Variant file | User provided | NA| mutation_calls | 
+| Bed file | User probided | NA | regions_of_interes | 
+
 
 While the link to the CADD files are provided above and the `mutation_rate_by_trinucleotide_matrix.txt` file is provided here, the bedfile and variant files are provided by the user
 
