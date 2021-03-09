@@ -35,10 +35,17 @@ R and the following R packages:<br>
 `doParallel` (https://cran.r-project.org/web/packages/doParallel/doParallel.pdf)<br>
 
 #### Usage:
-We have created a dockerfile available here and (insert link once docker file is built on lab docker repo) that builds a container with all of the requirements. If running locally with docker see the following example code and be sure to update the paths being mounted with `-v` to reflect the actual paths to the data and location of the fitDNM_snakemake code 
+We have created a dockerfile available here and (insert link once docker file is built on lab docker repo) that builds a container with all of the requirements. If running locally with docker see the following example code and be sure to update the paths being mounted with `-v` to reflect the actual paths to the data and location of the fitDNM_snakemake code. See below for full checklist  
 ```
 docker run -v "/path/to/fitDNM/fitDNM_snakemake:/fitDNM_snakemake" -v "/path/to/data:/data" user/fitDNM_snakemake:latest /opt/conda/envs/snakemake/bin/snakemake -s /fitDNM_snakemake/fitDNM_genome_wide.smk --cores 1
 ```
+##### Outline of how to run :
+1. Download CADD scores and check md5sums
+2. Build dockerfile and push to dockerhub, alternatively pull from (insert link)
+3. Format bed and variant file 
+4. Modify `fitDNM_genome_wide.json` and  to point to the described input files and change parameters also outlined below 
+5. Run fitDNM snakemake. Once finished running, two files should be generated, `.fitDNM.report` and `.muts.report` both detailed below
+
 
 
 
@@ -55,12 +62,11 @@ docker run -v "/path/to/fitDNM/fitDNM_snakemake:/fitDNM_snakemake" -v "/path/to/
  - `.muts.report` summarizes the mutations in each element.
 
 
-## How to run:
+## Outline of how to run :
 1. Download CADD scores and check md5sums
 2. Build dockerfile and push to dockerhub
-3. Modify `fitDNM_genome_wide.json` and  to point to the described input files and change parameters
-4. Modify `fitDNM_genome_wide.smk` to point to `fitDNM_genome_wide.json` path that is inside the docker image
-5. Run fitDNM snakemake. Once finished running, two files should be generated, `.fitDNM.report` and `.muts.report` both detailed below
+3. Modify `fitDNM_genome_wide.json` and  to point to the described input files and change parameters also outlined below 
+4. Run fitDNM snakemake. Once finished running, two files should be generated, `.fitDNM.report` and `.muts.report` both detailed below
 
 
 ### LSF submission example
