@@ -54,7 +54,7 @@ __config file__
   "males": "number_of_males_in_study",
   "females": "number_of_females_in_study",
   "transform_cadd_scores_script_path":"/path/to/fitDNM_snakemake",
-  "regions_of_interest": 
+  "regions_of_interest": "/path/to/bedfile"
 }
 ```
 
