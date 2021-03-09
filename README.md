@@ -31,6 +31,11 @@
   `holder_column + " " + chromosome + " " +  position + " " + reference + " " + alternate + '\n'`
 - Ensure that after downloading all files that all md5sums match those provided above
 
+
+| File name | Source | MD5Sum | annotation in configfile | 
+|-----------| -------|------- | -------------------------|
+
+
 While the link to the CADD files are provided above and the `mutation_rate_by_trinucleotide_matrix.txt` file is provided here, the bedfile and variant files are provided by the user
 
 
