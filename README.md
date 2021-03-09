@@ -26,14 +26,14 @@ Variant file: for the variant file to integrate automatically into the workflow 
 `holder_column + " " + chromosome + " " +  position + " " + reference + " " + alternate + '\n'`
 
 #### Requirements: 
-- Tabix (http://www.htslib.org/doc/tabix.html)
-- Snakemake (https://snakemake.readthedocs.io/en/stable/)
-- Bedtools (https://bedtools.readthedocs.io/en/latest/)
-- R and the following R packages:
-  - foreach (https://cran.r-project.org/web/packages/foreach/foreach.pdf)
-  - iterators (https://cran.r-project.org/web/packages/iterators/iterators.pdf)
-  - doParallel (https://cran.r-project.org/web/packages/doParallel/doParallel.pdf)
-  - 
+`Tabix` (http://www.htslib.org/doc/tabix.html)
+`Snakemake` (https://snakemake.readthedocs.io/en/stable/)
+`Bedtools` (https://bedtools.readthedocs.io/en/latest/)
+R and the following R packages:
+`foreach` (https://cran.r-project.org/web/packages/foreach/foreach.pdf)
+`iterators` (https://cran.r-project.org/web/packages/iterators/iterators.pdf)
+`doParallel` (https://cran.r-project.org/web/packages/doParallel/doParallel.pdf)
+ 
 
 ### Files created in pipeline:
 ### Temporary files (fitDNM input)
