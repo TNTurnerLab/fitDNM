@@ -33,7 +33,16 @@ R and the following R packages:<br>
 `foreach` (https://cran.r-project.org/web/packages/foreach/foreach.pdf)<br>
 `iterators` (https://cran.r-project.org/web/packages/iterators/iterators.pdf)<br>
 `doParallel` (https://cran.r-project.org/web/packages/doParallel/doParallel.pdf)<br>
- 
+
+#### Usage:
+We have created a dockerfile available here and (insert link once docker file is built on lab docker repo) that builds a container with all of the requirements. If running locally with docker see the following example code 
+```
+docker run -v "/path/to/fitDNM/fitDNM_snakemake:/fitDNM_snakemake" -v "/path/to/data:/data" user/fitDNM_snakemake:latest /opt/conda/envs/snakemake/bin/snakemake -s /fitDNM_snakemake/fitDNM_genome_wide.smk --cores 1
+```
+
+
+
+
 
 ### Files created in pipeline:
 ### Temporary files (fitDNM input)
