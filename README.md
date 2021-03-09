@@ -16,7 +16,7 @@
 - Originally developed by the Allen lab (http://people.duke.edu/~asallen/Software.html) in Jiang et al 2015, *Am. J. Hum. Genet.*  (https://www.cell.com/ajhg/fulltext/S0002-9297(15)00277-3)
 
 
-# Input files:
+
 - CADD files and their corresponding md5sums https://cadd.gs.washington.edu/download :
   - `whole_genome_SNVs.tsv.gz  faaa80ef3948cf44e56a3629a90cdaaa` corresponds to `cadd_score_file` in config file  
   - `whole_genome_SNVs.tsv.gz.tbi  4843cab24dd4992bb0cc5f1a7ebc807a`
@@ -31,7 +31,7 @@
   `holder_column + " " + chromosome + " " +  position + " " + reference + " " + alternate + '\n'`
 - Ensure that after downloading all files that all md5sums match those provided above
 
-
+### Input files:
 | File name | Source | MD5Sum | annotation in configfile | 
 |-----------| -------|------- | -------------------------|
 | whole_genome_SNVs.tsv.gz|  https://cadd.gs.washington.edu/download | faaa80ef3948cf44e56a3629a90cdaaa` | `cadd_score_file`| 
@@ -40,13 +40,11 @@
 | Variant file | User provided | NA| mutation_calls | 
 | Bed file | User probided | NA | regions_of_interes | 
 
-
-While the link to the CADD files are provided above and the `mutation_rate_by_trinucleotide_matrix.txt` file is provided here, the bedfile and variant files are provided by the user
-
-
-### wget commands to download CADD scores:
-- `wget https://krishna.gs.washington.edu/download/CADD/v1.6/GRCh38/whole_genome_SNVs.tsv.gz`
-- `wget https://krishna.gs.washington.edu/download/CADD/v1.6/GRCh38/whole_genome_SNVs.tsv.gz.tbi`
+All CADD score files can be downloaded from  https://cadd.gs.washington.edu/download using All possible SNVs of GRCh38/hg38 US link. Currently we oinly support release v1.6 for GRCh38/hg38  or alternatively use the wget commands linked below 
+```
+wget https://krishna.gs.washington.edu/download/CADD/v1.6/GRCh38/whole_genome_SNVs.tsv.gz
+wget https://krishna.gs.washington.edu/download/CADD/v1.6/GRCh38/whole_genome_SNVs.tsv.gz.tbi
+```
 
 
 # Files created in pipeline:
