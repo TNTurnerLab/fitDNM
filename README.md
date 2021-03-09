@@ -12,11 +12,12 @@ fitDNM was originally developed by the Allen lab (http://people.duke.edu/~asalle
 | Variant file | User provided | NA| `mutation_calls` | 
 | Bed file | User provided | NA | `regions_of_interest` | 
 
-All CADD score files can be downloaded from  https://cadd.gs.washington.edu/download using All possible SNVs of GRCh38/hg38 US link, make sure to download both the score file and tabix index file . Currently we oinly support release v1.6 for GRCh38/hg38  or alternatively use the wget commands below and be sure to check MD5sums after downloading to ensure the download was sucessful 
+All CADD score files can be downloaded from  https://cadd.gs.washington.edu/download using All possible SNVs of GRCh38/hg38 US link, make sure to download both the score file and tabix index file or alternatively use the wget commands below and be sure to check MD5sums after downloading to ensure the download was sucessful  . 
 ```
 wget https://krishna.gs.washington.edu/download/CADD/v1.6/GRCh38/whole_genome_SNVs.tsv.gz
 wget https://krishna.gs.washington.edu/download/CADD/v1.6/GRCh38/whole_genome_SNVs.tsv.gz.tbi
 ```
+Currently we only support release v1.6 for GRCh38/hg38 
 
 #### Formatting the user provided inputs:
 Bed file: For the user provided bed file please format using standard format with an annotation column for each entry:  
