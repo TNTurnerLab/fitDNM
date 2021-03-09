@@ -31,7 +31,7 @@
   `holder_column + " " + chromosome + " " +  position + " " + reference + " " + alternate + '\n'`
 - Ensure that after downloading all files that all md5sums match those provided above
 
-While the link to the CADD files are provided above and the `mutation_rate_by_trinucleotide_matrix.txt` file is provided here, the bedfile and variant files are provided by the user 
+While the link to the CADD files are provided above and the `mutation_rate_by_trinucleotide_matrix.txt` file is provided here, the bedfile and variant files are provided by the user
 
 
 ### wget commands to download CADD scores:
@@ -40,10 +40,12 @@ While the link to the CADD files are provided above and the `mutation_rate_by_tr
 
 
 # Files created in pipeline:
+### Temporary files (fitDNM input)
  - `.CADD.txt`: comprehensive list of CADD scores, this table is in a different format then the one downloaded from the CADD website, where instead of each possible change for a given nucleotide is an entry, each nucleotide is an entry and the changes are columns. The _PHRED_ score is used for fitDNM, not the raw score.
  - `.lis`: list of mutations in your region of interest, columns should be chr, pos, ref, alt, gene
  - `mutation_rate_by_trinucleotide_matrix.txt`: The frequencies of mutations for each given trinucleotide. In this file what you're looking at is the frequency for *second* nucleotide  being changed
  - `.mu.lis`: utilizes the trinucleotide mutation rate frequencies to calculate the mutation rate for every possible change
+### Final output
  - `.fitDNM.report` contains the results of fitDNM for all elements in the bedfile, which should consist of 8 columns for elements that have SNVs
  - `.muts.report` summarizes the mutations in each element.
 
@@ -89,4 +91,4 @@ For those not familiar with docker please see https://docs.docker.com/get-starte
 
 
 ### Known issues:
-- tabix continually runs on a small amount of files on runs that have a large amount of elements scanned (fixed 3/8/
+- tabix continually runs on a small amount of files on runs that have a large amount of elements scanned (fixed 3/8/21)
