@@ -31,7 +31,7 @@
   `holder_column + " " + chromosome + " " +  position + " " + reference + " " + alternate + '\n'`
 - Ensure that after downloading all files that all md5sums match those provided above
 
-### Input files:
+### Input files and download links:
 | File name | Source | MD5Sum | annotation in configfile | 
 |-----------| -------|------- | -------------------------|
 | whole_genome_SNVs.tsv.gz|  https://cadd.gs.washington.edu/download | faaa80ef3948cf44e56a3629a90cdaaa` | `cadd_score_file`| 
@@ -40,16 +40,18 @@
 | Variant file | User provided | NA| `mutation_calls` | 
 | Bed file | User provided | NA | `regions_of_interest` | 
 
-All CADD score files can be downloaded from  https://cadd.gs.washington.edu/download using All possible SNVs of GRCh38/hg38 US link. Currently we oinly support release v1.6 for GRCh38/hg38  or alternatively use the wget commands below and be sure to check MD5sums after downloading to ensure the download was sucessful 
+All CADD score files can be downloaded from  https://cadd.gs.washington.edu/download using All possible SNVs of GRCh38/hg38 US link, make sure to download both the score file and tabix index file . Currently we oinly support release v1.6 for GRCh38/hg38  or alternatively use the wget commands below and be sure to check MD5sums after downloading to ensure the download was sucessful 
 ```
 wget https://krishna.gs.washington.edu/download/CADD/v1.6/GRCh38/whole_genome_SNVs.tsv.gz
 wget https://krishna.gs.washington.edu/download/CADD/v1.6/GRCh38/whole_genome_SNVs.tsv.gz.tbi
 ```
 
-#### Formatting for user provided inputs:
-For the user provided bed file please format using standard format with an annotation column for each entry:  
-`chr +'\t' + start + '\t' + annotation + '\n'` <br/>  and make sure that each entry has a unique annotaiton 
+#### Formatting the user provided inputs:
+Bed file: For the user provided bed file please format using standard format with an annotation column for each entry:  
+`chr +'\t' + start + '\t' + annotation + '\n'` *and make sure that each entry has a unique annotation* 
 
+Variant file: for the variant file to integrate automatically into the workflow the file must be ordered in the following way:
+`holder_column + " " + chromosome + " " +  position + " " + reference + " " + alternate + '\n'`
 
 ### Files created in pipeline:
 ### Temporary files (fitDNM input)
