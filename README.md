@@ -57,7 +57,7 @@ __config file__
   "regions_of_interest": "/path/to/bedfile"
 }
 ```
-To make running this pipeline easier when using docker, we suggest that you keep all files in one parent directory that way you can run a single export or `-v` command (e.g., an input_data direcotry that has different folders for CADD scores, variants, and regions of interest)
+To make running this pipeline easier when using docker, we suggest that you keep all files in one parent directory that way you can run a single export or `-v` command (e.g., an input_data directory that has different folders for CADD scores, variants, and regions of interest)
 
 
 Note: We recommend creating a working directory when running this pipeline as it generates many different temporary files need to run fitDNM
