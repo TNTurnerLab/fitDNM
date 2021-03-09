@@ -1,13 +1,4 @@
 # fitDNM
-### Evin Padhi
-### Last updated: 3/8/21
-### Washington University in St. Louis
-### School of Medicine, Department of Genetics
-### Laboratory of Dr. Tychele Turner
-### Snakefile for running fitDNM and all preprocessing steps
-### Contact: evin.padhi@wustl.edu
-### http://turnerlab.wustl.edu
-
 
 ### Purpose:
 - To create a workflow that can take in a set of genomic coordinates, variants, CADD scores, and mutations rates to run through fitDNM in a high-throughput manner
@@ -15,21 +6,6 @@
 ### fitDNM:
 - Originally developed by the Allen lab (http://people.duke.edu/~asallen/Software.html) in Jiang et al 2015, *Am. J. Hum. Genet.*  (https://www.cell.com/ajhg/fulltext/S0002-9297(15)00277-3)
 
-
-
-- CADD files and their corresponding md5sums https://cadd.gs.washington.edu/download :
-  - `whole_genome_SNVs.tsv.gz  faaa80ef3948cf44e56a3629a90cdaaa` corresponds to `cadd_score_file` in config file  
-  - `whole_genome_SNVs.tsv.gz.tbi  4843cab24dd4992bb0cc5f1a7ebc807a`
-  -  Note we only support CADD score release v1.6 for hg38 (file description: All possible SNVs of GRCh38/hg38, US link) and ensure both the `.tbi` file and `.tsv.gz` are downlaoded in the same directory
-- `mutation_rate_by_trinucleotide_matrix.txt ca2faad78f1055c266b5a8451bebf1cb` corresponds to `trinucleotide_mut_rate` in config file  
-- Bed file that corresponds to the genomic regions to be tested in fitDNM
-  - please use standard format of `chr +'\t' + start + '\t' + annotation + '\n'`, make sure there are no extra columns after the fourth column   
-  - corresponds to `regions_of_interest` in config file
-  - _each entry must have a unique annotation_
-- Variant file, corresponds to `mutation_calls` in config file
-  - to integrate automatically into workflow the mutation file must be ordered in the following
-  `holder_column + " " + chromosome + " " +  position + " " + reference + " " + alternate + '\n'`
-- Ensure that after downloading all files that all md5sums match those provided above
 
 ### Input files and download links:
 | File name | Source | MD5Sum | annotation in configfile | 
@@ -46,12 +22,16 @@ wget https://krishna.gs.washington.edu/download/CADD/v1.6/GRCh38/whole_genome_SN
 wget https://krishna.gs.washington.edu/download/CADD/v1.6/GRCh38/whole_genome_SNVs.tsv.gz.tbi
 ```
 
+
+
 #### Formatting the user provided inputs:
 Bed file: For the user provided bed file please format using standard format with an annotation column for each entry:  
 `chr +'\t' + start + '\t' + annotation + '\n'` *and make sure that each entry has a unique annotation* 
 
 Variant file: for the variant file to integrate automatically into the workflow the file must be ordered in the following way:
 `holder_column + " " + chromosome + " " +  position + " " + reference + " " + alternate + '\n'`
+
+
 
 ### Files created in pipeline:
 ### Temporary files (fitDNM input)
