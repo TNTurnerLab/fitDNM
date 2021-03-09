@@ -72,7 +72,7 @@ __Running on LSF:__
 If running on an LSF server see below, be sure to follow the same steps and update all paths
 
 ```
-export LSF_DOCKER_VOLUMES="/path/to/fitDNM_directory:/fitDNM"
+export LSF_DOCKER_VOLUMES="/path/to/fitDNM_directory:/fitDNM /path/to/data:/data"
 bsub  -R 'rusage[mem=10GB]' -n 1 -a 'docker(docker/dockerfile)' /opt/conda/envs/snakemake/bin/snakemake -s /fitDNM/fitDNM_snakemake/fitDNM_genome_wide.smk --cores 1 
 ```
 __Wrapper script:__ we also provide an example of a wrapper script that could be used on an LSF sever after updating the config file to point to all files needed except for the bedfile. The idea of this script is that it makes it easier to analyze different genomic elements using the same set of variants by using `-f` instead of having to change the config file each time. To use this script first change the memory and cpu usage to the desired setting and update the paths and then run:
