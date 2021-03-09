@@ -36,7 +36,7 @@
 |-----------| -------|------- | -------------------------|
 | whole_genome_SNVs.tsv.gz|  https://cadd.gs.washington.edu/download | faaa80ef3948cf44e56a3629a90cdaaa` | `cadd_score_file`| 
 |whole_genome_SNVs.tsv.gz.tbi| https://cadd.gs.washington.edu/download |  4843cab24dd4992bb0cc5f1a7ebc807a | NA |
-| mutation_rate_by_trinucleotide_matrix.txt | Here | ca2faad78f1055c266b5a8451bebf1cb | trinucleotide_mut_rate | 
+| mutation_rate_by_trinucleotide_matrix.txt | Here | ca2faad78f1055c266b5a8451bebf1cb | `trinucleotide_mut_rate` | 
 | Variant file | User provided | NA| `mutation_calls` | 
 | Bed file | User provided | NA | `regions_of_interest` | 
 
@@ -47,7 +47,7 @@ wget https://krishna.gs.washington.edu/download/CADD/v1.6/GRCh38/whole_genome_SN
 ```
 
 
-# Files created in pipeline:
+### Files created in pipeline:
 ### Temporary files (fitDNM input)
  - `.CADD.txt`: comprehensive list of CADD scores, this table is in a different format then the one downloaded from the CADD website, where instead of each possible change for a given nucleotide is an entry, each nucleotide is an entry and the changes are columns. The _PHRED_ score is used for fitDNM, not the raw score.
  - `.lis`: list of mutations in your region of interest, columns should be chr, pos, ref, alt, gene
