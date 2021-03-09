@@ -42,6 +42,22 @@ __Outline of how to run:__ <br>
 4. Modify `fitDNM_genome_wide.json` and  to point to the described input files and change parameters also outlined below 
 5. Run fitDNM snakemake. Once finished running, two files should be generated, `.fitDNM.report` and `.muts.report` 
 
+__config file__
+
+```
+{
+  "mutation_calls": "/path/to/variants",
+  "cadd_score_file": "/path/to/CADD_files/whole_genome_SNVs.tsv.gz",
+  "trinucleotide_mut_rate": "/path/to/mutation_rate_by_trinucleotide_matrix.txt",
+  "fitDNM_R_path": "/path/to/fitDNM_R_code/",
+  "saddle_point_path": "/path/to/fitDNM_R_code//double_saddle_point_approx_8_7_2014.R",
+  "males": "number_of_males_in_study",
+  "females": "number_of_females_in_study",
+  "transform_cadd_scores_script_path":"/path/to/fitDNM_snakemake",
+  "regions_of_interest": 
+}
+```
+
 Note: We recommend creating a working directory when running this pipeline as it generates many different temporary files need to run fitDNM
 
 __Running locally:__
