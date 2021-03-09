@@ -42,8 +42,8 @@ __Outline of how to run:__ <br>
 4. Modify `fitDNM_genome_wide.json` and  to point to the described input files and change parameters also outlined below 
 5. Run fitDNM snakemake. Once finished running, two files should be generated, `.fitDNM.report` and `.muts.report` 
 
-__config file__
 
+To run change the paths in config file outlined below to reflect the actual paths of where the data is lcoated 
 ```
 {
   "mutation_calls": "/path/to/variants",
