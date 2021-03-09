@@ -36,7 +36,7 @@ R and the following R packages:<br>
 
 ### Usage:
 
-##### Outline of how to run :
+__Outline of how to run:__ <br>
 1. Download CADD scores and check md5sums
 2. Build dockerfile and push to dockerhub, alternatively pull from (insert link)
 3. Format bed and variant file 
