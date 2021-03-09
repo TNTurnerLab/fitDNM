@@ -50,7 +50,7 @@ __config file__
   "cadd_score_file": "/path/to/CADD_files/whole_genome_SNVs.tsv.gz",
   "trinucleotide_mut_rate": "/path/to/mutation_rate_by_trinucleotide_matrix.txt",
   "fitDNM_R_path": "/path/to/fitDNM_R_code/",
-  "saddle_point_path": "/path/to/fitDNM_R_code//double_saddle_point_approx_8_7_2014.R",
+  "saddle_point_path": "/path/to/fitDNM_R_code/double_saddle_point_approx_8_7_2014.R",
   "males": "number_of_males_in_study",
   "females": "number_of_females_in_study",
   "transform_cadd_scores_script_path":"/path/to/fitDNM_snakemake",
