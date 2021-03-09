@@ -34,7 +34,7 @@ R and the following R packages:<br>
 `iterators` (https://cran.r-project.org/web/packages/iterators/iterators.pdf)<br>
 `doParallel` (https://cran.r-project.org/web/packages/doParallel/doParallel.pdf)<br>
 
-#### Usage:
+### Usage:
 
 ##### Outline of how to run :
 1. Download CADD scores and check md5sums
