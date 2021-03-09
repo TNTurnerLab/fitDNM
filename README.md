@@ -3,7 +3,7 @@
 ### Overview:
 fitDNM was originally developed by the Allen lab (http://people.duke.edu/~asallen/Software.html) in Jiang et al 2015, *Am. J. Hum. Genet.*  (https://www.cell.com/ajhg/fulltext/S0002-9297(15)00277-3) to incoporate functional information in test of excess de novo mutational load. Here we've adapted this pipeline to utilize CADD scores instead of Poly-Phen2 scores to run in noncoding regions of the genome and implemented a scalable verision of the pipeline to test many elements at once. Given a bedfile that contains the regions of interest one wants to test for a significant excess of de novo mutations and the corresponding variants to use, this pipeline will output two summary files that contain the p values and scores calculated by fitDNM for each element in the bed file in the `.fitDNM.report` file and a summary of all mutations found in these genomic regions in the `.mutation.report` file
 
-### Input files and download links:
+#### Input files and download links:
 | File name | Source | MD5Sum | annotation in configfile | 
 |-----------| -------|------- | -------------------------|
 | whole_genome_SNVs.tsv.gz|  https://cadd.gs.washington.edu/download | faaa80ef3948cf44e56a3629a90cdaaa | `cadd_score_file`| 
@@ -18,16 +18,22 @@ wget https://krishna.gs.washington.edu/download/CADD/v1.6/GRCh38/whole_genome_SN
 wget https://krishna.gs.washington.edu/download/CADD/v1.6/GRCh38/whole_genome_SNVs.tsv.gz.tbi
 ```
 
-
-
 #### Formatting the user provided inputs:
 Bed file: For the user provided bed file please format using standard format with an annotation column for each entry:  
-`chr +'\t' + start + '\t' + annotation + '\n'` *and make sure that each entry has a unique annotation* 
+`chr +'\t' + start + '\t' + annotation + '\n'` __and make sure that each entry has a unique annotation__ 
 
 Variant file: for the variant file to integrate automatically into the workflow the file must be ordered in the following way:
 `holder_column + " " + chromosome + " " +  position + " " + reference + " " + alternate + '\n'`
 
-
+#### Requirements: 
+- Tabix (http://www.htslib.org/doc/tabix.html)
+- Snakemake (https://snakemake.readthedocs.io/en/stable/)
+- Bedtools (https://bedtools.readthedocs.io/en/latest/)
+- R and the following R packages:
+  - foreach (https://cran.r-project.org/web/packages/foreach/foreach.pdf)
+  - iterators (https://cran.r-project.org/web/packages/iterators/iterators.pdf)
+  - doParallel (https://cran.r-project.org/web/packages/doParallel/doParallel.pdf)
+  - 
 
 ### Files created in pipeline:
 ### Temporary files (fitDNM input)
