@@ -43,7 +43,7 @@ __Outline of how to run:__ <br>
 5. Run fitDNM snakemake. Once finished running, two files should be generated, `.fitDNM.report` and `.muts.report` 
 
 
-To run change the paths in config file outlined below to reflect the actual paths of where the data is lcoated 
+To run change the paths in config file outlined below to reflect the actual paths of where the data is located
 ```
 {
   "mutation_calls": "/path/to/variants",
