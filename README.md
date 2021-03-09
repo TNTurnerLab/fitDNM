@@ -69,7 +69,7 @@ wget https://krishna.gs.washington.edu/download/CADD/v1.6/GRCh38/whole_genome_SN
 ### LSF submission example
 `export LSF_DOCKER_VOLUMES="/path/to/fitDNM_directory:/fitDNM"`
 `bsub  -R 'rusage[mem=10GB]' -n 1 -a 'docker(docker/dockerfile)' /opt/conda/envs/snakemake/bin/snakemake -s /fitDNM/fitDNM_snakemake/fitDNM_genome_wide.smk --cores 1 `
-
+ 
 
 ### Local run example:
 - Assuming that your data and fitDNM snakemake are in separate paths and that you have built the dockerfile and pushed it to dockerhub, you could run the following. Just be sure to update the paths in `fitDNM_genome_wide.json` and the path to the configfile in `fitDNM_genome_wide.smk` to reflect what you are mounting in the docker run command.
