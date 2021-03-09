@@ -47,8 +47,8 @@ wget https://krishna.gs.washington.edu/download/CADD/v1.6/GRCh38/whole_genome_SN
 ```
 
 #### Formatting for user provided inputs:
-For the user provided bed file please format using standard format with an annotation column for each entry:\
-`chr +'\t' + start + '\t' + annotation + '\n'`\ and make sure that each entry has a unique annotaiton 
+For the user provided bed file please format using standard format with an annotation column for each entry:  
+`chr +'\t' + start + '\t' + annotation + '\n'`.  and make sure that each entry has a unique annotaiton 
 
 
 ### Files created in pipeline:
