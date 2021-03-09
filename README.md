@@ -20,7 +20,7 @@
 - CADD files and their corresponding md5sums https://cadd.gs.washington.edu/download :
   - `whole_genome_SNVs.tsv.gz  faaa80ef3948cf44e56a3629a90cdaaa` corresponds to `cadd_score_file` in config file  
   - `whole_genome_SNVs.tsv.gz.tbi  4843cab24dd4992bb0cc5f1a7ebc807a`
-     Note we only support CADD score release v1.6 for hg38 (file description: All possible SNVs of GRCh38/hg38, US link) and ensure that the two are in the same directory
+     Note we only support CADD score release v1.6 for hg38 (file description: All possible SNVs of GRCh38/hg38, US link) and ensure both the `.tbi` file and `.tsv.gz` are in the same directory
 - `mutation_rate_by_trinucleotide_matrix.txt ca2faad78f1055c266b5a8451bebf1cb` corresponds to `trinucleotide_mut_rate` in config file  
 - Bed file that corresponds to the genomic regions to be tested in fitDNM
   - please use standard format of `chr +'\t' + start + '\t' + annotation + '\n'`, make sure there are no extra columns after the fourth column   
@@ -39,7 +39,7 @@ While the link to the CADD files are provided above, the rest of the files are p
 - `wget https://krishna.gs.washington.edu/download/CADD/v1.6/GRCh38/whole_genome_SNVs.tsv.gz.tbi`
 
 
-### Files created in pipeline:
+# Files created in pipeline:
  - `.CADD.txt`: comprehensive list of CADD scores, this table is in a different format then the one downloaded from the CADD website, where instead of each possible change for a given nucleotide is an entry, each nucleotide is an entry and the changes are columns. The _PHRED_ score is used for fitDNM, not the raw score.
  - `.lis`: list of mutations in your region of interest, columns should be chr, pos, ref, alt, gene
  - `mutation_rate_by_trinucleotide_matrix.txt`: The frequencies of mutations for each given trinucleotide. In this file what you're looking at is the frequency for *second* nucleotide  being changed
