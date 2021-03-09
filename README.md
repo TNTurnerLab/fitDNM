@@ -1,11 +1,10 @@
 # fitDNM
 
-### Purpose:
-- To create a workflow that can take in a set of genomic coordinates, variants, CADD scores, and mutations rates to run through fitDNM in a high-throughput manner
-
 ### fitDNM:
 - Originally developed by the Allen lab (http://people.duke.edu/~asallen/Software.html) in Jiang et al 2015, *Am. J. Hum. Genet.*  (https://www.cell.com/ajhg/fulltext/S0002-9297(15)00277-3)
-
+- 
+### Overview:
+fitDNM was originally developed by the Allen lab (http://people.duke.edu/~asallen/Software.html) in Jiang et al 2015, *Am. J. Hum. Genet.*  (https://www.cell.com/ajhg/fulltext/S0002-9297(15)00277-3) to incoporate functional information in test of excess de novo mutational load. Here we've adapted this pipeline to utilize CADD scores instead of Poly-Phen2 scores to run in noncoding regions of the genome and implemented a scalable verision of the pipeline to test many elements at once. 
 
 ### Input files and download links:
 | File name | Source | MD5Sum | annotation in configfile | 
