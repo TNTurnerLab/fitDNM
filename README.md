@@ -49,9 +49,11 @@ docker run -v "/path/to/fitDNM/fitDNM_snakemake:/fitDNM_snakemake" -v "/path/to/
 
 __Running on LSF:__
 If running on an LSF server see below, be sure to follow the same steps and update all paths
+
 ```
 export LSF_DOCKER_VOLUMES="/path/to/fitDNM_directory:/fitDNM"
-bsub  -R 'rusage[mem=10GB]' -n 1 -a 'docker(docker/dockerfile)' /opt/conda/envs/snakemake/bin/snakemake -s /fitDNM/fitDNM_snakemake/fitDNM_genome_wide.smk --cores 1 ```
+bsub  -R 'rusage[mem=10GB]' -n 1 -a 'docker(docker/dockerfile)' /opt/conda/envs/snakemake/bin/snakemake -s /fitDNM/fitDNM_snakemake/fitDNM_genome_wide.smk --cores 1 
+```
 
 
 
