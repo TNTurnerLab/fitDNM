@@ -67,11 +67,6 @@ docker run -v "/path/to/fitDNM/fitDNM_snakemake:/fitDNM_snakemake" -v "/path/to/
 `export LSF_DOCKER_VOLUMES="/path/to/fitDNM_directory:/fitDNM"`
 `bsub  -R 'rusage[mem=10GB]' -n 1 -a 'docker(docker/dockerfile)' /opt/conda/envs/snakemake/bin/snakemake -s /fitDNM/fitDNM_snakemake/fitDNM_genome_wide.smk --cores 1 `
  
-
-### Local run example:
-- Assuming that your data and fitDNM snakemake are in separate paths and that you have built the dockerfile and pushed it to dockerhub, you could run the following. Just be sure to update the paths in `fitDNM_genome_wide.json` and the path to the configfile in `fitDNM_genome_wide.smk` to reflect what you are mounting in the docker run command.
-`docker run -v "/path/to/fitDNM/fitDNM_snakemake:/fitDNM_snakemake" -v "/path/to/data:/data" user/fitDNM_snakemake:latest /opt/conda/envs/snakemake/bin/snakemake -s /fitDNM_snakemake/fitDNM_genome_wide.smk --cores 1`
-
 We provide a further example using a wrapper script to run the pipeline in `run_fitDNM_snake.sh` for an LSF system. For one to run this please change the `export LSF_DOCKER_VOLUMES` command to reflect where fitDNM is on your cluster and the respective bsub command to the memory and cpu requirements wanted and to pull the correct docker image. This command can be executed by running the following:
   `bash run_fitDNM_snake.sh -f /path/to/bedfile`
 
