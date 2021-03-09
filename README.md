@@ -37,8 +37,8 @@
 | whole_genome_SNVs.tsv.gz|  https://cadd.gs.washington.edu/download | faaa80ef3948cf44e56a3629a90cdaaa` | `cadd_score_file`| 
 |whole_genome_SNVs.tsv.gz.tbi| https://cadd.gs.washington.edu/download |  4843cab24dd4992bb0cc5f1a7ebc807a | NA |
 | mutation_rate_by_trinucleotide_matrix.txt | Here | ca2faad78f1055c266b5a8451bebf1cb | trinucleotide_mut_rate | 
-| Variant file | User provided | NA| mutation_calls | 
-| Bed file | User provided | NA | regions_of_interes | 
+| Variant file | User provided | NA| `mutation_calls` | 
+| Bed file | User provided | NA | `regions_of_interest` | 
 
 All CADD score files can be downloaded from  https://cadd.gs.washington.edu/download using All possible SNVs of GRCh38/hg38 US link. Currently we oinly support release v1.6 for GRCh38/hg38  or alternatively use the wget commands below and be sure to check MD5sums after downloading to ensure the download was sucessful 
 ```
