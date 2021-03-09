@@ -47,7 +47,11 @@ If running locally with docker see the following example code and be sure to upd
 docker run -v "/path/to/fitDNM/fitDNM_snakemake:/fitDNM_snakemake" -v "/path/to/data:/data" user/fitDNM_snakemake:latest /opt/conda/envs/snakemake/bin/snakemake -s /fitDNM_snakemake/fitDNM_genome_wide.smk --cores 1
 ```
 
-
+__Running on LSF:__
+If running on an LSF server see below, be sure to follow the same steps and update all paths
+```
+export LSF_DOCKER_VOLUMES="/path/to/fitDNM_directory:/fitDNM"
+bsub  -R 'rusage[mem=10GB]' -n 1 -a 'docker(docker/dockerfile)' /opt/conda/envs/snakemake/bin/snakemake -s /fitDNM/fitDNM_snakemake/fitDNM_genome_wide.smk --cores 1 ```
 
 
 
@@ -64,16 +68,6 @@ docker run -v "/path/to/fitDNM/fitDNM_snakemake:/fitDNM_snakemake" -v "/path/to/
  - `.muts.report` summarizes the mutations in each element.
 
 
-## Outline of how to run :
-1. Download CADD scores and check md5sums
-2. Build dockerfile and push to dockerhub
-3. Modify `fitDNM_genome_wide.json` and  to point to the described input files and change parameters also outlined below 
-4. Run fitDNM snakemake. Once finished running, two files should be generated, `.fitDNM.report` and `.muts.report` both detailed below
-
-
-### LSF submission example
-`export LSF_DOCKER_VOLUMES="/path/to/fitDNM_directory:/fitDNM"`
-`bsub  -R 'rusage[mem=10GB]' -n 1 -a 'docker(docker/dockerfile)' /opt/conda/envs/snakemake/bin/snakemake -s /fitDNM/fitDNM_snakemake/fitDNM_genome_wide.smk --cores 1 `
  
 We provide a further example using a wrapper script to run the pipeline in `run_fitDNM_snake.sh` for an LSF system. For one to run this please change the `export LSF_DOCKER_VOLUMES` command to reflect where fitDNM is on your cluster and the respective bsub command to the memory and cpu requirements wanted and to pull the correct docker image. This command can be executed by running the following:
   `bash run_fitDNM_snake.sh -f /path/to/bedfile`
@@ -87,9 +81,3 @@ For those not familiar with docker please see https://docs.docker.com/get-starte
   2. `Docker images` to get the image ID
   3. `Docker tag <image_ID> <user_name>/fitDNM_snakemake:initial`
   4. `Docker push <user_name>/fitDNM_snakemake:initial`
-
-
-
-
-### Known issues:
-- tabix continually runs on a small amount of files on runs that have a large amount of elements scanned (fixed 3/8/21)
