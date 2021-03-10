@@ -74,8 +74,9 @@ If running on an LSF server see below, be sure to follow the same steps and upda
 export LSF_DOCKER_VOLUMES="/path/to/fitDNM_directory:/fitDNM /path/to/data:/data"
 bsub  -R 'rusage[mem=10GB]' -n 1 -a 'docker(docker/dockerfile)' /opt/conda/envs/snakemake/bin/snakemake -s /fitDNM/fitDNM_snakemake/fitDNM_genome_wide.smk --cores 1 
 ```
-__Wrapper script:__ we also provide an example of a wrapper script that could be used on an LSF sever after updating the config file to point to all files needed except for the bedfile. The idea of this script is that it makes it easier to analyze different genomic elements using the same set of variants by using `-f` instead of having to change the config file each time. To use this script first change the memory and cpu usage to the desired setting and update the paths and then run:
+__Wrapper script:__ we also provide an example of a wrapper script that could be used on an LSF sever after updating the config file to point to all files needed except for the bedfile. The idea of this script is that it makes it easier to analyze different bed files  using the same set of variants by using `-f` instead of having to change the config file each time. To use this script first change the memory and cpu usage to the desired setting and update the paths and then run:
 ```bash run_fitDNM.sh -f /path/to/bed/file```
+it will then create a directory for the run execution of the job and when finished contain all necessary output plus a copy of the bed file 
 
 ### Example setups 
 Assuming all of our input files are in a directory called `input_data` and all of the code is in a directory called `fitDNM` where there is two sub-directories for the fitDNM stats code called `fitDNM_R_code` and a second directory for the snakemake and all preprocessing code called `fitDNM_snakemake` (which would be the setup upon pulling this repository), the config file and code to run on an LSF server would look like:
