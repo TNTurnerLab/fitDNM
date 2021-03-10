@@ -76,7 +76,7 @@ bsub  -R 'rusage[mem=10GB]' -n 1 -a 'docker(docker/dockerfile)' /opt/conda/envs/
 __Wrapper script:__ we also provide an example of a wrapper script that could be used on an LSF sever after updating the config file to point to all files needed except for the bedfile. The idea of this script is that it makes it easier to analyze different genomic elements using the same set of variants by using `-f` instead of having to change the config file each time. To use this script first change the memory and cpu usage to the desired setting and update the paths and then run:
 ```bash run_fitDNM.sh -f /path/to/bed/file```
 
-## Example set up 
+### Example setups 
 Assuming all of our input files are in a directory called `input_data` and all of the code is in a directory called `fitDNM` where there is two sub-directories for the fitDNM stats code called `fitDNM_R_code` and a second directory for the snakemake and all preprocessing code called `fitDNM_snakemake`, the config file and code to run on an LSF server would look like:
 ```
 {
@@ -106,13 +106,13 @@ For each entry in the bedfile, this pipeline creates the following temporary fil
  2. `<annotation>.lis`: list of mutations in your region of interest, columns should be chr, pos, ref, alt, gene
  3. `<annotation>.mu.lis`: utilizes the trinucleotide mutation rate frequencies to calculate the mutation rate for every possible change
 
-and the following files that summarize the mutations and fitDNM statistics for all entries in the bedfile
+After generating all neccesarry files and running fitDNM, it combines the fitDNM output of all entries into one file and all of the identified mutations into one file 
  1. `.fitDNM.report` contains the results of fitDNM for all elements in the bedfile, which should consist of 8 columns for elements that have SNVs
  2. `.muts.report` summarizes the mutations in each element.
 
 
  
-### Docker:
+## Docker:
 For those not familiar with docker please see https://docs.docker.com/get-started/overview/
 - Example docker build command, first create a folder called `fitDNM_snakemake` that contains the Dockerfile from this repository in it. Then run
   1. `Docker build fitDNM_snakemake`
