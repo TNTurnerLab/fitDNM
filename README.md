@@ -38,7 +38,7 @@ __Outline of how to run:__ <br>
 1. Download CADD scores and mutation rate file and check md5sums
 2. Build dockerfile and push to dockerhub, alternatively pull from (insert link)
 3. Format bed and variant file 
-4. Modify `fitDNM_genome_wide.json` and  to point to the described input files and change parameters also outlined below 
+4. Modify `fitDNM_genome_wide.json` to point to the described input files and change parameters also outlined below 
 5. Run fitDNM snakemake. Once finished running, two files should be generated, `.fitDNM.report` and `.muts.report` 
 
 
