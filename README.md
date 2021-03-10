@@ -4,9 +4,9 @@ fitDNM was originally developed by the Allen lab (http://people.duke.edu/~asalle
 ## Input files and download links:
 | File name | Source | MD5Sum | annotation in configfile | 
 |-----------| -------|------- | -------------------------|
-| whole_genome_SNVs.tsv.gz|  https://cadd.gs.washington.edu/download | faaa80ef3948cf44e56a3629a90cdaaa | `cadd_score_file`| 
-|whole_genome_SNVs.tsv.gz.tbi| https://cadd.gs.washington.edu/download |  4843cab24dd4992bb0cc5f1a7ebc807a | NA |
-| mutation_rate_by_trinucleotide_matrix.txt | Here | ca2faad78f1055c266b5a8451bebf1cb | `trinucleotide_mut_rate` | 
+| `whole_genome_SNVs.tsv.gz` |  https://cadd.gs.washington.edu/download | faaa80ef3948cf44e56a3629a90cdaaa | `cadd_score_file`| 
+|`whole_genome_SNVs.tsv.gz.tbi` | https://cadd.gs.washington.edu/download |  4843cab24dd4992bb0cc5f1a7ebc807a | NA |
+| `mutation_rate_by_trinucleotide_matrix.txt` | Here | ca2faad78f1055c266b5a8451bebf1cb | `trinucleotide_mut_rate` | 
 | Variant file | User provided | NA| `mutation_calls` | 
 | Bed file | User provided | NA | `regions_of_interest` | 
 
