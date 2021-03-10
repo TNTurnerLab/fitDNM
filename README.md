@@ -94,7 +94,7 @@ Assuming all of our input files are in a directory called `input_data` and all o
 export LSF_DOCKER_VOLUMES="/home/user/fitDNM_code:/fitDNM_code /home/user/data:/data"
 bsub  -R 'rusage[mem=10GB]' -n 1 -a 'docker(docker/dockerfile)' /opt/conda/envs/snakemake/bin/snakemake -s /fitDNM_code/fitDNM_snakemake/fitDNM_genome_wide.smk --cores 1 
 ```
-Alternatively, assuming the same file structure and running it locally, the command would look like:
+Alternatively, running it locally and assuming the same file structure, the command would look like:
 ```
 docker run -v "/home/user/fitDNM_code:/fitDNM_code" -v "/home/user/data:/data" user/fitDNM_snakemake:latest /opt/conda/envs/snakemake/bin/snakemake -s /fitDNM_code/fitDNM_snakemake/fitDNM_genome_wide.smk --cores 1
 ```
@@ -110,11 +110,6 @@ docker run -v "/home/user/fitDNM_code:/fitDNM_code" -v "/home/user/data:/data" u
 
 
  
-We provide a further example using a wrapper script to run the pipeline in `run_fitDNM_snake.sh` for an LSF system. For one to run this please change the `export LSF_DOCKER_VOLUMES` command to reflect where fitDNM is on your cluster and the respective bsub command to the memory and cpu requirements wanted and to pull the correct docker image. This command can be executed by running the following:
-  `bash run_fitDNM_snake.sh -f /path/to/bedfile`
-
-The script will then create a directory based of the name of your bed file and run fitDNM within the directory and generate the corresponding `.report` files
-
 ### Docker:
 For those not familiar with docker please see https://docs.docker.com/get-started/overview/
 - Example docker build command, first create a folder called `fitDNM_snakemake` that contains the Dockerfile from this repository in it. Then run
