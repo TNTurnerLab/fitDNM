@@ -105,10 +105,9 @@ For each entry in the bedfile, this pipeline creates the following temporary fil
  1. `<annotation>.CADD.txt`: comprehensive list of CADD scores, this table is in a different format then the one downloaded from the CADD website, where instead of each possible change for a given nucleotide is an entry, each nucleotide is an entry and the changes are columns. The _PHRED_ score is used for fitDNM, not the raw score.
  2. `<annotation>.lis`: list of mutations in your region of interest, columns should be chr, pos, ref, alt, gene
  3. `<annotation>.mu.lis`: utilizes the trinucleotide mutation rate frequencies to calculate the mutation rate for every possible change
-
-#### Final output
- - `.fitDNM.report` contains the results of fitDNM for all elements in the bedfile, which should consist of 8 columns for elements that have SNVs
- - `.muts.report` summarizes the mutations in each element.
+  and the following final files that summarize the mutations and fitDNM statistics for all entries 
+ 1. `.fitDNM.report` contains the results of fitDNM for all elements in the bedfile, which should consist of 8 columns for elements that have SNVs
+ 2. `.muts.report` summarizes the mutations in each element.
 
 
  
