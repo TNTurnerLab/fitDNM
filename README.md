@@ -101,11 +101,11 @@ docker run -v "/home/user/fitDNM_code:/fitDNM_code" -v "/home/user/data:/data" u
 
 ### Pipeline overview:
 
-For each entry in the bedfile, this pipeline creates the following that is eventually used by fitDNM 
- 1. `.CADD.txt`: comprehensive list of CADD scores, this table is in a different format then the one downloaded from the CADD website, where instead of each possible change for a given nucleotide is an entry, each nucleotide is an entry and the changes are columns. The _PHRED_ score is used for fitDNM, not the raw score.
- 2. `.lis`: list of mutations in your region of interest, columns should be chr, pos, ref, alt, gene
- 3. `mutation_rate_by_trinucleotide_matrix.txt`: The frequencies of mutations for each given trinucleotide. In this file what you're looking at is the frequency for *second* nucleotide  being changed
- 4. `.mu.lis`: utilizes the trinucleotide mutation rate frequencies to calculate the mutation rate for every possible change
+For each entry in the bedfile, this pipeline creates the following temporary files that are eventually used by fitDNM 
+ 1. `<annotation>.CADD.txt`: comprehensive list of CADD scores, this table is in a different format then the one downloaded from the CADD website, where instead of each possible change for a given nucleotide is an entry, each nucleotide is an entry and the changes are columns. The _PHRED_ score is used for fitDNM, not the raw score.
+ 2. `<annotation>.lis`: list of mutations in your region of interest, columns should be chr, pos, ref, alt, gene
+ 3. `<annotation>.mu.lis`: utilizes the trinucleotide mutation rate frequencies to calculate the mutation rate for every possible change
+
 #### Final output
  - `.fitDNM.report` contains the results of fitDNM for all elements in the bedfile, which should consist of 8 columns for elements that have SNVs
  - `.muts.report` summarizes the mutations in each element.
