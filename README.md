@@ -26,7 +26,7 @@ Bed file: For the user provided bed file please format using standard format wit
 Variant file: for the variant file to integrate automatically into the workflow the file must be ordered in the following way:
 `holder_column + " " + chromosome + " " +  position + " " + reference + " " + alternate + '\n'`
 
-### Requirements and usage: 
+## Requirements and usage: 
 `Tabix` (http://www.htslib.org/doc/tabix.html) <br>
 `Snakemake` (https://snakemake.readthedocs.io/en/stable/)<br>
 `Bedtools` (https://bedtools.readthedocs.io/en/latest/)<br>
