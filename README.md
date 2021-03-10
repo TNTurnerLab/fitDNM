@@ -106,7 +106,7 @@ For each entry in the bedfile, this pipeline creates the following temporary fil
  2. `<annotation>.lis`: list of mutations in your region of interest, columns should be chr, pos, ref, alt, gene
  3. `<annotation>.mu.lis`: utilizes the trinucleotide mutation rate frequencies to calculate the mutation rate for every possible change
 
-and the following summary files that summarize the mutations and fitDNM statistics for all entries 
+and the following files that summarize the mutations and fitDNM statistics for all entries 
  1. `.fitDNM.report` contains the results of fitDNM for all elements in the bedfile, which should consist of 8 columns for elements that have SNVs
  2. `.muts.report` summarizes the mutations in each element.
 
