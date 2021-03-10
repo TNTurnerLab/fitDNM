@@ -88,7 +88,7 @@ Assuming all of our input files are in a directory called `input_data` and all o
   "males": "number_of_males_in_study",
   "females": "number_of_females_in_study",
   "transform_cadd_scores_script_path":"/fitDNM_code/fitDNM_snakemake",
-  "regions_of_interest": "/input_data/input_regions.bed"
+  "regions_of_interest": "/input_data/bed_files/input_regions.bed"
 }
 
 export LSF_DOCKER_VOLUMES="/home/user/fitDNM_code:/fitDNM_code /home/user/data:/data"
