@@ -78,11 +78,26 @@ bsub  -R 'rusage[mem=10GB]' -n 1 -a 'docker(docker/dockerfile)' /opt/conda/envs/
 __Wrapper script:__ we also provide an example of a wrapper script that could be used on an LSF sever after updating the config file to point to all files needed except for the bedfile. The idea of this script is that it makes it easier to analyze different genomic elements using the same set of variants by using `-f` instead of having to change the config file each time. To use this script first change the memory and cpu usage to the desired setting and update the paths and then run:
 ```bash run_fitDNM.sh -f /path/to/bed/file```
 
+## Example set up 
+Assuming all of our input files are in a directory called `input_data` and all of the code is in a directory called `fitDNM` where there is two sub-directories for the fitDNM stats code called `fitDNM_R_code` and a second directory for the snakemake and all preprocessing code called `fitDNM_snakemake`, the config file and code to run on an LSF server would look like:
+```
+{
+  "mutation_calls": "/input_data/variants_in.txt",
+  "cadd_score_file": "/input_data/CADD_files/whole_genome_SNVs.tsv.gz",
+  "trinucleotide_mut_rate": "/input_data/mutation_rate_by_trinucleotide_matrix.txt",
+  "fitDNM_R_path": "/fitDNM_code/fitDNM_R_code/",
+  "saddle_point_path": "/fitDNM_code/fitDNM_R_code/double_saddle_point_approx_8_7_2014.R",
+  "males": "number_of_males_in_study",
+  "females": "number_of_females_in_study",
+  "transform_cadd_scores_script_path":"/fitDNM_code/fitDNM_snakemake",
+  "regions_of_interest": "/input_data/input_regions.bed"
+}
 
+export LSF_DOCKER_VOLUMES="/home/user/fitDNM_code:/fitDNM_code /home/user/data:/data"
+bsub  -R 'rusage[mem=10GB]' -n 1 -a 'docker(docker/dockerfile)' /opt/conda/envs/snakemake/bin/snakemake -s /fitDNM_code/fitDNM_snakemake/fitDNM_genome_wide.smk --cores 1 
+```
 
-
-### Files created in pipeline:
-### Temporary files (fitDNM input)
+### Pipeline overview:
  - `.CADD.txt`: comprehensive list of CADD scores, this table is in a different format then the one downloaded from the CADD website, where instead of each possible change for a given nucleotide is an entry, each nucleotide is an entry and the changes are columns. The _PHRED_ score is used for fitDNM, not the raw score.
  - `.lis`: list of mutations in your region of interest, columns should be chr, pos, ref, alt, gene
  - `mutation_rate_by_trinucleotide_matrix.txt`: The frequencies of mutations for each given trinucleotide. In this file what you're looking at is the frequency for *second* nucleotide  being changed
