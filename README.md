@@ -1,7 +1,7 @@
 # fitDNM
 fitDNM was originally developed by the Allen lab (http://people.duke.edu/~asallen/Software.html) in Jiang et al 2015, *Am. J. Hum. Genet.*  (https://www.cell.com/ajhg/fulltext/S0002-9297(15)00277-3) to incoporate functional information in test of excess de novo mutational load. Here we've adapted this pipeline to utilize CADD scores instead of Poly-Phen2 scores to run in noncoding regions of the genome and implemented a scalable verision of the pipeline to test many elements at once. Given a bedfile that contains the regions of interest one wants to test for a significant excess of de novo mutations and the corresponding variants to use, this pipeline will output two summary files that contain the p values and scores calculated by fitDNM for each element in the bed file in the `.fitDNM.report` file and a summary of all mutations found in these genomic regions in the `.mutation.report` file
 
-## Input files and download links:
+### Input files and download links:
 | File name | Source | MD5Sum | annotation in configfile | 
 |-----------| -------|------- | -------------------------|
 | whole_genome_SNVs.tsv.gz|  https://cadd.gs.washington.edu/download | faaa80ef3948cf44e56a3629a90cdaaa | `cadd_score_file`| 
@@ -24,7 +24,7 @@ Bed file: For the user provided bed file please format using standard format wit
 Variant file: for the variant file to integrate automatically into the workflow the file must be ordered in the following way:
 `holder_column + " " + chromosome + " " +  position + " " + reference + " " + alternate + '\n'`
 
-## Requirements and usage: 
+### Requirements and usage: 
 `Tabix` (http://www.htslib.org/doc/tabix.html) <br>
 `Snakemake` (https://snakemake.readthedocs.io/en/stable/)<br>
 `Bedtools` (https://bedtools.readthedocs.io/en/latest/)<br>
@@ -76,7 +76,7 @@ bsub  -R 'rusage[mem=10GB]' -n 1 -a 'docker(docker/dockerfile)' /opt/conda/envs/
 __Wrapper script:__ we also provide an example of a wrapper script that could be used on an LSF sever after updating the config file to point to all files needed except for the bedfile. The idea of this script is that it makes it easier to analyze different genomic elements using the same set of variants by using `-f` instead of having to change the config file each time. To use this script first change the memory and cpu usage to the desired setting and update the paths and then run:
 ```bash run_fitDNM.sh -f /path/to/bed/file```
 
-## Example set up 
+### Example set up 
 Assuming all of our input files are in a directory called `input_data` and all of the code is in a directory called `fitDNM` where there is two sub-directories for the fitDNM stats code called `fitDNM_R_code` and a second directory for the snakemake and all preprocessing code called `fitDNM_snakemake`, the config file and code to run on an LSF server would look like:
 ```
 {
@@ -104,7 +104,7 @@ docker run -v "/home/user/fitDNM_code:/fitDNM_code" -v "/home/user/data:/data" u
  - `.lis`: list of mutations in your region of interest, columns should be chr, pos, ref, alt, gene
  - `mutation_rate_by_trinucleotide_matrix.txt`: The frequencies of mutations for each given trinucleotide. In this file what you're looking at is the frequency for *second* nucleotide  being changed
  - `.mu.lis`: utilizes the trinucleotide mutation rate frequencies to calculate the mutation rate for every possible change
-### Final output
+#### Final output
  - `.fitDNM.report` contains the results of fitDNM for all elements in the bedfile, which should consist of 8 columns for elements that have SNVs
  - `.muts.report` summarizes the mutations in each element.
 
