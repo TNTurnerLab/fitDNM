@@ -25,9 +25,9 @@ Variant file: for the variant file to integrate automatically into the workflow 
 `holder_column + " " + chromosome + " " +  position + " " + reference + " " + alternate + '\n'`
 
 ## Requirements and usage: 
-|`Tabix`| (http://www.htslib.org/doc/tabix.html) <br>
-|`Snakemake`| (https://snakemake.readthedocs.io/en/stable/)<br>
-|`Bedtools`| (https://bedtools.readthedocs.io/en/latest/)<br>
+| `Tabix` | (http://www.htslib.org/doc/tabix.html) <br>
+| `Snakemake` | (https://snakemake.readthedocs.io/en/stable/)<br>
+ | `Bedtools` | (https://bedtools.readthedocs.io/en/latest/)<br>
 R and the following R packages:<br>
 `foreach` (https://cran.r-project.org/web/packages/foreach/foreach.pdf)<br>
 `iterators` (https://cran.r-project.org/web/packages/iterators/iterators.pdf)<br>
