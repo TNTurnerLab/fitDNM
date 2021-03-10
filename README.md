@@ -77,7 +77,7 @@ __Wrapper script:__ we also provide an example of a wrapper script that could be
 ```bash run_fitDNM.sh -f /path/to/bed/file```
 
 ### Example setups 
-Assuming all of our input files are in a directory called `input_data` and all of the code is in a directory called `fitDNM` where there is two sub-directories for the fitDNM stats code called `fitDNM_R_code` and a second directory for the snakemake and all preprocessing code called `fitDNM_snakemake`, the config file and code to run on an LSF server would look like:
+Assuming all of our input files are in a directory called `input_data` and all of the code is in a directory called `fitDNM` where there is two sub-directories for the fitDNM stats code called `fitDNM_R_code` and a second directory for the snakemake and all preprocessing code called `fitDNM_snakemake` (which would be the setup upon pulling this repository), the config file and code to run on an LSF server would look like:
 ```
 {
   "mutation_calls": "/input_data/variants_in.txt",
