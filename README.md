@@ -28,7 +28,7 @@ Variant file: for the variant file to integrate automatically into the workflow 
 
 `Tabix`  (http://www.htslib.org/doc/tabix.html) <br>
 `Snakemake`  (https://snakemake.readthedocs.io/en/stable/)<br>
-`Bedtools`  (https://bedtools.readthedocs.io/en/latest/)<br>
+`Bedtools` version 2.27.0 or above (https://bedtools.readthedocs.io/en/latest/)<br>
 R and the following R packages:<br>
 `foreach` (https://cran.r-project.org/web/packages/foreach/foreach.pdf)<br>
 `iterators` (https://cran.r-project.org/web/packages/iterators/iterators.pdf)<br>
