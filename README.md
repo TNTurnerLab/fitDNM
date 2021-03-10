@@ -17,7 +17,7 @@ wget https://krishna.gs.washington.edu/download/CADD/v1.6/GRCh38/whole_genome_SN
 ```
 Currently we only support release v1.6 for GRCh38/hg38 
 
-__Formatting the user provided inputs:__
+__Formatting the user provided inputs:__<br>
 Bed file: For the user provided bed file please format using standard format with an annotation column for each entry:  
 `chr +'\t' + start + '\t' + annotation + '\n'` __and make sure that each entry has a unique annotation__ 
 
