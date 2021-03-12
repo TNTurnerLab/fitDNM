@@ -19,10 +19,10 @@ Currently we only support release v1.6 for GRCh38/hg38
 
 __Formatting the user provided inputs:__<br>
 Bed file: For the user provided bed file please format using standard bed file format with an extra annotation column for each entry:  
-`chr +'\t' + start + '\t' + annotation + '\n'` __and make sure that each entry has a unique annotation__ 
+`chr +'\t' + start + '\t' + stop + '\t' + annotation + '\n'` __and make sure that each entry has a unique annotation__ 
 
 Variant file: for the variant file to integrate automatically into the workflow the file must be ordered in the following way:
-`holder_column + " " + chromosome + " " +  position + " " + reference + " " + alternate + '\n'`
+`holder_column + " " + chromosome + " " +  position + " " + reference + " " + alternate + '\n'` where the holder column can take on any value. They must also be on hg38
 
 ## Requirements and usage: 
 
