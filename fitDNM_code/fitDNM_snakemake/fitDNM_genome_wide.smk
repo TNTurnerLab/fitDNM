@@ -70,7 +70,7 @@ rule get_sequence_plus_two_and_cadd_scores:
     """
 
 # Uses bedtools to number of variatns and variant position and status for each
-# entry in the bedfile 
+# entry in the bedfile
 rule intersect:
     input:regions=REGIONS_OF_INTEREST ,DNMs=MUTATION_CALLS
     output:intersected=temp("intersected_%s" % BED_FILE_NAME)
