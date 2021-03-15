@@ -39,7 +39,7 @@ R and the following R packages:<br>
 `doParallel` (https://cran.r-project.org/web/packages/doParallel/doParallel.pdf)<br>
 
 __Outline of how to run:__ <br>
-1. Pull github repository 
+1. Clone repository using `git clone https://github.com/TNTurnerLab/fitDNM.git` 
 1. Download CADD scores and mutation rate file and check md5sums
 2. Build dockerfile and push to dockerhub, alternatively pull from (insert link)
 3. Format bed and variant file 
