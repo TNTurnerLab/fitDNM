@@ -87,15 +87,15 @@ it will then create a directory for the run execution of the job and when finish
 Assuming all of our input files are in a directory called `input_data` and all of the code is in a directory called `fitDNM` where there is two sub-directories for the fitDNM stats code called `fitDNM_R_code` and a second directory for the snakemake and all preprocessing code called `fitDNM_snakemake` (which would be the setup upon pulling this repository), the config file and code to run on an LSF server would look like:
 ```
 {
-  "mutation_calls": "/input_data/variants_in.txt",
-  "cadd_score_file": "/input_data/CADD_files/whole_genome_SNVs.tsv.gz",
+  "mutation_calls": "/fitDNM/code/input_data/input_data/variants_in.txt",
+  "cadd_score_file": "/fitDNM/code/input_data/CADD_files/whole_genome_SNVs.tsv.gz",
   "trinucleotide_mut_rate": "/input_data/mutation_rate_by_trinucleotide_matrix.txt",
   "fitDNM_R_path": "/fitDNM/fitDNM_R_code/",
   "saddle_point_path": "/fitDNM/fitDNM_R_code/double_saddle_point_approx_8_7_2014.R",
-  "males": "number_of_males_in_study",
-  "females": "number_of_females_in_study",
+  "males": "2666",
+  "females": "0",
   "transform_cadd_scores_script_path":"/fitDNM/fitDNM_snakemake",
-  "regions_of_interest": "/input_data/bed_files/input_regions.bed"
+  "regions_of_interest": "/fitDNM/code/input_data/input_regions.bed"
 }
 
 export LSF_DOCKER_VOLUMES="/home/user/fitDNM_code:/fitDNM_code /home/user/input_data:/input_data"
