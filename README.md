@@ -108,7 +108,7 @@ Alternatively, running it locally and assuming the same file structure the comma
 docker run -v "/home/user/fitDNM_code:/fitDNM_code" -v "/home/user/data:/data" tnturnerlab/fitdnm_snakemake:V1.0 /opt/conda/envs/snakemake/bin/snakemake -s /fitDNM_code/fitDNM_snakemake/fitDNM_genome_wide.smk --cores 1
 ```
 
-For fitDNM to run it is essential the correct paths are mounted in docker image. To determine the correct path please run `pwd` in the top level `fitDNM` directory to get the path. Then in both the `/home/user/fitDNM_code:/fitDNM_code` and `/home/user/input_data:/input_data` replace the the lefthand side out the semicolon with the output from `pwd`. This should be done regardless of wether or not you are using an LSF server.
+For fitDNM to run it is essential the correct paths are mounted in docker image. To determine the correct path please run `pwd` in the top level `fitDNM` directory to get the path. Then in both the `/home/user/fitDNM_code:/fitDNM_code` and `/home/user/input_data:/input_data` part of the code, replace the the lefthand side of the semicolon with the output from `pwd`. This should be done regardless of wether or not you are using an LSF server.
 
 
 __Running on user files__
