@@ -86,6 +86,29 @@ it will then create a directory for the run execution of the job and when finish
 ### Example setups
 Assuming all of our input files are in a directory called `input_data` and all of the code is in a directory called `fitDNM` where there is two sub-directories for the fitDNM stats code called `fitDNM_R_code` and a second directory for the snakemake and all preprocessing code called `fitDNM_snakemake` (which would be the setup upon pulling this repository), the config file and code to run on an LSF server would look like:
 ```
+.
+├── Dockerfile
+├── README.md
+├── fitDNM_code
+│   ├── fitDNM_R_code
+│   │   ├── double_saddle_point_approx_8_7_2014.R
+│   │   └── fitDNM.CADD.R
+│   └── fitDNM_snakemake
+│       ├── fitDNM_genome_wide.json
+│       ├── fitDNM_genome_wide.smk
+│       └── transform_CADD_scores.R
+├── input_data
+│   ├── CADD_scores
+│   │   ├── whole_genome_SNVs.tsv.gz
+│   │   └── whole_genome_SNVs.tsv.gz.tbi
+│   ├── input_regions
+│   │   └── hs737.bed
+│   ├── mutation_rate_by_trinucleotide_matrix.txt
+│   └── variants
+│       └── variants.txt
+└── run_fitDNM_snake.sh
+
+
 {
   "mutation_calls": "/fitDNM/code/input_data/input_data/variants_in.txt",
   "cadd_score_file": "/fitDNM/code/input_data/CADD_files/whole_genome_SNVs.tsv.gz",
