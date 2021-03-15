@@ -21,6 +21,7 @@ To clone the repository, set up directories and download CADD scores please run:
 git clone https://github.com/TNTurnerLab/fitDNM.git
 cd fitDNM/input_data
 mkdir -p CADD_scores
+mkdir -p variants
 cd CADD_scores
 wget https://krishna.gs.washington.edu/download/CADD/v1.6/GRCh38/whole_genome_SNVs.tsv.gz
 wget https://krishna.gs.washington.edu/download/CADD/v1.6/GRCh38/whole_genome_SNVs.tsv.gz.tbi
@@ -47,7 +48,7 @@ R and the following R packages:<br>
 __Outline of how to run:__ <br>
 1. Clone repository using `git clone https://github.com/TNTurnerLab/fitDNM.git`
 1. Download CADD scores and mutation rate file and check md5sums
-2. Build dockerfile and push to dockerhub, alternatively pull from (insert link)
+2. Build dockerfile and push to dockerhub, alternatively pull from tnturnerlab/fitdnm_snakemake:V1.0
 3. Format bed and variant file
 4. Modify `fitDNM-main/fitDNM_code/fitDNM_snakemake/fitDNM_genome_wide.json` to point to the described input files and change parameters also outlined below
 5. Run fitDNM snakemake. Once finished running, two files should be generated, `.fitDNM.report` and `.muts.report`
@@ -56,7 +57,7 @@ __Outline of how to run:__ <br>
 
 ### Example setups
 __Running an example analysis on the hs737 enhancer from Padhi et al 2020__ (https://www.biorxiv.org/content/10.1101/2020.08.28.270751v1):
-After cloning the repository from github using `git clone https://github.com/TNTurnerLab/fitDNM.git` and creating the CADD_scores directory and downloading all files, please create a directory within `input_data` called `variants` to hold your variant call file. The directory set up should then resemble the one below, where the `.` represents the parent directory `fitDNM`
+After cloning the repository from github using `git clone https://github.com/TNTurnerLab/fitDNM.git` and creating the CADD_scores directory and downloading all files and place your variant call file within the `variants` directory inside of input data. The directory set up should then resemble the one below, where the `.` represents the parent directory `fitDNM`
 
 ```
 .
