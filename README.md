@@ -49,42 +49,6 @@ __Outline of how to run:__ <br>
 5. Run fitDNM snakemake. Once finished running, two files should be generated, `.fitDNM.report` and `.muts.report`
 
 
-To run change the paths in config file outlined below to reflect the actual paths of where the data is located (see section below for example setup)
-```
-{
-  "mutation_calls": "/path/to/variants",
-  "cadd_score_file": "/path/to/CADD_files/whole_genome_SNVs.tsv.gz",
-  "trinucleotide_mut_rate": "/path/to/mutation_rate_by_trinucleotide_matrix.txt",
-  "fitDNM_R_path": "/path/to/fitDNM_R_code/",
-  "saddle_point_path": "/path/to/fitDNM_R_code/double_saddle_point_approx_8_7_2014.R",
-  "males": "number_of_males_in_study",
-  "females": "number_of_females_in_study",
-  "transform_cadd_scores_script_path":"/path/to/fitDNM_snakemake",
-  "regions_of_interest": "/path/to/bedfile"
-}
-```
-To make running this pipeline easier when using docker, we suggest that you keep all input files in one parent directory that way you can run a single export or `-v` command for all of your input data  (e.g., an input_data directory that has different folders for CADD scores, variants, and regions of interest)
-
-
-Note: We recommend creating a working directory when running this pipeline as it generates many different temporary files need to run fitDNM
-
-__Running locally:__
-If running locally with docker see the following example code and be sure to update the paths being mounted with `-v` to reflect the actual paths to the data and location of the fitDNM_snakemake code and the paths within the config file to reflect the mounted directories
-```
-docker run -v "/path/to/fitDNM/fitDNM_snakemake:/fitDNM_snakemake" -v "/path/to/data:/data" tnturnerlab/fitdnm_snakemake:V1.0 /opt/conda/envs/snakemake/bin/snakemake -s /fitDNM_snakemake/fitDNM_genome_wide.smk --cores 1
-```
-
-__Running on LSF:__
-If running on an LSF server see below, be sure to follow the same steps and update all paths
-
-```
-export LSF_DOCKER_VOLUMES="/path/to/fitDNM:/fitDNM /path/to/input_data:/input_data"
-bsub  -R 'rusage[mem=10GB]' -n 1 -a 'docker(tnturnerlab/fitdnm_snakemake:V1.0)' /opt/conda/envs/snakemake/bin/snakemake -s /fitDNM/fitDNM_snakemake/fitDNM_genome_wide.smk --cores 1
-```
-__Wrapper script:__ we also provide an example of a wrapper script that could be used on an LSF sever after updating the config file to point to all files needed except for the bedfile. The idea of this script is that it makes it easier to analyze different bed files  using the same set of variants by using `-f` instead of having to change the config file each time. To use this script first change the memory and cpu usage to the desired setting and update the paths and then run:
-`bash run_fitDNM.sh -f /path/to/bed/file`
-it will then create a directory for the run execution of the job and when finished contain all necessary output plus a copy of the bed file
-
 
 ### Example setups
 __Running an example analysis on the hs737 enhancer from Padhi et al 2020__ (https://www.biorxiv.org/content/10.1101/2020.08.28.270751v1):
@@ -119,23 +83,27 @@ Using this setup, change the config file to the same as below:
 
 ```
 {
-  "mutation_calls": "/fitDNM/code/input_data/input_data/variants_in.txt",
-  "cadd_score_file": "/fitDNM/code/input_data/CADD_files/whole_genome_SNVs.tsv.gz",
-  "trinucleotide_mut_rate": "/input_data/mutation_rate_by_trinucleotide_matrix.txt",
+  "mutation_calls": "/fitDNM/input_data/variants/variants.txt",
+  "cadd_score_file": "/fitDNM/input_data/CADD_scores/whole_genome_SNVs.tsv.gz",
+  "trinucleotide_mut_rate": "/fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt",
   "fitDNM_R_path": "/fitDNM/fitDNM_R_code/",
-  "saddle_point_path": "/fitDNM/fitDNM_R_code/double_saddle_point_approx_8_7_2014.R",
+  "saddle_point_path": "/fitDNM/fitDNM_code/fitDNM_R_code/double_saddle_point_approx_8_7_2014.R",
   "males": "2666",
   "females": "0",
-  "transform_cadd_scores_script_path":"/fitDNM/fitDNM_snakemake",
-  "regions_of_interest": "/fitDNM/code/input_data/hs737.bed"
+  "transform_cadd_scores_script_path":"/fitDNM/fitDNM_code/fitDNM_snakemake",
+  "regions_of_interest": "/fitDNM/input_data/hs737.bed"
 }
 ```
-If running on an LSF server run the following:
+Then to execute the code run one of the following
+
+If running on an LSF server use the following:
 ```
 export LSF_DOCKER_VOLUMES="/home/user/fitDNM_code:/fitDNM_code /home/user/input_data:/input_data"
 bsub  -R 'rusage[mem=10GB]' -n 1 -a 'docker(tnturnerlab/fitdnm_snakemake:V1.0)' /opt/conda/envs/snakemake/bin/snakemake -s /fitDNM_code/fitDNM_snakemake/fitDNM_genome_wide.smk --cores 1
 ```
+
 Alternatively, running it locally and assuming the same file structure the command would look like:
+
 ```
 docker run -v "/home/user/fitDNM_code:/fitDNM_code" -v "/home/user/data:/data" tnturnerlab/fitdnm_snakemake:V1.0 /opt/conda/envs/snakemake/bin/snakemake -s /fitDNM_code/fitDNM_snakemake/fitDNM_genome_wide.smk --cores 1
 ```
@@ -143,9 +111,13 @@ docker run -v "/home/user/fitDNM_code:/fitDNM_code" -v "/home/user/data:/data" t
 For fitDNM to run it is essential the correct paths are mounted in docker image. To determine the correct path please run `pwd` in the top level `fitDNM` directory to get the path. Then in both the `/home/user/fitDNM_code:/fitDNM_code` and `/home/user/input_data:/input_data` replace the the lefthand side out the semicolon with the output from `pwd`. This should be done regardless of wether or not you are using an LSF server.
 
 
-
 __Running on user files__
-To run on user files, please place your variant file in the `variants` direcotry and your input bedfile into the `input_regions` directory and change the config file to point to these files.
+To run on user files, please place your variant file in the `variants` directory and your input bedfile into the `input_regions` directory and change the config file to point to these files.
+
+__Wrapper script:__ we also provide an example of a wrapper script that could be used on an LSF sever after updating the config file to point to all files needed except for the bedfile. The idea of this script is that it makes it easier to analyze different bed files  using the same set of variants by using `-f` instead of having to change the config file each time. To use this script first change the memory and cpu usage to the desired setting and update the paths and then run:
+`bash run_fitDNM.sh -f /path/to/bed/file`
+it will then create a directory for the run execution of the job and when finished contain all necessary output plus a copy of the bed file
+
 
 ## Pipeline overview:
 
