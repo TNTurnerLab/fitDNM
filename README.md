@@ -16,8 +16,6 @@ fitDNM was originally developed by the Allen lab (http://people.duke.edu/~asalle
 
 All CADD score files can be downloaded from  https://cadd.gs.washington.edu/download using the All possible SNVs of GRCh38/hg38 US link, make sure to download both the score file and tabix index file or alternatively use the wget commands below and be sure to check MD5sums after downloading to ensure the download was sucessful.
 ```
-mkdir -p CADD_scores
-cd CADD_scores
 wget https://krishna.gs.washington.edu/download/CADD/v1.6/GRCh38/whole_genome_SNVs.tsv.gz
 wget https://krishna.gs.washington.edu/download/CADD/v1.6/GRCh38/whole_genome_SNVs.tsv.gz.tbi
 ```
@@ -49,7 +47,7 @@ __Outline of how to run:__ <br>
 5. Run fitDNM snakemake. Once finished running, two files should be generated, `.fitDNM.report` and `.muts.report`
 
 
-To run change the paths in config file outlined below to reflect the actual paths of where the data is located (see example setup section for more in depth explanation)
+To run change the paths in config file outlined below to reflect the actual paths of where the data is located (see section below for example setup)
 ```
 {
   "mutation_calls": "/path/to/variants",
@@ -63,7 +61,7 @@ To run change the paths in config file outlined below to reflect the actual path
   "regions_of_interest": "/path/to/bedfile"
 }
 ```
-To make running this pipeline easier when using docker, we suggest that you keep all input files in one parent directory that way you can run a single export or `-v` command for all of your input data  (e.g., an input_data directory that has different folders for CADD scores, variants, and regions of interest, see example below)
+To make running this pipeline easier when using docker, we suggest that you keep all input files in one parent directory that way you can run a single export or `-v` command for all of your input data  (e.g., an input_data directory that has different folders for CADD scores, variants, and regions of interest)
 
 
 Note: We recommend creating a working directory when running this pipeline as it generates many different temporary files need to run fitDNM
@@ -84,60 +82,29 @@ bsub  -R 'rusage[mem=10GB]' -n 1 -a 'docker(tnturnerlab/fitdnm_snakemake:V1.0)' 
 __Wrapper script:__ we also provide an example of a wrapper script that could be used on an LSF sever after updating the config file to point to all files needed except for the bedfile. The idea of this script is that it makes it easier to analyze different bed files  using the same set of variants by using `-f` instead of having to change the config file each time. To use this script first change the memory and cpu usage to the desired setting and update the paths and then run:
 ```bash run_fitDNM.sh -f /path/to/bed/file```
 it will then create a directory for the run execution of the job and when finished contain all necessary output plus a copy of the bed file
-```
 
 ### Example setups
-_Running example analysis on the hs737 enhancer from Padhi et al 2020_ (https://www.biorxiv.org/content/10.1101/2020.08.28.270751v1)
-Assuming everything that is needed to run is in a directory called `fitDNM` (represented by the . in the tree below) and all of the code is in a directory called `fitDNM_code` where there is two sub-directories for the fitDNM stats code called `fitDNM_R_code` and a second directory for the snakemake and all preprocessing code called `fitDNM_snakemake` (which would be the setup upon pulling this repository), the directory structure, config file and code to run on an LSF server would look like:
-
-
-.
-├── Dockerfile
-├── README.md
-├── fitDNM_code
-│   ├── fitDNM_R_code
-│   │   ├── double_saddle_point_approx_8_7_2014.R
-│   │   └── fitDNM.CADD.R
-│   └── fitDNM_snakemake
-│       ├── fitDNM_genome_wide.json
-│       ├── fitDNM_genome_wide.smk
-│       └── transform_CADD_scores.R
-├── input_data
-│   ├── CADD_scores
-│   │   ├── whole_genome_SNVs.tsv.gz
-│   │   └── whole_genome_SNVs.tsv.gz.tbi
-│   ├── input_regions
-│   │   └── hs737.bed
-│   ├── mutation_rate_by_trinucleotide_matrix.txt
-│   └── variants
-│       └── variants.txt
-└── run_fitDNM_snake.sh
-
-
+Assuming all of our input files are in a directory called `input_data` and all of the code is in a directory called `fitDNM` where there is two sub-directories for the fitDNM stats code called `fitDNM_R_code` and a second directory for the snakemake and all preprocessing code called `fitDNM_snakemake` (which would be the setup upon pulling this repository), the config file and code to run on an LSF server would look like:
+```
 {
-  "mutation_calls": "/input_data/variants.txt",
-  "cadd_score_file": "/input_data/CADD_scores/whole_genome_SNVs.tsv.gz",
+  "mutation_calls": "/fitDNM/code/input_data/input_data/variants_in.txt",
+  "cadd_score_file": "/fitDNM/code/input_data/CADD_files/whole_genome_SNVs.tsv.gz",
   "trinucleotide_mut_rate": "/input_data/mutation_rate_by_trinucleotide_matrix.txt",
   "fitDNM_R_path": "/fitDNM/fitDNM_R_code/",
   "saddle_point_path": "/fitDNM/fitDNM_R_code/double_saddle_point_approx_8_7_2014.R",
   "males": "2666",
   "females": "0",
   "transform_cadd_scores_script_path":"/fitDNM/fitDNM_snakemake",
-  "regions_of_interest": "/input_data/bed_files/input_regions.bed"
+  "regions_of_interest": "/fitDNM/code/input_data/input_regions.bed"
 }
 
-export LSF_DOCKER_VOLUMES="/home/user/fitDNM/fitDNM_code:/fitDNM_code /home/user/fitDNM/input_data:/input_data"
-bsub  -R 'rusage[mem=10GB]' -n 1 -a 'docker(tnturnerlab/fitdnm_snakemake:V1.0)' /opt/conda/envs/snakemake/bin/snakemake -s /fitDNM_code/fitDNM_snakemake/fitDNM_genome_wide.smk --cores 1
+export LSF_DOCKER_VOLUMES="/home/user/fitDNM_code:/fitDNM_code /home/user/input_data:/input_data"
+bsub  -R 'rusage[mem=10GB]' -n 1 -a 'docker(docker/dockerfile)' /opt/conda/envs/snakemake/bin/snakemake -s /fitDNM_code/fitDNM_snakemake/fitDNM_genome_wide.smk --cores 1
 ```
-```
-
 Alternatively, running it locally and assuming the same file structure the command would look like:
 ```
-docker run -v "/home/user/fitDNM/fitDNM_code:/fitDNM_code" -v "/home/user/fitDNM/input_data:/input_data" tnturnerlab/fitdnm_snakemake:V1.0 /opt/conda/envs/snakemake/bin/snakemake -s /fitDNM/fitDNM_code/fitDNM_snakemake/fitDNM_genome_wide.smk --cores 1
+docker run -v "/home/user/fitDNM_code:/fitDNM_code" -v "/home/user/data:/data" tnturnerlab/fitdnm_snakemake:V1.0 /opt/conda/envs/snakemake/bin/snakemake -s /fitDNM_code/fitDNM_snakemake/fitDNM_genome_wide.smk --cores 1
 ```
-
-To run the pipeline correctly, you need to export the proper paths to `input_data` and `fitDNM_code` directories. To determine the correct path, run `pwd` while in the top level fitDNM directory. In both `"/home/user/fitDNM/fitDNM_code:/fitDNM_code" ` and `"/home/user/fitDNM/input_data:/input_data"` (in LSF and local versions) replace the left hand side of the semicolon with the actual paths.
-
 
 ## Pipeline overview:
 
