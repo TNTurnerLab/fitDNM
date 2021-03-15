@@ -47,7 +47,7 @@ __Outline of how to run:__ <br>
 5. Run fitDNM snakemake. Once finished running, two files should be generated, `.fitDNM.report` and `.muts.report` 
 
 
-To run change the paths in config file outlined below to reflect the actual paths of where the data is located
+To run change the paths in config file outlined below to reflect the actual paths of where the data is located (see below for example)
 ```
 {
   "mutation_calls": "/path/to/variants",
@@ -61,7 +61,7 @@ To run change the paths in config file outlined below to reflect the actual path
   "regions_of_interest": "/path/to/bedfile"
 }
 ```
-To make running this pipeline easier when using docker, we suggest that you keep all input files in one parent directory that way you can run a single export or `-v` command for all of your input data  (e.g., an input_data directory that has different folders for CADD scores, variants, and regions of interest, see example below)
+To make running this pipeline easier when using docker, we suggest that you keep all input files in one parent directory that way you can run a single export or `-v` command for all of your input data  (e.g., an input_data directory that has different folders for CADD scores, variants, and regions of interest)
 
 
 Note: We recommend creating a working directory when running this pipeline as it generates many different temporary files need to run fitDNM
