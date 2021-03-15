@@ -16,6 +16,7 @@ fitDNM was originally developed by the Allen lab (http://people.duke.edu/~asalle
 
 All CADD score files can be downloaded from  https://cadd.gs.washington.edu/download using the All possible SNVs of GRCh38/hg38 US link, make sure to download both the score file and tabix index file or alternatively use the wget commands below and be sure to check MD5sums after downloading to ensure the download was sucessful.
 ```
+cd input_data
 mkdir -p CADD_scores
 cd CADD_scores
 wget https://krishna.gs.washington.edu/download/CADD/v1.6/GRCh38/whole_genome_SNVs.tsv.gz
@@ -45,7 +46,7 @@ __Outline of how to run:__ <br>
 1. Download CADD scores and mutation rate file and check md5sums
 2. Build dockerfile and push to dockerhub, alternatively pull from (insert link)
 3. Format bed and variant file
-4. Modify `fitDNM_genome_wide.json` to point to the described input files and change parameters also outlined below
+4. Modify `fitDNM-main/fitDNM_code/fitDNM_snakemake/fitDNM_genome_wide.json` to point to the described input files and change parameters also outlined below
 5. Run fitDNM snakemake. Once finished running, two files should be generated, `.fitDNM.report` and `.muts.report`
 
 
@@ -83,32 +84,32 @@ Using this setup, change the config file to the same as below:
 
 ```
 {
-  "mutation_calls": "/fitDNM/input_data/variants/variants.txt",
-  "cadd_score_file": "/fitDNM/input_data/CADD_scores/whole_genome_SNVs.tsv.gz",
-  "trinucleotide_mut_rate": "/fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt",
-  "fitDNM_R_path": "/fitDNM/fitDNM_R_code/",
-  "saddle_point_path": "/fitDNM/fitDNM_code/fitDNM_R_code/double_saddle_point_approx_8_7_2014.R",
+  "mutation_calls": "/fitDNM-main/input_data/variants/variants.txt",
+  "cadd_score_file": "/fitDNM-main/input_data/CADD_scores/whole_genome_SNVs.tsv.gz",
+  "trinucleotide_mut_rate": "/fitDNM-main/input_data/mutation_rate_by_trinucleotide_matrix.txt",
+  "fitDNM_R_path": "/fitDNM-main/fitDNM_R_code/",
+  "saddle_point_path": "/fitDNM-main/fitDNM_code/fitDNM_R_code/double_saddle_point_approx_8_7_2014.R",
   "males": "2666",
   "females": "0",
-  "transform_cadd_scores_script_path":"/fitDNM/fitDNM_code/fitDNM_snakemake",
-  "regions_of_interest": "/fitDNM/input_data/hs737.bed"
+  "transform_cadd_scores_script_path":"/fitDNM-main/fitDNM_code/fitDNM_snakemake",
+  "regions_of_interest": "/fitDNM-main/input_data/hs737.bed"
 }
 ```
 Then to execute the code run one of the following
 
 If running on an LSF server use the following:
 ```
-export LSF_DOCKER_VOLUMES="/home/user/fitDNM_code:/fitDNM_code /home/user/input_data:/input_data"
+export LSF_DOCKER_VOLUMES="/home/user/fitDNM-main/fitDNM_code:/fitDNM_code /home/user/fitDNM-main/input_data:/input_data"
 bsub  -R 'rusage[mem=10GB]' -n 1 -a 'docker(tnturnerlab/fitdnm_snakemake:V1.0)' /opt/conda/envs/snakemake/bin/snakemake -s /fitDNM_code/fitDNM_snakemake/fitDNM_genome_wide.smk --cores 1
 ```
 
 Alternatively, running it locally and assuming the same file structure the command would look like:
 
 ```
-docker run -v "/home/user/fitDNM_code:/fitDNM_code" -v "/home/user/data:/data" tnturnerlab/fitdnm_snakemake:V1.0 /opt/conda/envs/snakemake/bin/snakemake -s /fitDNM_code/fitDNM_snakemake/fitDNM_genome_wide.smk --cores 1
+docker run -v "/home/user/fitDNM-main/fitDNM_code:/fitDNM_code" -v "/home/user/fitDNM-main/input_data:/input_data" tnturnerlab/fitdnm_snakemake:V1.0 /opt/conda/envs/snakemake/bin/snakemake -s /fitDNM_code/fitDNM_snakemake/fitDNM_genome_wide.smk --cores 1
 ```
 
-For fitDNM to run it is essential the correct paths are mounted in docker image. To determine the correct path please run `pwd` in the top level `fitDNM` directory to get the path. Then in both the `/home/user/fitDNM_code:/fitDNM_code` and `/home/user/input_data:/input_data` part of the code, replace the the lefthand side of the semicolon with the output from `pwd`. This should be done regardless of wether or not you are using an LSF server.
+For fitDNM to run it is essential the correct paths are mounted in docker image. To determine the correct path please run `pwd` in the top level `fitDNM` directory to get the path. Then in both the `/home/user/fitDNM-main/fitDNM_code:/fitDNM_code` and `/home/user/fitDNM-main/input_data:/input_data` part of the code, replace the the lefthand side of the semicolon with the output from `pwd`. This should be done regardless of wether or not you are using an LSF server.
 
 
 __Running on user files__
@@ -122,7 +123,7 @@ it will then create a directory for the run execution of the job and when finish
 ## Pipeline overview:
 
 For each entry in the bedfile, this pipeline creates the following temporary files that are eventually used by fitDNM
- 1. `<annotation>.CADD.txt`: comprehensive list of CADD scores, this table is in a different format then the one downloaded from the CADD website, where instead of each possible change for a given nucleotide is an entry, each nucleotide is an entry and the changes are columns. The _PHRED_ score is used for fitDNM, not the raw score.
+ 1. `<annotation>.CADD.txt`: comprehensive list of CADD scores, this table is in a different format then the one downloaded from the CADD website, where instead of each possible change for a given nucleotide is an entry, each nucleotide is an entry and the changes are columns. The __PHRED__ score is used for fitDNM, not the raw score.
  2. `<annotation>.lis`: list of mutations in your region of interest, columns should be chr, pos, ref, alt, gene
  3. `<annotation>.mu.lis`: utilizes the trinucleotide mutation rate frequencies to calculate the mutation rate for every possible change
 
