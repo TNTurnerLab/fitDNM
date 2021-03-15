@@ -90,15 +90,15 @@ Assuming all of our input files are in a directory called `input_data` and all o
   "mutation_calls": "/input_data/variants_in.txt",
   "cadd_score_file": "/input_data/CADD_files/whole_genome_SNVs.tsv.gz",
   "trinucleotide_mut_rate": "/input_data/mutation_rate_by_trinucleotide_matrix.txt",
-  "fitDNM_R_path": "/fitDNM_code/fitDNM_R_code/",
-  "saddle_point_path": "/fitDNM_code/fitDNM_R_code/double_saddle_point_approx_8_7_2014.R",
+  "fitDNM_R_path": "/fitDNM/fitDNM_R_code/",
+  "saddle_point_path": "/fitDNM/fitDNM_R_code/double_saddle_point_approx_8_7_2014.R",
   "males": "number_of_males_in_study",
   "females": "number_of_females_in_study",
-  "transform_cadd_scores_script_path":"/fitDNM_code/fitDNM_snakemake",
+  "transform_cadd_scores_script_path":"/fitDNM/fitDNM_snakemake",
   "regions_of_interest": "/input_data/bed_files/input_regions.bed"
 }
 
-export LSF_DOCKER_VOLUMES="/home/user/fitDNM_code:/fitDNM_code /home/user/data:/data"
+export LSF_DOCKER_VOLUMES="/home/user/fitDNM_code:/fitDNM_code /home/user/input_data:/input_data"
 bsub  -R 'rusage[mem=10GB]' -n 1 -a 'docker(docker/dockerfile)' /opt/conda/envs/snakemake/bin/snakemake -s /fitDNM_code/fitDNM_snakemake/fitDNM_genome_wide.smk --cores 1 
 ```
 Alternatively, running it locally and assuming the same file structure the command would look like:
