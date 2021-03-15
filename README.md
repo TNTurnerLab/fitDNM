@@ -16,6 +16,8 @@ fitDNM was originally developed by the Allen lab (http://people.duke.edu/~asalle
 
 All CADD score files can be downloaded from  https://cadd.gs.washington.edu/download using the All possible SNVs of GRCh38/hg38 US link, make sure to download both the score file and tabix index file or alternatively use the wget commands below and be sure to check MD5sums after downloading to ensure the download was sucessful.
 ```
+mkdir -p CADD_scores
+cd CADD_scores
 wget https://krishna.gs.washington.edu/download/CADD/v1.6/GRCh38/whole_genome_SNVs.tsv.gz
 wget https://krishna.gs.washington.edu/download/CADD/v1.6/GRCh38/whole_genome_SNVs.tsv.gz.tbi
 ```
@@ -86,7 +88,7 @@ it will then create a directory for the run execution of the job and when finish
 
 ### Example setups
 __Running an example analysis on the hs737 enhancer from Padhi et al 2020__ (https://www.biorxiv.org/content/10.1101/2020.08.28.270751v1):
-After cloning the repository from github using `git clone https://github.com/TNTurnerLab/fitDNM.git` and creating the CADD_scores directory and downloading the files, please create a directory within `input_data` called `variants` to hold your variant call file. The directory set up should then resemble the one below, where the `.` represents the parent directory `fitDNM`
+After cloning the repository from github using `git clone https://github.com/TNTurnerLab/fitDNM.git` and creating the CADD_scores directory and downloading all files, please create a directory within `input_data` called `variants` to hold your variant call file. The directory set up should then resemble the one below, where the `.` represents the parent directory `fitDNM`
 
 ```
 .
@@ -111,6 +113,8 @@ After cloning the repository from github using `git clone https://github.com/TNT
 │       └── variants.txt
 └── run_fitDNM_snake.sh
 ```
+
+
 Using this setup, change the config file to the same as below:
 
 ```
