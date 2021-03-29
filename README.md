@@ -96,7 +96,7 @@ Using this setup, change the config file to the same as below:
   "males": "2666",
   "females": "0",
   "transform_cadd_scores_script_path":"/fitDNM_code/fitDNM_snakemake",
-  "regions_of_interest": "/input_data/hs737.bed"
+  "regions_of_interest": "/input_data/input_regions/hs737.bed"
 }
 ```
 Then to execute the code run one of the following
