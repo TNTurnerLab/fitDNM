@@ -88,15 +88,15 @@ Using this setup, change the config file to the same as below:
 
 ```
 {
-  "mutation_calls": "/fitDNM/input_data/variants/variants.txt",
-  "cadd_score_file": "/fitDNM/input_data/CADD_scores/whole_genome_SNVs.tsv.gz",
-  "trinucleotide_mut_rate": "/fitDNM/input_data/mutation_rate_by_trinucleotide_matrix.txt",
-  "fitDNM_R_path": "/fitDNM/fitDNM_R_code/",
-  "saddle_point_path": "/fitDNM/fitDNM_code/fitDNM_R_code/double_saddle_point_approx_8_7_2014.R",
+  "mutation_calls": "/input_data/variants/variants.txt",
+  "cadd_score_file": "/input_data/CADD_scores/whole_genome_SNVs.tsv.gz",
+  "trinucleotide_mut_rate": "/input_data/mutation_rate_by_trinucleotide_matrix.txt",
+  "fitDNM_R_path": "/fitDNM_code/fitDNM_R_code/",
+  "saddle_point_path": "/fitDNM_code/fitDNM_R_code/double_saddle_point_approx_8_7_2014.R",
   "males": "2666",
   "females": "0",
-  "transform_cadd_scores_script_path":"/fitDNM/fitDNM_code/fitDNM_snakemake",
-  "regions_of_interest": "/fitDNM/input_data/hs737.bed"
+  "transform_cadd_scores_script_path":"/fitDNM_code/fitDNM_snakemake",
+  "regions_of_interest": "/input_data/hs737.bed"
 }
 ```
 Then to execute the code run one of the following

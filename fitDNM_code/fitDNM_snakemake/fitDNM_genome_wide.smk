@@ -9,7 +9,7 @@
 
 import os
 
-configfile: "/fitDNM/code/fitDNM_snakemake/fitDNM_genome_wide.json"
+configfile: "/fitDNM_code/fitDNM_snakemake/fitDNM_genome_wide.json"
 
 # give absolute path to all files, input file must be a bed file
 # with the columns being chr, start, stop, region name
