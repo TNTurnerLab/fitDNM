@@ -8,6 +8,7 @@
 
 
 import os
+import sys
 
 configfile: "/fitDNM_code/fitDNM_snakemake/fitDNM_genome_wide.json"
 
@@ -22,6 +23,17 @@ FEMALES = config['females']
 FITDNM_PATH = config['fitDNM_R_path']
 SADDLE_POINT_PATH = config['saddle_point_path']
 R_SCRIPT_PATH = config['transform_cadd_scores_script_path']
+
+if REGIONS_OF_INTEREST.endswith("/"):
+    sys.exit("Please update REGIONS_OF_INTEREST entry in configfile")
+if CADD_SCORE_FILE.endswith("/"):
+    sys.exit("Please update CADD_SCORE_FILE entry in configfile")
+if MUTATION_CALLS.endswith("/"):
+    sys.exit("Please update MUTATION_CALLS entry in configfile")
+if TRINUCLEOTIDE_MUT_RATE.endswith("/"):
+    sys.exit("Please update TRINUCLEOTIDE_MUT_RATE entry in configfile")
+
+
 
 # creates file names for output files
 OUTPUT_PREFIX = REGIONS_OF_INTEREST.strip().split('/')[-1].split('.')[0]
