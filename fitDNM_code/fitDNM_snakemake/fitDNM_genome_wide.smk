@@ -24,14 +24,23 @@ FITDNM_PATH = config['fitDNM_R_path']
 SADDLE_POINT_PATH = config['saddle_point_path']
 R_SCRIPT_PATH = config['transform_cadd_scores_script_path']
 
-if REGIONS_OF_INTEREST.endswith("/"):
+# Exits script if any of the input files are missing
+if str(REGIONS_OF_INTEREST).endswith("/") or REGIONS_OF_INTEREST is None:
     sys.exit("Please update REGIONS_OF_INTEREST entry in configfile")
-if CADD_SCORE_FILE.endswith("/"):
+if str(CADD_SCORE_FILE).endswith("/") or CADD_SCORE_FILE is None:
     sys.exit("Please update CADD_SCORE_FILE entry in configfile")
-if MUTATION_CALLS.endswith("/"):
+if str(MUTATION_CALLS).endswith("/") or MUTATION_CALLS is None:
     sys.exit("Please update MUTATION_CALLS entry in configfile")
-if TRINUCLEOTIDE_MUT_RATE.endswith("/"):
-    sys.exit("Please update TRINUCLEOTIDE_MUT_RATE entry in configfile")
+if str(TRINUCLEOTIDE_MUT_RATE).endswith("/") or TRINUCLEOTIDE_MUT_RATE is None:
+    sys.exit("Please update TRINUCLEOTIDE_MUT_RATE entry in configfile, standard implementation is: /input_data/mutation_rate_by_trinucleotide_matrix.txt")
+if os.path.exists(R_SCRIPT_PATH) is False or os.path.exists(R_SCRIPT_PATH) is None:
+    sys.exit("Please update R_SCRIPT_PATH in config file")
+if os.path.exists(R_SCRIPT_PATH) is False:
+    sys.exit("transform_CADD_scores.R script is missing from R_SCRIPT_PATH, standard implementation is: /fitDNM_code/fitDNM_R_code/")
+if os.path.exists(SADDLE_POINT_PATH) is False:
+    sys.exit("Please update SADDLE_POINT_PATH in config file, standard implementation is: /fitDNM_code/fitDNM_R_code/double_saddle_point_approx_8_7_2014.R")
+if os.path.exists(FITDNM_PATH) is False:
+    sys.exit("Please update FITDNM_PATH in config file, standard implementation is: /fitDNM_code/fitDNM_R_code/")
 
 
 

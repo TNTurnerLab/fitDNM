@@ -1,5 +1,5 @@
 {
-  "mutation_calls": "/input_data/variant_calls/",
+  "mutation_calls": "/input_data/variants/",
   "cadd_score_file": "/input_data/CADD_scores/whole_genome_SNVs.tsv.gz",
   "trinucleotide_mut_rate": "/input_data/mutation_rate_by_trinucleotide_matrix.txt",
   "fitDNM_R_path": "/fitDNM_code/fitDNM_R_code/",
