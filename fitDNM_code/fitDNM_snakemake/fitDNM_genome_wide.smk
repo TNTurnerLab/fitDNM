@@ -10,7 +10,7 @@
 import os
 import sys
 
-configfile: "/fitDNM_code/fitDNM_snakemake/fitDNM_genome_wide.json"
+configfile: "/fitDNM/code/fitDNM_code/fitDNM_snakemake/fitDNM_genome_wide.json"
 
 # give absolute path to all files, input file must be a bed file
 # with the columns being chr, start, stop, region name
@@ -73,7 +73,8 @@ rule all:
     MUTATION_CALLS,
     TRINUCLEOTIDE_MUT_RATE,
     REGIONS_OF_INTEREST,
-    "intersected_%s" % BED_FILE_NAME
+    "intersected_%s" % BED_FILE_NAME,
+    "fitDNM_%s" % BED_FILE_NAME
 
 
 
@@ -241,3 +242,24 @@ rule combine_mutations:
     cat {input.mut_files} | awk '{{print $1,$2,$3,$4,$5}}' >> {output}
     rm -rf *.tabix.bed
     """
+
+rule make_bedfile:
+    input: OUTPUT_FILE_FITDNM,"intersected_%s" % BED_FILE_NAME
+    output: "fitDNM_%s" % BED_FILE_NAME
+    run:
+
+        import sys
+
+        fitDNM_output = open(input[0])
+        bedfile = open(input[1])
+
+        #creates dictionary of coordiantes where the unique ID is the key and coordinates and variants are the values
+        bedfile_data = {line.strip().split('\t')[3]:line.strip().split('\t')[0:len(line.strip().split('\t'))] for line in bedfile }
+
+        # gets the fitDNM for each element
+        fitDNM_data = {line.strip().split()[0]:bedfile_data[line.strip().split()[0]] + line.strip().split()[6:len(line.strip().split())] for line in fitDNM_output if line.strip().split()[0] in bedfile_data.keys() }
+
+        # writes fitDNM data, variatns, and coordiantes to final output file
+        with open(output[0],'w') as out:
+            for entry in fitDNM_data.keys():
+                out.write('\t'.join(fitDNM_data[entry]) + '\n')

@@ -5,7 +5,7 @@
 
 fitDNM was originally developed by the Allen lab (http://people.duke.edu/~asallen/Software.html) in Jiang et al 2015, *Am. J. Hum. Genet.*  (https://www.cell.com/ajhg/fulltext/S0002-9297(15)00277-3) to incoporate functional information in test of excess de novo mutational load. Here we've adapted the pipeline to utilize CADD scores instead of PolyPhen-2 scores in order to run in noncoding regions of the genome and implemented a scalable verision of the pipeline to test many elements at once. Given a bedfile that contains the regions of interest one wants to test for a significant excess of de novo mutations and the corresponding variants to use, this pipeline will output two summary files that contain the p values and scores calculated by fitDNM for each element in the bed file in the `.fitDNM.report` file and a summary of all mutations found in these genomic regions in the `.mutation.report` file
 
-## Input files and download links:
+## Input files and download links for CADD score files:
 | File name | Source | MD5Sum | annotation in configfile |
 |-----------| -------|------- | -------------------------|
 | `whole_genome_SNVs.tsv.gz` |  https://cadd.gs.washington.edu/download | faaa80ef3948cf44e56a3629a90cdaaa | `cadd_score_file`|
@@ -79,7 +79,7 @@ After cloning the repository from github using `git clone https://github.com/TNT
 │   │   └── hs737.bed
 │   ├── mutation_rate_by_trinucleotide_matrix.txt
 │   └── variants
-│       └── variants.txt
+│       └── user_variants.txt
 └── run_fitDNM_snake.sh
 ```
 
@@ -101,10 +101,10 @@ Using this setup, change the config file to the same as below:
 ```
 Then to execute the code run one of the following
 
-If running on an LSF server use the following:
+If running on an LSF server run the following (can be run from anywhere):
 ```
 export LSF_DOCKER_VOLUMES="/home/user/fitDNM/fitDNM_code:/fitDNM_code /home/user/fitDNM/input_data:/input_data"
-bsub  -R 'rusage[mem=10GB]' -n 1 -a 'docker(tnturnerlab/fitdnm_snakemake:V1.0)' /opt/conda/envs/snakemake/bin/snakemake -s /fitDNM_code/fitDNM_snakemake/fitDNM_genome_wide.smk --cores 1
+bsub  -R 'rusage[mem=10GB]' -n 1 -oo fitDNM_run.log  -a 'docker(tnturnerlab/fitdnm_snakemake:V1.0)' /opt/conda/envs/snakemake/bin/snakemake -s /fitDNM_code/fitDNM_snakemake/fitDNM_genome_wide.smk --cores 1
 ```
 
 Alternatively, running it locally and assuming the same file structure the command would look like:
