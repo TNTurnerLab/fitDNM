@@ -35,6 +35,11 @@ Bed file: For the user provided bed file please format using standard bed file f
 Variant file: for the variant file to integrate automatically into the workflow the file must be ordered in the following way:
 `holder_column + " " + chromosome + " " +  position + " " + reference + " " + alternate + '\n'` where the holder column can take on any value. They must also be on hg38
 
+## Usage details:
+Given that the double saddle point model in fitDNM relies upon using variants that have been by scored through CADD, this pipeline requires that indels are filtered out. Either the user can provide a variant file that has been prefiltered, or this pipeline by default will do the filtering by default. 
+
+Additionally, here we use a 1-based BED coordinate system for retriving the sequences and calculating the length.
+
 ## Requirements and usage:
 
 `Tabix`  (http://www.htslib.org/doc/tabix.html) <br>
